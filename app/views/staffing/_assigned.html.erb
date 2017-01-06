@@ -1,0 +1,31 @@
+<%# @contract.user_ids.each do |contract| %>
+  <%#= @contract.userfullname %>
+<%# end %>
+<%= simple_form_for(@contract) do |f| %>
+
+<div class="field">
+  <%= f.label :user_ids, "Staff for Event" %><br />
+  <%= f.collection_select :user_ids, User.order(:first_name), :id, :userfullname, {class: 'chosen-select'}, {multiple: true} %>
+  <%#= f.association :jobs, collection: @contract.users, priority: @contract.jobs %>
+
+  
+<%#= f.input :jobs,:collection_select => @contract.users, :label_method => :userfullname, :value_method => :id,:label => "Staff" ,:include_blank => false %>
+
+</div>
+
+
+
+
+<!--<div class="field">-->
+  <%#= f.label :user_ids, "Users" %><br />
+  <%#= f.collection_select :user_ids, User.order(:first_name), :id, :userfullname, {class: 'chosen-select'}, {multiple: true} %>
+<!--</div>-->
+<div class="actions">
+    <%= f.submit %>
+</div>
+
+<% end %>
+
+<% @contract.users.each do |c|  %>
+ <li><%= c.userfullname %></li>
+<% end %>

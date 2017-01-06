@@ -1,0 +1,18 @@
+<%#= link_to user.login, "/switch_user?scope_identifier=user_#{user.id}" %>
+
+<% if current_user.try(:manager?) %>
+<br>
+<div class="panel panel">
+   <div class="panel-heading">
+          <p class="lead">All JOBS QUICK MENU</p>
+        </div>
+<% contract.each do |contract| %>
+
+<table>
+<td class="p5"><%= link_to "#{contract.date_of_event.strftime("%m/%d/%y")} - #{contract.last_name}  - #{contract.act_code}", contract %></td>
+</table>
+
+<% end %>
+</div>
+<% end %>
+

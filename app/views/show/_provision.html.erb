@@ -1,0 +1,21 @@
+<% unless contract.contract_provisions == "nil" %>
+
+ <div class="col-lg-6 col-md-6 col-sm-12 animate-drop-fade">
+         <p class="lead p0 mt40 mb0 text-amber-900">Client Provisions</p>
+   
+         <div class="">
+            <%=  contract.contract_provisions.gsub('"', ' ') unless contract.contract_provisions.blank? %>
+         </div>
+     
+   </div>
+   
+   <% else %> 
+    <div class="col-lg-6 col-md-6 col-sm-12 animate-drop-fade">
+         <p class="lead p0 mb0 text-amber-900">Client Provisions</p>
+      
+         <div class="p15">
+            
+         </div>
+      
+   </div>
+<% end %>

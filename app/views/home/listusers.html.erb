@@ -1,0 +1,28 @@
+<% content_for :controls do %>
+  <table class="table table-hover table-striped">
+     <thead>
+        <tr>
+          <th>Email Address</th>
+        </tr>
+      </thead>
+<tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.email, user %></td>
+        <% end %>
+      </tr>
+    </tbody>
+</table>
+
+<% end %>
+</br>
+ <div class="col-md-12">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <p>List Users</p>
+        <div class="panel-body">
+<%= yield :controls %>
+</div>
+</div>
+</div>
+</div>

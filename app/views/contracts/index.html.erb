@@ -1,0 +1,22 @@
+<%#= title "DashBoard" %>
+<%= render "layouts/navbar" %>
+<% if current_user.try(:admin?) %>
+<%= render 'dancerjobs', contract: @contracts %>
+<% end %>
+<br>
+<%#=  @manger.delete(current_user.actcode_name) %>
+<%#= current_user.actcode_name %>
+<%#= render  'dashboard', contract: @contracts %>
+<%#= if current_user.actcode_name %>
+<%= render 'frontjobs', contract: @contracts  %>
+<%# end %>
+<%#= render_activities(@activities, fallback: :text) %>
+
+<br>
+<% if current_user.try(:manager?) %>
+
+<%= render  'frontjobs', contract: Contract.where(act_code: @manger.split(",")).order(params[:sort] || :date_of_event).tenday.all  %>
+<%#= render  'frontjobs', contract: @contracts %>
+
+<% end %>
+<%= switch_user_select  %>

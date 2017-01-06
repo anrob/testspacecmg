@@ -1,0 +1,9 @@
+<h3>Whats Changed</h3>
+<%#= @versions.last.changeset if @versions.last %>
+<% if @versions.last  %>
+<%#= @versions.count %>
+<% @versions.last.changeset.each do |key, value| %>
+  <li><%=  "#{key.humanize} to #{value[1]}" %></li>
+<% end %>
+<% end %>
+<hr>

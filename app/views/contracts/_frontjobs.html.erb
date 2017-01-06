@@ -1,0 +1,55 @@
+
+<!--<%#= form_tag contracts_path, :method => :get do %>-->
+<!--  <p>-->
+<!--    <#= text_field_tag :search, params[:search] %>-->
+<!--    <%#= submit_tag "Search", :last_name => nil %>-->
+<!--<%# end %>-->
+<%#= link_to "Calendar", calendar_path %>
+
+<div class="col-lg-12 col-md-6 col-sm-12">
+<div class="panel">
+   <div class="panel-heading">
+          <p class="lead">All <%#= current_user.management_id %> contracts in the Next 10 Days</p>
+        </div>
+  <table class="ui table segment">
+  <thead>
+    <tr>
+        <th><%= link_to "Date", sort: "date_of_event" %> </th>
+        <th><%= link_to "Act", sort: "act_booked" %> </th>
+        <th><%= link_to "Client", sort: "last_name" %></th>
+        <th><%#= link_to "Contract Status", sort: "contract_status" %></th>
+
+        <th><%= link_to "Event", sort: "type_of_event" %></th>
+        <th><%#= link_to "Location city", sort: "location_city" %></th>
+        <th><%= link_to "Time", sort: "event_time" %></th>
+        <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% contract.each do |contract| %>
+    <tr>
+
+<td><%= link_to "#{contract.date_of_event.strftime("%m/%d/%y")}", contract %></td>
+<td><%= contract.act_booked %></td>
+<td><%= link_to "#{contract.first_name} #{contract.last_name}", contract %></td>
+<td><%#= contract.contract_status %></td>
+
+<td><%= contract.type_of_event %></td>
+<td><%#= contract.location_city %></td>
+<td><%= contract.eventtime %></td>
+
+<td>
+    <% if contract.confirmation == 1  %>
+    <%= button_to 'Get Info', contract, class: 'btn btn-flat btn-sm btn-success',method: :get %>
+    <% else %>
+    <%#= button_to 'CONFIRM', m, class: 'btn-danger',method: :get %>
+    <%= button_to 'CONFIRM', contract_path(id: contract.id), class: "btn btn-flat btn-sm btn-danger" %>
+    <% end %>
+    <%#= link_to 'Get Info', contract, class: 'button blue' %>
+
+    </td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+</div></div>

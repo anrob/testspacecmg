@@ -1,0 +1,55 @@
+<% @title = "Listing jobs" %>
+
+<% content_for :description do %>
+<p>Edit this template in <code>app/views/jobs/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+<%= link_to new_job_path, class: 'btn btn-primary btn-large pull-right' do %>
+<%= fa_icon_tag "plus" %> Add Job
+<% end %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="sheet sheet-condensed">
+        <div class="sheet-inner">
+          <table class="table">
+            <thead>
+              <tr>
+                                <th>User</th>
+                                <th>Job</th>
+                                <th>Contract ID</th>
+                                
+                                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @jobs.each do |job| %>
+              <tr>
+                                <td><%= job.user_id %></td>
+                                <td><%= job.job_id %></td>
+                                <td><%= job.contract_id %></td>
+                               
+                                <td class="actions">
+                  <%= link_to fa_icon_tag("eye"), job, rel: 'tooltip', title: 'Show' %>
+                  <%= link_to fa_icon_tag("pencil"), edit_job_path(job), rel: 'tooltip', title: 'Edit' %>
+                  <%#= link_to fa_icon_tag("trash-o"), job, rel: 'tooltip', title: 'Delete',
+                  data: { confirm: 'Are you sure?' }, method: :delete %>
+                </td>
+              </tr>
+              <% end %>
+              <% if @jobs.length == 0 %>
+              <tr><td colspan=42 class='text-center'>No jobs.</td></tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div><!-- /.sheet-inner -->
+      </div><!-- /.sheet -->
+
+                  <%# Remove the trailing if condition if you're using pagination. %>
+      <%= paginate @jobs if @jobs.respond_to?(:current_page) %>
+          </div>
+  </div>
+</div>

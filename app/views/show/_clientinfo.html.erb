@@ -1,0 +1,10 @@
+   <%= content_tag(:p, clientname, class: "lead mb0") unless clientname.blank? %>
+   <%= content_tag(:p, "Home Phone:              #{@contract.home_phone}", class: "mb0") unless @contract.home_phone.blank? %>
+   <%= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
+   
+   <%= content_tag(:p, "#{@contract.email_address}", class: "mb0") unless @contract.email_address.blank? %>
+   <%#= content_tag(:p, "Home Phone:              #{@contract.home_phone}", class: "mb0") unless @contract.home_phone.blank? %>
+   <%#= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
+   <hr>
+   
+   <%= content_tag(:div, "Company:                    #{@contract.company}") unless @contract.company.blank? %>

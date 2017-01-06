@@ -1,0 +1,49 @@
+<%#   if contract.confirmation == 0 && contract.date_of_event < Date.today + 11.days %>
+  <%#=   link_to ' CONFIRM THIS EVENT ', confirmjob_path(@contract, contract: { confirmation:"#{confirmed}" }) %>
+   <%#= link_to "make private", property_url(@property, property: { is_public: !@property.is_public }), method: "patch" %>
+<%# else %>
+    <%#= link_to 'Email Job Info - All Money', emailjobwithallmoney_path(id: contract.id), class: 'tiny item' %>
+    <%#= link_to 'Email Job Info With Net Money', emailjobwithnetonly_path(id: contract.id), class: 'small item' %>
+    <%#= link_to 'Email Job Info Without Money', emailjobnomoney_path(id: contract.id), class: 'lead small' %>
+<%# end %>
+<div class="row text-center blue-grey-900">
+<div class="col-xs-12 col-sm-12 col-md-2 col-md-offset-1 col-lg-2 grey-50">
+    <h5><%= contract.act_booked %></h5>
+ 
+<div class="small"></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+    <%   if contract.confirmation == 0 && contract.date_of_event < Date.today + 11.days %>
+<h4 class="red-a700 text-indigo-50"> <%=   link_to ' CONFIRM THIS EVENT ', confirmjob_contract_path(contract.id), class: 'lead  text-grey-50' %></h4>
+<% end %>
+<span class="metric-value">
+
+</span>
+<div class="small"></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<h4><%= link_to 'Email All Money', emailjobwithallmoney_path(id: contract.id), class: 'small lead  text-grey-50' %></h4>
+<span class="metric-value">
+
+</span>
+<div class="small"></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<h4><%= link_to 'Email Net Money', emailjobwithnetonly_path(id: contract.id), class: 'small lead text-grey-50' %></h4>
+<span class="metric-value">
+
+</span>
+<div class="small"></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<h4><%= link_to 'Email Without Money', emailjobnomoney_path(id: contract.id), class: 'lead small text-grey-50' %></h4>
+<span class="metric-value">
+
+</span>
+<div class="small"></div>
+</div>
+</div>
+
+<button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="<% @contract.users.each do |c|  %><%= "#{c.userfullname} " %><% end %>" data-original-title="" title="Staff" id="popoverTwo" aria-describedby="popover644951">
+Show Staff
+</button>

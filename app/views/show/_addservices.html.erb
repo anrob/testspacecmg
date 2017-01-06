@@ -1,0 +1,15 @@
+<div class="clearfix"></div>
+<div class="mt40 mb40">
+            <p class="lead p0 mb10 text-amber-900"><span>All Services Provided</span></p>
+
+            <% unless @additional.blank? %>
+            <% @additional.each do |addi| %>
+
+            <% if current_user.try(:manager) %>
+            <div class="item"><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></div>
+            <% else %>
+            <div class="item"><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></div>
+            <% end %>
+            <% end %>
+            <% end %>
+   </div>  

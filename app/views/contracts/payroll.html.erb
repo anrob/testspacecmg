@@ -1,0 +1,3 @@
+
+
+<%= render  'payroll', contract: Contract.where(act_code: @manger.split(",")).order(params[:sort] || :date_of_event).thirtyday.all  %>

@@ -1,0 +1,1 @@
+json.array! @managements, partial: 'managements/company', as: :company

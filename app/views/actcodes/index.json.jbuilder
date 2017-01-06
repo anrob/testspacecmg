@@ -1,0 +1,1 @@
+json.array! @actcodes, partial: 'actcodes/actcode', as: :actcode

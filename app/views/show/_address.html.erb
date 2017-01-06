@@ -1,0 +1,12 @@
+<% if contract.location_name? %>
+   <address>
+         <div>
+               <p class="lead pb0 mb0"><%= contract.location_name.gsub('"', ' ') %></p>
+                <p><%= "#{contract.location_address_line_1}" %> <br> <%= "#{contract.location_city} #{contract.location_state} #{contract.location_zip}" %><br>
+                  Phone: <%= contract.location_phone %>
+                 
+                   <%#= button_to("Get Directions", "http://maps.google.com/?q=#{themap}", class: 'ui button green success')%></p>
+         </div>
+   <address>
+                      
+ <% end %>

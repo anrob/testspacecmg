@@ -1,0 +1,55 @@
+<% @title = "Listing actcodes" %>
+
+<% content_for :description do %>
+<p>Edit this template in <code>app/views/Actcodes/index.html.erb</code>.</p>
+<% end %>
+
+<% content_for :actions do %>
+<%= link_to new_actcode_path, class: 'btn btn-primary btn-large pull-right' do %>
+<%= fa_icon_tag "plus" %> Add Actcode
+<% end %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="sheet sheet-condensed">
+        <div class="sheet-inner">
+          <table class="table">
+            <thead>
+              <tr>
+                                <th>Actcode</th>
+                                <th>Management</th>
+                                <th>Description</th>
+                                <th>User</th>
+                                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @actcodes.each do |actcode| %>
+              <tr>
+                                <td><%= actcode.actcode %></td>
+                                <td><%= actcode.management_id %></td>
+                                <td><%= actcode.description %></td>
+                                <td><%= actcode.user_id %></td>
+                                <td class="actions">
+                  <%= link_to fa_icon_tag("eye"), actcode, rel: 'tooltip', title: 'Show' %>
+                  <%= link_to fa_icon_tag("pencil"), edit_actcode_path(actcode), rel: 'tooltip', title: 'Edit' %>
+                  <%= link_to fa_icon_tag("trash-o"), actcode, rel: 'tooltip', title: 'Delete',
+                  data: { confirm: 'Are you sure?' }, method: :delete %>
+                </td>
+              </tr>
+              <% end %>
+              <% if @actcodes.length == 0 %>
+              <tr><td colspan=42 class='text-center'>No actcodes.</td></tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div><!-- /.sheet-inner -->
+      </div><!-- /.sheet -->
+
+                  <%# Remove the trailing if condition if you're using pagination. %>
+      <%= paginate @actcodes if @actcodes.respond_to?(:current_page) %>
+          </div>
+  </div>
+</div>

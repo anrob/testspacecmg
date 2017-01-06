@@ -1,0 +1,99 @@
+
+<div class="light-blue-800 text-blue-grey-50 p30 mb0">
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-12 col-xs-12">
+<div class="text">
+<h1 class="mb0"><%= clientname %></h1>
+<%= content_tag(:p, "#{@contract.email_address}", class: "mb0") unless @contract.email_address.blank? %>
+<%= content_tag(:p, "Home Phone:              #{@contract.home_phone}", class: "mb0") unless @contract.home_phone.blank? %>
+<%= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
+<br><%= render  "show/agent", contract: @contract %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<%= render  "show/buttonsacross", contract: @contract %>
+
+<!-- Container Start -->
+<div class="container-fluid">
+<!-- Section Start -->
+   <div class="col-lg-7 col-md-6 col-sm-12 animate-drop-fade">
+
+         <p class="lead pt20 10">Client Info</p>
+      <div class="sheet sheet-inner">
+         <div class="p0">
+            <%= render  "show/clientinfo", contract: @contract %>
+         </div>
+      </div>
+   </div>
+<!-- Section End -->
+
+
+<div class="col-lg-5 col-md-6 col-sm-12 animate-drop-fade">
+   <p class="lead pt20 10">Location</p>
+   <div class="sheet sheet-inner">
+       <div class="p0"><%= render  "show/address", contract: @contract %></div>
+   </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="container-fluid">
+   <div class="row sheet-inner mt20">
+      <%= render "show/provision", contract: @contract %>
+      
+      <%= render  "show/actnotes", contract: @contract %>
+      <%= render  "show/addservices", contract: @contract %>
+      <%= render "show/numberofthings", contract: @contract %><hr>
+      <%= render  "show/moneysection", contract: @contract %>
+      <%#= render  "show/clientextra", contract: @contract %>   <!-- DO LATER -->
+      
+      <p><%#= link_to "Add Staff", new_user_path %></p>
+
+      <%= render "staffing/assigned", contract: @contract %> 
+       <%#= debug(params) %>
+   </div>
+</div>
+ 
+</div>
+<!-- Container End -->
+
+
+
+
+
+
+<!--<h3>Staff</h3>-->
+   <!--<div class="sheet">-->
+    <!--<div class="sheet sheet-inner">-->
+<!--<ul>-->
+  <!--<%# for job in @contract.jobs %>-->
+  <!--  <li>-->
+  <!--    <%#=h job.user.username %>-->
+  <!--    (<%#= link_to "remove", friendship, :method => :delete %>)-->
+  <!--  </li>-->
+  <!--<%# end %>-->
+<!--</ul>-->
+
+<!--<%#= @jobs %> -->
+
+<!--<p><%#= link_to "Add Staff", new_user_path %></p>
+            
+ <%#= render "staffing/assigned", contract: @contract %> 
+         <!--</div>-->
+
+ 
+
+<!--</div>-->
+<!--</div>-->
+
+ <%# end %>
+
+
+
+<!--</div>-->
+
+<!--</div>-->
