@@ -76,6 +76,12 @@ group :development do
   ##gem 'sunspot_solr'
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+  
+end
+
 source "https://dresssed.com/gems/a37bde1693c95367a2f5/" do
   gem "dresssed-ives", "~> 1.0.45"
 end
