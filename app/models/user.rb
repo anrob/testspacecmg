@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
         has_many :contracts, through: :jobs
       
         #has_many :jobs, :through => :jobs
+        include StreamRails::Activity
+         as_activity
         
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -15,6 +17,10 @@ class User < ActiveRecord::Base
         # belongs_to :management
 
          #attr_accessible :management_id
+         
+    def activity_object
+    self.contract
+    end
          
         
    def active_for_authentication? 

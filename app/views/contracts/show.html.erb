@@ -43,8 +43,9 @@
 
 <div class="container-fluid">
    <div class="row sheet-inner mt20">
+       <%#= @activities %>
       <%= render "show/provision", contract: @contract %>
-      
+      <%= render "staffing/assigned", contract: @contract %>
       <%= render  "show/actnotes", contract: @contract %>
       <%= render  "show/addservices", contract: @contract %>
       <%= render "show/numberofthings", contract: @contract %><hr>
@@ -57,7 +58,9 @@
        <%#= debug(params) %>
    </div>
 </div>
- 
+ <%# for activity in @activities %>
+	            <%#= render_activity activity %>
+	        <%# end %>
 </div>
 <!-- Container End -->
 

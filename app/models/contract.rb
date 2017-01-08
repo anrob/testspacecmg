@@ -1,7 +1,10 @@
 class Contract < ApplicationRecord
   require 'chronic'
-   include PublicActivity::Model
+  #include PublicActivity::Model
    # tracked
+   include StreamRails::Activity
+   as_activity
+   
   has_many :jobs
   has_many :users, through: :jobs
   #, through: :jobs 
@@ -9,10 +12,13 @@ class Contract < ApplicationRecord
    default_scope   { where(contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- Money OTW","Contract Rec'd- Waiting for Dep.","Send Contract "])}
    
    my_date = Date.today
+   #datewithouttime = Date.today.strftime("%m/%d/%y")
+   datewithouttime = Date.today.strftime("%m/%d/%y")
+   datetoday = Chronic.parse(datewithouttime)
    
       #event_starts = event_start_time.gsub('pm', 'PM')
       scope :mystuff, lambda { |user| where("act_code = ?", user) }
-      scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now"))).order('confirmation ASC', 'act_booked ASC', 'date_of_event ASC')}
+      scope :tenday, -> {where(date_of_event: (datetoday)..(Chronic.parse("10 days from now at 12:01 AM"))).order('confirmation ASC', 'act_booked ASC', 'date_of_event ASC')}
       scope :thirtyday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("30 days from now"))).order('confirmation ASC', 'act_booked ASC', 'date_of_event ASC')}
       scope :all_except, lambda { |current_user | where("user = ?", current_user ) }
       #scope :todaysevents, where(:date_of_event, my_date )
@@ -26,6 +32,11 @@ class Contract < ApplicationRecord
   
 
       #scope :tenday, -> { where(date_of_event: Chronic.parse('next 10 days'))}
+      
+      
+    def activity_object
+    self.contract
+    end
  
   def eventtime
      "#{event_start_time}-#{event_end_time}"

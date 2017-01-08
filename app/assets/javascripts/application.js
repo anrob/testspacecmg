@@ -27,7 +27,7 @@ $(document).ready(function() {
   editable: false,
   selectable: true,
   slotMinutes: 30,
-  eventBackgroundColor: '#378006',
+  //eventBackgroundColor: '#378006',
   textColor: '#FFFFFF',
     header: {
               left: 'prev,next today',
@@ -35,6 +35,16 @@ $(document).ready(function() {
               right: 'month,listMonth'
           },
     events: 'calendar.json',
+    eventRender: function (event, element) {
+        element.attr('href', 'javascript:void(0);');
+        element.click(function() {
+            $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
+            $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
+            $("#eventInfo").html(event.description);
+            $("#eventLink").attr('href', event.url);
+            $("#eventContent").dialog({ modal: true, title: event.title, width:350});
+        });
+    }
 
     })
 timeFormat: 'H(:mm)' // uppercase H for 24-hour clock
