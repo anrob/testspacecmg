@@ -42,7 +42,7 @@
     <!-- This is for Google Maps integration, you can safely remove if not using Google Maps -->
    
     <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application", async: Rails.env.production?  %>
     <%= yield :javascript %>
 
   </body>

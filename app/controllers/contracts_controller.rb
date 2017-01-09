@@ -17,7 +17,7 @@ class ContractsController < ApplicationController
     @activities = PublicActivity::Activity.all
     
   #     @search = Contract.search do
-  #       fulltext params[:search]
+  #       fulltext params[:search]git stat
   # end
    
     # @contractsss = @search.results
@@ -29,15 +29,7 @@ class ContractsController < ApplicationController
     #user_id: @users.select(:id)
     @additional = Contract.additional(@contract)
     # @job = Contract.staff(@contract)
-    
-    #feed = StreamRails.feed_manager.get_user_feed(current_user.id)
-   # results = feed.get()['results']
-    #@activities = @enricher.enrich_activities(results)
-    
-   # @client = Stream::Client.new('w88ymbqhcrhc', '5f4pfgdj7h5q4wcgk7nrzzak92b6738a2dxt29b78evx9edaus9ds6vzvf2fagmj')
-   # @ericFeed = @client.feed('user', 'eric')
-   # activity_data = {:actor => 'eric', :verb => 'tweet', :object => 1, :tweet => 'Hello world'}
-   # @activity_response = @ericFeed.add_activity(activity_data)
+ 
     
     feed = StreamRails.feed_manager.get_user_feed(current_user.id)
     results = feed.get()['results']

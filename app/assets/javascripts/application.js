@@ -21,7 +21,7 @@
 
 //= require_tree .
 
-$(document).ready(function() {
+  // $(document).ready(function() {
 
  $('#calendar').fullCalendar({
   editable: false,
@@ -48,5 +48,6 @@ $(document).ready(function() {
 
     })
 timeFormat: 'H(:mm)' // uppercase H for 24-hour clock
-});
+//}
+//);
 
