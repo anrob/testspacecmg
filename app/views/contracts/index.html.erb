@@ -8,14 +8,14 @@
 <%#= current_user.actcode_name %>
 <%#= render  'dashboard', contract: @contracts %>
 <%#= if current_user.actcode_name %>
-<%= render 'frontjobs', contract: @contracts  %>
+<%= render 'newfrontjobs', contract: @contracts  %>
 <%# end %>
 <%#= render_activities(@activities, fallback: :text) %>
 
 <br>
 <% if current_user.try(:manager?) %>
 
-<%= render  'frontjobs', contract: Contract.where(act_code: @manger.split(",")).order(params[:sort] || :date_of_event).tenday.all  %>
+<%= render  '/show/blank', contract: Contract.where(act_code: @manger.split(",")).order(params[:sort] || :date_of_event).tenday.all  %>
 <%#= render  'frontjobs', contract: @contracts %>
 
 <% end %>

@@ -1,6 +1,7 @@
 <%# @contract.user_ids.each do |contract| %>
   <%#= @contract.userfullname %>
 <%# end %>
+ <div class="col-lg-6 col-md-6 col-sm-12 animate-drop-fade">
 <%= simple_form_for(@contract) do |f| %>
 
 <div class="field">
@@ -29,3 +30,4 @@
 <% @contract.users.each do |c|  %>
  <li><%= c.userfullname %></li>
 <% end %>
+</div>
