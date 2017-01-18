@@ -12,4 +12,11 @@ module ContractsHelper
       :confirmation == 0 
    end
    
+    def managerprice
+    takeoutfee = "@contract.referral_fee_amount + @contract.giveaways_charge} + @contract.credit_card_fee} + @contract.non_commissionable_charges"
+    contractprice = @contract.contract_price
+    results = contractprice - takeoutfee
+    results
+    end
+   
 end

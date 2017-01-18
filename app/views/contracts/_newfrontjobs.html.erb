@@ -19,7 +19,7 @@
         <th><%= link_to "Client", sort: "last_name" %></th>
         <th><%#= link_to "Contract Status", sort: "contract_status" %></th>
 
-        <th><%= link_to "Event", sort: "type_of_event" %></th>
+        <th  class="hidden-xs"><%= link_to "Event", sort: "type_of_event" %></th>
         <th><%#= link_to "Location city", sort: "location_city" %></th>
         <th><%= link_to "Time", sort: "event_time" %></th>
         <th></th>
@@ -34,7 +34,7 @@
 <td><%= link_to "#{contract.first_name} #{contract.last_name}", contract %></td>
 <td><%#= contract.contract_status %></td>
 
-<td><%= contract.type_of_event %></td>
+<td  class="hidden-xs"><%= contract.type_of_event %></td>
 <td><%#= contract.location_city %></td>
 <td><%= contract.eventtime %></td>
 

@@ -131,7 +131,7 @@ class ContractsController < ApplicationController
   
   
   def contract_params
-      params.require(:contract).permit(:job, user_ids:[])
+      params.require(:contract).permit(:job, player_ids:[])
   end
 end
 

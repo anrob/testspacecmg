@@ -54,6 +54,7 @@ gem 'easy_dates'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin', github: 'activeadmin'
 gem "active_material", github: "vigetlabs/active_material"
+gem 'safe_attributes'
 
 
 # Use Capistrano for deployment

@@ -12,11 +12,12 @@ Rails.application.routes.draw do
 
   #mount ForestLiana::Engine => '/forest'
   resources :managements
+  
   resources :contracts do
    get :confirmjob, on: :member 
-   get :emailjobwithnetonly, on: :member
+  # get :emailjobwithnetonly, on: :member
    end
-  get 'users/show'
+   get 'users/show'
 
   devise_for :users
    #devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :skip => [:sessions, :passwords, :registrations]

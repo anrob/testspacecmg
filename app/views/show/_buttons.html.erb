@@ -2,7 +2,7 @@
 <%   if contract.confirmation == 0 && contract.date_of_event < Date.today + 11.days %>
   <%#=   link_to ' CONFIRM THIS EVENT ', confirmjob_path(@contract, contract: { confirmation:"#{confirmed}" }) %>
                <%#= link_to "make private", property_url(@property, property: { is_public: !@property.is_public }), method: "patch" %>
-               <%=   link_to ' CONFIRM THIS EVENT ', confirmjob_contract_path(contract.id), class: 'ui red button'%>
+               <%=#   link_to ' CONFIRM THIS EVENT ', confirmjob_contract_path(contract.id), class: 'ui red button'%>
 
 <% end %>
 

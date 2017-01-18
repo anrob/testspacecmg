@@ -6,7 +6,7 @@ class Contract < ApplicationRecord
    as_activity
    
   has_many :jobs
-  has_many :users, through: :jobs
+  has_many :players, through: :jobs
   #, through: :jobs 
    
    default_scope   { where(contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- Money OTW","Contract Rec'd- Waiting for Dep.","Send Contract "])}
@@ -48,4 +48,8 @@ class Contract < ApplicationRecord
     format_for :event_start_time, format: "%I:%M", :as => "updated_time"
     #format_for [:date_of_event, :created_at], format: "%m/%d/%y"c
    end
+   
+   
+   
+  
 end

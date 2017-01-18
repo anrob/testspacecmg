@@ -5,4 +5,4 @@ $ ->
   #   no_results_text: 'No results matched'
   #   width: '200px'
     
-  $("#contract_user_ids").select2();
+  $("#contract_player_ids").select2();

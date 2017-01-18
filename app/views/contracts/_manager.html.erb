@@ -1,0 +1,2 @@
+<h1> Managers Panel</h1>
+<%= render  '/show/blank', contract: Contract.where(act_code: @manger.split(",")).order(params[:sort] || :date_of_event).tenday.all  %>

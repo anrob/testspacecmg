@@ -48,7 +48,8 @@
     <%= button_to 'Get Info', contract, class: 'btn btn-flat btn-sm btn-success',method: :get %>
     <% else %>
     <%#= button_to 'CONFIRM', m, class: 'btn-danger',method: :get %>
-    <%= button_to 'CONFIRM', contract_path(id: contract.id), class: "btn btn-flat btn-sm btn-danger" %>
+     <%=   link_to ' CONFIRM THIS EVENT ', confirmjob_contract_path(contract.id),  class: "btn btn-flat btn-sm btn-danger" %>
+    <%#= button_to 'CONFIRM', confirmjob_contract_path(contract.id), class: "btn btn-flat btn-sm btn-danger" %>
     <% end %>
 <span class="metric-value">
 
