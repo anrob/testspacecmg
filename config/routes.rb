@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   
   get 'home/index'
 
-  resources :jobs
+  resources :jobs do 
+   get :payroll, on: :member
+  end
   resources :staffings
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :actcodes
   resources :contracts
+  resources :players
   #resources :contracts, :only=>[:index]
 
   #mount ForestLiana::Engine => '/forest'
@@ -15,6 +18,7 @@ Rails.application.routes.draw do
   
   resources :contracts do
    get :confirmjob, on: :member 
+   get :paypeople, on: :member 
   # get :emailjobwithnetonly, on: :member
    end
    get 'users/show'

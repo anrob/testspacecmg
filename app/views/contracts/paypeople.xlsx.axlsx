@@ -1,0 +1,10 @@
+wb = xlsx_package.workbook
+
+
+wb.add_worksheet(name: "payroll") do |sheet|
+sheet.add_row ["Job","Expense Customer","Expense Amount","Trasaction Date","Act","Ref Number","Expense Account","Memo"]
+   @contract.players.each do |contract|
+      
+      sheet.add_row [@contract.contract_number ,contract.full_name, "#{number_to_currency(contract.regular_rate)}", @contract.date_of_event.strftime("%m/%d/%Y"), @contract.act_booked, "#{@contract.date_of_event.strftime("%m/%d/%y")}-#{@contract.act_booked}", "Cost of Talent",@contract.type_of_act]
+   end
+end

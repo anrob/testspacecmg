@@ -1,37 +1,37 @@
-<%# @contract.user_ids.each do |contract| %>
-  <%#= @contract.userfullname %>
-<%# end %>
-
-<%#= managerprice %>
- <div class="col-lg-6 col-md-6 col-sm-12 animate-drop-fade">
-<%= simple_form_for(@contract) do |f| %>
-
-<div class="field">
-  <%= f.label :player_ids, "Staff for Event" %><br />
-  <%= f.collection_select :player_ids, Player.order(:first_name), :id, :full_name, {class: 'chosen-select', style: 'width: 100%'}, {multiple: true} %>
-  <%#= f.association :jobs, collection: @contract.users, priority: @contract.jobs %>
-
-  
-<%#= f.input :jobs,:collection_select => @contract.users, :label_method => :userfullname, :value_method => :id,:label => "Staff" ,:include_blank => false %>
-
-</div>
-
-
-
-
-<!--<div class="field">-->
-  <%#= f.label :user_ids, "Users" %><br />
-  <%#= f.collection_select :user_ids, User.order(:first_name), :id, :userfullname, {class: 'chosen-select'}, {multiple: true} %>
-<!--</div>-->
-<div class="actions">
-    <%= f.submit("Staff Event") %>
-</div>
-
-<% end %>
-
+<div class="col-lg-6 col-md-6 col-sm-12">
+<div class="lead">Event Staff</div>
 <% @contract.players.each do |c|  %>
- <li><%= c.full_name  %> - <%#= c.regular_rate %></li>
+ <li><%= c.full_name  %> - <%= "#{number_to_currency(c.regular_rate)}"  %></li>
+
+<% end %>
+<% if current_user.try(:type) == "ManagerUser" %>
+ <div class="p20"><%= link_to 'Payroll', paypeople_contract_path, class: 'btn btn-flat btn-lg btn-success',method: :get %></div>
+ <% end %>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 animate-drop-fade">
+     <% if current_user.try(:type) == "ManagerUser" %>
+        <%= simple_form_for(@contract) do |f| %>
+
+    <div class="field">
+      <%= f.label :player_ids, "Add Event Staff", class: "lead" %><br />
+      <%= f.collection_select :player_ids, Player.order(:first_name), :id, :full_name, {class: 'chosen-select', style: 'width: 100%'}, {multiple: true} %>
+      <%#= f.association :jobs, collection: @contract.users, priority: @contract.jobs %>
+        <%#= f.input :jobs,:collection_select => @contract.users, :label_method => :userfullname, :value_method => :id,:label => "Staff" ,:include_blank => false %>
+    </div>
+
+
+
+<div class="actions p20">
+    <%= f.submit("Update Event Staff", class: "btn btn-flat btn-lg btn-success") %>
+</div>
+
+<% end %>
+
 <% end %>
 </div>
+
 
 <div class="clearfix"></div>
+<%#= button_to "PAY STAFf", jobs %>
+ 
+ </div>

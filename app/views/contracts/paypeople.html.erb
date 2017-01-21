@@ -1,0 +1,9 @@
+<div class="sheet p40">
+   <div class=""><%= @contract.contract_number %></div>
+   <% @contract.players.each do |c|  %>
+ <li><%= c.full_name  %> - <%= "#{number_to_currency(c.regular_rate)}"  %></li>
+
+<% end %>
+ <%= link_to 'Download Payroll', paypeople_contract_path(format: :xlsx), class: 'btn btn-flat btn-lg btn-success',method: :get %>
+ 
+ </div>

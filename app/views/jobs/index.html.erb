@@ -18,7 +18,7 @@
           <table class="table">
             <thead>
               <tr>
-                                <th>User</th>
+                                <th>Player</th>
                                 <th>Job</th>
                                 <th>Contract ID</th>
                                 
@@ -28,8 +28,8 @@
             <tbody>
               <% @jobs.each do |job| %>
               <tr>
-                                <td><%= job.user_id %></td>
-                                <td><%= job.job_id %></td>
+                                <td><%= job.player_id %></td>
+                                <td><%#= job.job_id %></td>
                                 <td><%= job.contract_id %></td>
                                
                                 <td class="actions">

@@ -22,21 +22,21 @@
 <div class="small"></div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4><%= link_to 'Email All Money', emailjobwithallmoney_path(id: contract.id), class: 'small lead  text-grey-50' %></h4>
+<h4><% if current_user.try(:type) == "ManagerUser" %><%= link_to 'Email All Money', emailjobwithallmoney_path(id: contract.id), class: 'btn small lead  text-grey-50' %><% end %> </h4>
 <span class="metric-value">
 
 </span>
 <div class="small"></div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4><%= link_to 'Email Net Money', emailjobwithnetonly_path(id: contract.id), class: 'small lead text-grey-50' %></h4>
+<h4><% if current_user.try(:type) == "ManagerUser" %><%= link_to 'Email Net Money', emailjobwithnetonly_path(id: contract.id), class: 'btn small lead text-grey-50' %> <% end %></h4>
 <span class="metric-value">
 
 </span>
 <div class="small"></div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4><%= link_to 'Email Without Money', emailjobnomoney_path(id: contract.id), class: 'lead small text-grey-50' %></h4>
+<h4><%= link_to 'Email Job Info', emailjobnomoney_path(id: contract.id), class: 'btn lead small text-grey-50' %></h4>
 <span class="metric-value">
 
 </span>

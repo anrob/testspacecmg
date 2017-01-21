@@ -1,13 +1,14 @@
-class PlayerController < ApplicationController
+class PlayersController < ApplicationController
    
    before_action :set_player, only: [:show, :edit, :update]
    
   def index
-    if params[:approved] == "false"
-      @players = Player.where(status: false)
-    else
-      @players = Player.where(status: true)
-    end
+    @players = Player.all
+    # if params[:approved] == "false"
+    #   @players = Player.where(status: false)
+    # else
+    #   @players = Player.where(status: true)
+    # end
   end 
   
   

@@ -1,111 +1,69 @@
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-<div class="">
-<div class="panel-body">
-<div class="row text-center">
-<div class="col-xs-12 col-sm-12 col-md-2 col-md-offset-1 col-lg-2">
-<h4>Contract Price </h4>
-<span class="metric-value">
-<%= content_tag(:div,"#{number_to_currency(contract.contract_price)}")  unless self.blank? || contract.contract_price == 0  %><br>
+<% if current_user.try(:type) == "ManagerUser" %>
 
-</span>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>Act Net:</h4>
-<span class="metric-value">
-<%= content_tag(:div,"#{number_to_currency(contract.act_net)}") unless  self.blank? || contract.act_net == 0 %>
-
-</span>
-
-</div>
+<div class="col-lg-12 col-md-12 col-sm-12 text-center">
 
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>Referral fee</h4>
+<p class="lead p0 mt20 mb0 text-blue-900">giveaways charge</p>
 <span class="metric-value">
-<%= content_tag(:div,"#{number_to_currency(contract.referral_fee_amount)}") unless self.blank? || contract.referral_fee_amount == 0   %>
-<%= contract.referral_fee_to %>
-</span>
-
-</div>
-<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>giveaways charge</h4>
-<span class="metric-value">
-<%= content_tag(:div,"#{number_to_currency(contract.giveaways_charge)}") unless self.blank? || contract.giveaways_charge == 0 %>
-</span>
-
-</div>
-<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>other charges</h4>
-<span class="metric-value">
-<%= content_tag(:div,"#{number_to_currency(contract.other_charges)}") unless self.blank? || contract.other_charges == 0 %>
-
+<%= content_tag(:strong,"#{number_to_currency(contract.giveaways_charge)}") unless self.blank? || contract.giveaways_charge == 0 %>
 </span>
 
 </div>
 
-</div>
-</div>
-</div>
-</div>
-</div>
+
+
+
 
 <!-- SECTION 2 --> 
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-<div class="">
-<div class="panel-body">
-<div class="row text-center">
-<div class="col-xs-12 col-sm-12 col-md-2 col-md-offset-1 col-lg-2">
-<h4>cocktails charge</h4>
+
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<p class="lead p0 mt20 mb0 text-blue-900">cocktails charge</p>
 <span class="metric-value">
-<%= content_tag(:div,"#{number_to_currency(contract.cocktails_charge)}") unless  self.blank? || contract.cocktails_charge == 0 %>
+<%= content_tag(:strong,"#{number_to_currency(contract.cocktails_charge)}") unless  self.blank? || contract.cocktails_charge == 0 %>
 
 </span>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>ceremony charge</h4>
+<p class="lead p0 mt20 mb0 text-blue-900">ceremony charge</p>
 <span class="metric-value">
-<%= content_tag(:div,"#{number_to_currency(contract.ceremony_charge)}") unless self.blank? || contract.ceremony_charge == 0 %>
+<%= content_tag(:strong,"#{number_to_currency(contract.ceremony_charge)}") unless self.blank? || contract.ceremony_charge == 0 %>
 
 </span>
 
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>early setup charge</h4>
+<p class="lead p0 mt20 mb0 text-blue-900">early setup charge</p>
 <span class="metric-value">
-<%= content_tag(:div,"#{number_to_currency(contract.early_setup_charge)}") unless self.blank? || contract.early_setup_charge == 0 %>
+<%= content_tag(:strong,"#{number_to_currency(contract.early_setup_charge)}") unless self.blank? || contract.early_setup_charge == 0 %>
 </span>
 
 </div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>charge per horn</h4>
+<p class="lead p0 mt20 mb0 text-blue-900">charge per horn</p>
 <span class="metric-value">
-<%= content_tag(:div,"#{contract.number_of_horns}"  " @"  "#{number_to_currency(contract.charge_per_horn)}") unless self.blank? || contract.number_of_horns == 0 %>
+<%= content_tag(:strong,"#{contract.number_of_horns}"  " @"  "#{number_to_currency(contract.charge_per_horn)}") unless self.blank? || contract.number_of_horns == 0 %>
 </span>
 
 </div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>non-commission charges</h4>
+<p class="lead p0 mt20 mb0 text-blue-900">non-commission charges</p>
 <span class="metric-value">
-<%= content_tag(:div,"#{number_to_currency(contract.non_commissionable_charges)}") unless self.blank? || contract.non_commissionable_charges == 0 %>
+<%= content_tag(:strong,"#{number_to_currency(contract.non_commissionable_charges)}") unless self.blank? || contract.non_commissionable_charges == 0 %>
 
 </span>
 
 </div>
 
 </div>
-</div>
-</div>
-</div>
-</div>
 
 
 
 
 
-<%= content_tag (:div), :class => "dl-horizontal" do %>
+
+<%#= content_tag (:div), :class => "dl-horizontal" do %>
 <%#= content_tag(:div,"Contract Price :              #{number_to_currency(contract.contract_price)}")  unless self.blank? || contract.contract_price == 0  %><br>
 <%#= content_tag(:div,"Act Gross:            #{number_to_currency(contract.act_gross)}") unless  self.blank? || contract.act_gross == 0 %>
 <%#= content_tag(:div,"Act Net:            #{number_to_currency(contract.act_net)}") unless  self.blank? || contract.act_net == 0 %>
@@ -116,7 +74,7 @@
 <%#= content_tag(:div,"other charges:               #{number_to_currency(contract.other_charges)}") unless self.blank? || contract.other_charges == 0 %>
 <%#= content_tag(:div,"charge per dancer:           #{contract.number_of_dancers}"  " @"  "#{number_to_currency(contract.charge_per_dancer)}") unless self.blank? || contract.number_of_dancers == 0 %>
 <%#= content_tag(:div,"giveaways charge:            #{number_to_currency(contract.giveaways_charge)}") unless self.blank? || contract.giveaways_charge == 0 %>
-<%= content_tag(:div,"dj tech_charge:              #{number_to_currency(contract.dj_tech_charge)}") unless self.blank? || contract.dj_tech_charge == 0 %>
+<%#= content_tag(:strong,"dj tech_charge:              #{number_to_currency(contract.dj_tech_charge)}") unless self.blank? || contract.dj_tech_charge == 0 %>
 <%#= content_tag(:div,"non-commission charges:  #{number_to_currency(contract.non_commissionable_charges)}") unless self.blank? || contract.non_commissionable_charges == 0 %>
 <%#= content_tag(:div,"capital music pay:           #{number_to_currency(contract.capital_music_pay)}") unless self.blank? || contract.capital_music_pay == 0 %>
 <%#= content_tag(:div,"base price of act:           #{number_to_currency(contract.base_price_of_act)}") unless self.blank? || contract.base_price_of_act == 0  %>
@@ -124,5 +82,6 @@
 <%#= content_tag(:div, "Referral Fee to :           #{@contract.referral_fee_to}") unless @contract.referral_fee_to.blank? %>
 
 <%#= content_tag(:div,"referral fee amount:         #{number_to_currency(contract.referral_fee_amount)}") unless self.blank? || contract.referral_fee_amount == 0   %>
-<%= content_tag(:div,"tax amount:                  #{number_to_currency(contract.tax_amount)}") unless self.blank? || contract.tax_amount == 0 %>
+<%#= content_tag(:strong,"tax amount:                  #{number_to_currency(contract.tax_amount)}") unless self.blank? || contract.tax_amount == 0 %>
+<% #end %>
 <% end %>

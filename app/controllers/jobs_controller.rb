@@ -10,6 +10,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @jobs = Job.thejobs(params[:contract_id])
   end
 
   # GET /jobs/new
@@ -49,6 +50,11 @@ class JobsController < ApplicationController
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  
+  def payroll
+    
   end
 
   # DELETE /jobs/1

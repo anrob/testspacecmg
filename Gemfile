@@ -48,6 +48,7 @@ gem 'json_builder'
 gem 'simple_form'
 gem "select2-rails"
 gem 'stream_rails'
+gem 'axlsx_rails'
 
 gem 'easy_dates'
 #gem 'filterrific'

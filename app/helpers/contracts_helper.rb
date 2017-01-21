@@ -18,5 +18,14 @@ module ContractsHelper
     results = contractprice - takeoutfee
     results
     end
+    
+    
+    def typeofclient
+       !Contract.
+         where(:prntkey23 => self.prntkey23)
+         #where("id != ?", self.id).
+         #where("act_code LIKE 'WA%'").
+        # where("contract_status LIKE '%Contract%' OR contract_status LIKE '%Booked%'").exists?
+    end
    
 end

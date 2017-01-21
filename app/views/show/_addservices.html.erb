@@ -5,7 +5,7 @@
             <% unless @additional.blank? %>
             <% @additional.each do |addi| %>
 
-            <% if current_user.try(:manager) %>
+            <% if current_user.try(:type) == "ManagerUser" %>
             <div class="item"><%= link_to "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form}", addi %></div>
             <% else %>
             <div class="item"><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></div>

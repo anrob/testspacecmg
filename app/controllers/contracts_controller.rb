@@ -1,9 +1,9 @@
 class ContractsController < ApplicationController
  before_action :create_enricher
-  before_action :set_contract, only: [:show, :edit, :confirmjob]
+  before_action :set_contract, only: [:show, :edit, :confirmjob, :paypeople]
 
-  respond_to :html, :xml, :json
-  require 'json_builder'
+  respond_to :html, :xml, :json, :xlsx
+    require 'json_builder'
  
  
   def index
@@ -79,6 +79,16 @@ class ContractsController < ApplicationController
     @contracts = Contract.mystuff(current_user.actcode_name).nextsix
     @contract_team = Contract.mystuff(current_user.actcode_name).nextsix.all_except(current_user)
     # @activities = PublicActivity::Activity.all
+  end
+  
+  def paypeople
+    
+    
+    respond_to do |format|
+    format.html
+    format.xlsx
+    end
+    
   end
   
   

@@ -1,47 +1,64 @@
-<hr>
+<% if current_user.try(:type) == "ManagerUser" %>
+<div class="col-lg-12 col-md-12 col-sm-12 text-center light-blue-50 pt5 well pb20">
 
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-<div class="">
-<div class="panel-body">
-<div class="row text-center">
-<div class="col-xs-12 col-sm-12 col-md-2 col-md-offset-1 col-lg-2">
-<span class="metric-value">
-
-</span>
-</div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>Number of Dancers</h4>
+<p class="lead p0 mt20 mb0 text-blue-900">Number of Dancers</p>
 <span class="metric-value">
-<%= content_tag(:h3,"#{contract.number_of_dancers}") %>
+<%= content_tag(:strong,"#{contract.number_of_dancers}") %>
 
 </span>
 
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>Giveaways</h4>
+<p class="lead p0 mt20 mb0 text-blue-900">Giveaways</p>
 <span class="metric-value">
-<%= content_tag(:h3,"#{contract.giveaways}") %>
+<%= content_tag(:strong,"#{contract.giveaways}") %>
 </span>
 
 </div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<h4>Number of Horns</h4>
+<p class="lead p0 mt20 mb0 text-blue-900">Number of Horns</p>
 <span class="metric-value">
-<%= content_tag(:h3,"#{contract.number_of_horns}") %>
+<%= content_tag(:strong,"#{contract.number_of_horns}") %>
 </span>
 
 </div>
+
+
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<p class="lead p0 mt20 mb0 text-blue-900">Contract Price </p>
 <span class="metric-value">
+<%= content_tag(:strong,"#{number_to_currency(contract.contract_price)}")  unless self.blank? || contract.contract_price == 0  %><br>
+
+</span>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<p class="lead p0 mt20 mb0 text-blue-900">Act Net:</p>
+<span class="metric-value">
+<%= content_tag(:strong,"#{number_to_currency(contract.act_net)}") unless  self.blank? || contract.act_net == 0 %>
 
 </span>
 
 </div>
 
+
+
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<p class="lead p0 mt20 mb0 text-blue-900">Referral fee</p>
+<span class="metric-value">
+<%= content_tag(:strong,"#{number_to_currency(contract.referral_fee_amount)}") unless self.blank? || contract.referral_fee_amount == 0   %>
+<%= contract.referral_fee_to %>
+</span>
+
 </div>
+
+<div class="clearfix"></div>
+
+
 </div>
-</div>
-</div>
-</div>
+
+<% end %>
