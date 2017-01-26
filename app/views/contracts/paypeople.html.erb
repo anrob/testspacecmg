@@ -1,9 +1,27 @@
 <div class="sheet p40">
    <div class=""><%= @contract.contract_number %></div>
    <% @contract.players.each do |c|  %>
- <li><%= c.full_name  %> - <%= "#{number_to_currency(c.regular_rate)}"  %></li>
-
+ <li><%= c.full_name  %> - <%= "#{number_to_currency(c.regular_rate)}"  %>  
+ <%= simple_fields_for :meta do |w| %> 
+    
+    <%= w.label :position %> 
+    <%#= w.select :position, options_for_select(Position.options, params[:postiion]), {}, :onchange => 'this.options[this.selectedIndex].value;' %>  
+    <%= w.select :position, options_for_select(Position.options, params[:postiion]), {}, :onchange => 'alert(this.options[this.selectedIndex].value);' %>  
+    <%#= w.select :position, options_for_select(Position.options, params[:postiion]), {}, :onchange => "this.value;" %>  
+     <%= w.button :submit %>
+    <% end %>
+    </li>
+   
+ 
 <% end %>
- <%= link_to 'Download Payroll', paypeople_contract_path(format: :xlsx), class: 'btn btn-flat btn-lg btn-success',method: :get %>
+ <%= link_to 'Download Payroll', paypeople_contract_path(format: :xlsx), class: 'btn btn-flat btn-lg btn-success',method: :get, remote: false %>
  
  </div>
+ 
+<%= params.inspect %> %>
+
+
+<%#= select_tag 'company_type',
+   #         options_from_collection_for_select(@company_types, 'id', 'name', params[:company_type]),
+            onchange: "$('#select_type_form').submit();" %>
+

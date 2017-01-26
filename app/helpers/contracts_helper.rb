@@ -13,10 +13,11 @@ module ContractsHelper
    end
    
     def managerprice
-    takeoutfee = "@contract.referral_fee_amount + @contract.giveaways_charge} + @contract.credit_card_fee} + @contract.non_commissionable_charges"
-    contractprice = @contract.contract_price
-    results = contractprice - takeoutfee
-    results
+   # @takeoutfee = "@contract.referral_fee_amount + @contract.giveaways_charge + @contract.credit_card_fee + @contract.non_commissionable_charges"
+    @takeoutfee = @contract.referral_fee_amount + @contract.giveaways_charge + @contract.credit_card_fee + @contract.non_commissionable_charges
+    # contractprice = @contract.contract_price
+    @results = @contract.contract_price - @takeoutfee
+     #results
     end
     
     

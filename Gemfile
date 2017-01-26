@@ -50,12 +50,14 @@ gem "select2-rails"
 gem 'stream_rails'
 gem 'axlsx_rails'
 
+
 gem 'easy_dates'
 #gem 'filterrific'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin', github: 'activeadmin'
 gem "active_material", github: "vigetlabs/active_material"
 gem 'safe_attributes'
+gem 'postageapp'
 
 
 # Use Capistrano for deployment

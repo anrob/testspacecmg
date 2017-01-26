@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   resources :contracts do
    get :confirmjob, on: :member 
    get :paypeople, on: :member 
-  # get :emailjobwithnetonly, on: :member
+   get :emailjobwithnetonly, on: :member
+   get :emailjobwithallmoney, on: :member
+   get :emailjobnomoney, on: :member
    end
    get 'users/show'
 
