@@ -7,5 +7,5 @@ json.start user.date_of_event.iso8601
 json.end user.date_of_event.iso8601
 json.color "#5173DA"
 json.description user.contract_number
-json.url contracts_path
+json.url contract_path(user)
 end

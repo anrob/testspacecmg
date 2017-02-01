@@ -1,9 +1,9 @@
 <div class="col-lg-6 col-md-6 col-sm-12">
    
-   <%= managerprice  %>
+   <%#= managerprice  %>
 <div class="lead">Event Staff</div>
 <% @contract.players.each do |c|  %>
- <li><%= c.full_name  %> - <%= "#{number_to_currency(c.regular_rate)}"  %></li>
+ <li><%= c.full_name  %><% if current_user.try(:type) == "ManagerUser" %> - <%= "#{number_to_currency(c.regular_rate)}"  %> <% end %></li>
 
 <% end %>
 <% if current_user.try(:type) == "ManagerUser" %>

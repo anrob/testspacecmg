@@ -58,6 +58,10 @@ gem 'activeadmin', github: 'activeadmin'
 gem "active_material", github: "vigetlabs/active_material"
 gem 'safe_attributes'
 gem 'postageapp'
+gem 'chartkick'
+gem 'groupdate'
+gem 'fusioncharts-rails'
+gem "highcharts-rails"
 
 
 # Use Capistrano for deployment

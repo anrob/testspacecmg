@@ -7,7 +7,7 @@
 
 <%= render 'manager', contract: @contracts %>
 
-<% elsif current_user.try(:type) == "AdminUser" %>
+<% elsif current_user.try(:type) == "ManagementUser" %>
 
 <%= render 'admin', contract: @contracts %>
 
@@ -33,4 +33,6 @@
 <%#= render  'frontjobs', contract: @contracts %>
 
 <%# end %>
+<% if current_user.try(:type) == "AdminUser" %>
 <%= switch_user_select  %>
+<% end %>

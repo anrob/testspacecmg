@@ -17,7 +17,7 @@
 //= require moment 
 //= require fullcalendar
 //= require select2
-
+//= require highcharts
 
 //= require_tree .
 
@@ -27,6 +27,7 @@
   editable: false,
   selectable: true,
   slotMinutes: 30,
+  height: 700,
   //eventBackgroundColor: '#378006',
   textColor: '#FFFFFF',
     header: {
@@ -36,7 +37,7 @@
           },
     events: 'calendar.json',
     eventRender: function (event, element) {
-        element.attr('href', 'javascript:void(0);');
+        //element.attr('href', 'javascript:void(0);');
         element.click(function() {
             $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
             $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
@@ -48,6 +49,22 @@
 
     })
 timeFormat: 'H(:mm)' // uppercase H for 24-hour clock
+
+
+
+$(function () {
+  new Highcharts.Chart({
+    chart: { renderTo: 'orders_chart' },
+    title: { text: 'Orders by Day' },
+    xAxis: { type: 'datetime' },
+    yAxis: {
+      title: { text: 'Dollars'}
+    },
+    series: [{
+      data: [1, 2, 5, 7, 3]
+    }]
+  });
+});
 //}
 //);
 
