@@ -1,0 +1,3 @@
+<% @contract.players.each do |c|  %>
+ <li><%= c.full_name  %> - <%= "#{number_to_currency(c.regular_rate)}"  %></li>
+<% end %>

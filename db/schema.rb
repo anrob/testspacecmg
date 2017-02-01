@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106153345) do
+ActiveRecord::Schema.define(version: 20170116190928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -231,11 +231,13 @@ ActiveRecord::Schema.define(version: 20170106153345) do
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "player_id"
     t.integer  "contract_id"
+    t.string   "create"
+    t.string   "destroy"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_jobs_on_user_id", using: :btree
+    t.index ["player_id"], name: "index_jobs_on_player_id", using: :btree
   end
 
   create_table "managements", force: :cascade do |t|
@@ -267,6 +269,22 @@ ActiveRecord::Schema.define(version: 20170106153345) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["received_messageable_id", "sender_id"], name: "inbox_idx", using: :btree
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "management_id"
+    t.string   "position_type"
+    t.string   "home_phone"
+    t.string   "work_phone"
+    t.string   "cell_phone"
+    t.string   "email"
+    t.string   "regular_rate"
+    t.integer  "actcode_id"
+    t.boolean  "status"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -400,6 +418,7 @@ ActiveRecord::Schema.define(version: 20170106153345) do
     t.string   "confirmation_token",     limit: 255
     t.datetime "confirmation_sent_at"
     t.boolean  "approved",                           default: false, null: false
+    t.string   "type"
     t.index ["approved"], name: "index_users_on_approved", using: :btree
   end
 

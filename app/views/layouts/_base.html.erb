@@ -18,7 +18,9 @@
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900' %>
 
     <!-- Le styles -->
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "application" "highcharts", :media => "all" %>
+    
+  
     <%= yield :styles %>
 
     <!-- This is for Google Maps integration, you can safely remove if not using Google Maps -->
@@ -50,9 +52,10 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" %>
-
-    <%= javascript_include_tag "application", async: Rails.env.production?  %>
+      <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" %> 
+      <%= javascript_include_tag "application", "chartkick", async: Rails.env.production?  %>
+      <%#= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
+  
     <%= yield :javascript %>
 
   </body>

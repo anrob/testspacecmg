@@ -6,7 +6,7 @@ class Contract < ApplicationRecord
    as_activity
    
   has_many :jobs
-  has_many :users, through: :jobs
+  has_many :players, through: :jobs
   #, through: :jobs 
    
    default_scope   { where(contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- Money OTW","Contract Rec'd- Waiting for Dep.","Send Contract "])}
@@ -32,7 +32,17 @@ class Contract < ApplicationRecord
   
 
       #scope :tenday, -> { where(date_of_event: Chronic.parse('next 10 days'))}
-      
+    
+    def self.to_csv
+     CSV.generate do |csv|
+      csv << column_names
+      all.each do |contract|
+       csv << contract.attributes
+      end
+     end
+     
+     
+    end
       
     def activity_object
     self.contract
@@ -48,4 +58,14 @@ class Contract < ApplicationRecord
     format_for :event_start_time, format: "%I:%M", :as => "updated_time"
     #format_for [:date_of_event, :created_at], format: "%m/%d/%y"c
    end
+   
+    def is_wedding?
+    type_of_event.start_with?("Wedding", " Wedding")
+    end
+
+  def is_mitzvah?
+    type_of_event.start_with?("Bar", "Bat", "B'n")
+  end
+   
+  
 end

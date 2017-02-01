@@ -1,9 +1,10 @@
 class ContractsController < ApplicationController
  before_action :create_enricher
-  before_action :set_contract, only: [:show, :edit, :confirmjob]
+  before_action :set_contract, only: [:show, :edit, :confirmjob, :paypeople]
+  before_action :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
 
-  respond_to :html, :xml, :json
-  require 'json_builder'
+  respond_to :html, :xml, :json, :xlsx
+    require 'json_builder'
  
  
   def index
@@ -63,7 +64,7 @@ class ContractsController < ApplicationController
   def calendar
     #@search = Contract.search(params[:search])
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    unless current_user.try(:manager?)
+    if current_user.try(:type) == "User"
       @contracts = Contract.mystuff(@current_user.actcode_name).threesixfive.all
       @event = @contracts.group_by(&:date_of_event)
     else
@@ -80,6 +81,59 @@ class ContractsController < ApplicationController
     @contract_team = Contract.mystuff(current_user.actcode_name).nextsix.all_except(current_user)
     # @activities = PublicActivity::Activity.all
   end
+  
+  def paypeople
+    respond_to do |format|
+    format.html
+    format.xlsx
+    end
+    
+  end
+  
+  def report
+    
+      @chart = Fusioncharts::Chart.new({
+        :height => 400,
+        :width => 600,
+        :type => 'mscolumn2d',
+        :renderAt => 'chart-container',
+        :dataSource => {
+          :chart => {
+            :caption => 'Comparison of Quarterly Revenue',
+            :subCaption => 'Harry\'s SuperMart',
+            :xAxisname => 'Quarter',
+            :yAxisName => 'Amount ($)',
+            :numberPrefix => '$',
+            :theme => 'ocean',
+          },
+          :categories => [{
+            :category => [
+              { :label => 'Q1' },
+              { :label => 'Q2' },
+              { :label => 'Q3' },
+              { :label => 'Q4' }
+            ]
+          }],
+          :dataset =>  [{
+            :seriesname => 'Previous Year',
+            :data =>  [
+              { :value => '10000' },
+              { :value => '11500' },
+              { :value => '12500' },
+              { :value => '15000' }
+            ]},{
+            :seriesname => 'Current Year',
+            :data =>  [
+              { :value => '25400' },
+              { :value => '29800' },
+              { :value => '21800' },
+              { :value => '26800' }
+            ]}
+          ]
+        }
+      })
+  end
+  
   
   
   
@@ -109,6 +163,12 @@ class ContractsController < ApplicationController
   
   private 
   
+  def find_contract
+  @user = current_user
+  @contract = Contract.find(params[:id])
+  @additional = Contract.additional(@contract)
+  end
+  
   def contract_sort
   params[:sort] || :unique3
   end
@@ -131,7 +191,7 @@ class ContractsController < ApplicationController
   
   
   def contract_params
-      params.require(:contract).permit(:job, user_ids:[])
+      params.require(:contract).permit(:job, player_ids:[])
   end
 end
 

@@ -1,0 +1,11 @@
+<div>
+   
+   <ul class="list-unstyled pl20">
+      <li class="text-grey-200 pt50"><span class="fa fa-home fa-lg"></span> <%= link_to root_path , :class => "dl text-grey-200" do %> <%= content_tag :"span", "Home"  %> <% end %></li>
+      <li class="text-grey-200 pt50"><span class="fa fa-calendar fa-lg"></span> <%= link_to calendar_path , :class => "dl text-grey-200" do %> <%= content_tag :"span", "Calendar"  %> <% end %></li>
+      <li class="text-grey-200 pt50"><span class="fa fa-user fa-lg"></span> <%= link_to edit_user_registration_path , :class => "dl text-grey-200" do %> <%= content_tag :"span", "Profile"  %> <% end %></li>
+    
+     <li class="text-grey-200 pt50"><span class="fa fa-sign-out fa-lg"></span><%= link_to destroy_user_session_path, :method => :delete,  :class => "dl text-grey-200 pt50" do %> <%= content_tag :"span", "Logout"  %> <% end %></li>
+
+      </ul>
+</div>

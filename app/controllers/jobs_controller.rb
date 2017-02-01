@@ -10,6 +10,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @jobs = Job.thejobs(params[:contract_id])
   end
 
   # GET /jobs/new
@@ -50,6 +51,11 @@ class JobsController < ApplicationController
       end
     end
   end
+  
+  
+  def payroll
+    
+  end
 
   # DELETE /jobs/1
   # DELETE /jobs/1.json
@@ -69,6 +75,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:job, :user_id, :contract_id)
+      params.require(:job).permit(:job, :player_id, :contract_id)
     end
 end

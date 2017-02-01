@@ -12,4 +12,21 @@ module ContractsHelper
       :confirmation == 0 
    end
    
+    def managerprice
+   # @takeoutfee = "@contract.referral_fee_amount + @contract.giveaways_charge + @contract.credit_card_fee + @contract.non_commissionable_charges"
+    @takeoutfee = @contract.referral_fee_amount + @contract.giveaways_charge + @contract.credit_card_fee + @contract.non_commissionable_charges
+    # contractprice = @contract.contract_price
+    @results = @contract.contract_price - @takeoutfee
+     #results
+    end
+    
+    
+    def typeofclient
+       !Contract.
+         where(:prntkey23 => self.prntkey23)
+         #where("id != ?", self.id).
+         #where("act_code LIKE 'WA%'").
+        # where("contract_status LIKE '%Contract%' OR contract_status LIKE '%Booked%'").exists?
+    end
+   
 end

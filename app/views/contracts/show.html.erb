@@ -8,6 +8,7 @@
 <%= content_tag(:p, "#{@contract.email_address}", class: "mb0") unless @contract.email_address.blank? %>
 <%= content_tag(:p, "Home Phone:              #{@contract.home_phone}", class: "mb0") unless @contract.home_phone.blank? %>
 <%= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
+<%= content_tag(:p, "Event Times:              #{@contract.eventtime}", class: "mb0")  %>
 <br><%= render  "show/agent", contract: @contract %>
 </div>
 </div>
@@ -44,12 +45,14 @@
 <div class="container-fluid">
    <div class="row sheet-inner mt20">
        <%#= @activities %>
+       <%= render "show/numberofthings", contract: @contract %>
+       <%= render  "show/moneysection", contract: @contract %>
+       <div class="clearfix"></div>
       <%= render "show/provision", contract: @contract %>
-      <%= render "staffing/assigned", contract: @contract %>
       <%= render  "show/actnotes", contract: @contract %>
       <%= render  "show/addservices", contract: @contract %>
-      <%= render "show/numberofthings", contract: @contract %><hr>
-      <%= render  "show/moneysection", contract: @contract %>
+      <%#= render "show/numberofthings", contract: @contract %><hr>
+      <%#= render  "show/moneysection", contract: @contract %>
       <%#= render  "show/clientextra", contract: @contract %>   <!-- DO LATER -->
       
       <p><%#= link_to "Add Staff", new_user_path %></p>

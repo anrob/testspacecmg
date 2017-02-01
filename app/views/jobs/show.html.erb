@@ -1,5 +1,8 @@
 <% @title = "Showing job" %>
 
+
+<%#= @jobs.inspect %>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -8,7 +11,7 @@
           <label class="col-md-2 form-label">User</label>
           <div class="col-md-10 form-control uneditable-input">
             <span>
-              <%= @job.user_id %>
+              <%= @job.player_id %>
             </span>
           </div>
         </div>
