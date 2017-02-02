@@ -1,5 +1,5 @@
 class ContractsController < ApplicationController
- before_action :create_enricher
+  before_action :create_enricher
   before_action :set_contract, only: [:show, :edit, :confirmjob, :paypeople]
   before_action :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
 
@@ -30,6 +30,7 @@ class ContractsController < ApplicationController
     #user_id: @users.select(:id)
     @additional = Contract.additional(@contract)
     # @job = Contract.staff(@contract)
+    @players = Player.teamplayer(current_user)
  
     
     feed = StreamRails.feed_manager.get_user_feed(current_user.id)
@@ -139,7 +140,8 @@ class ContractsController < ApplicationController
   
   
  def confirmjob
-    @contract.update_attributes(confirmation: 1)
+    #@contract.update_attributes(confirmation: 1)
+    @contract.confirmed!
     redirect_to @contract, notice: "Job Confirmed"
  end
 

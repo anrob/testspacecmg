@@ -1,4 +1,5 @@
 class Contract < ApplicationRecord
+ enum confirmation: [:unconfirmed, :confirmed]
   require 'chronic'
   #include PublicActivity::Model
    # tracked
@@ -19,6 +20,7 @@ class Contract < ApplicationRecord
       #event_starts = event_start_time.gsub('pm', 'PM')
       scope :mystuff, lambda { |user| where("act_code = ?", user) }
       scope :tenday, -> {where(date_of_event: (datetoday)..(Chronic.parse("10 days from now at 12:01 AM"))).order('confirmation ASC', 'act_booked ASC', 'date_of_event ASC')}
+      #  scope :theteam, -> {Contract.where(act_code: @manger.split(","))}
       scope :thirtyday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("30 days from now"))).order('confirmation ASC', 'act_booked ASC', 'date_of_event ASC')}
       scope :all_except, lambda { |current_user | where("user = ?", current_user ) }
       #scope :todaysevents, where(:date_of_event, my_date )

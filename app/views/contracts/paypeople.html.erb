@@ -6,9 +6,11 @@
     
     <%= w.label :position %> 
     <%#= w.select :position, options_for_select(Position.options, params[:postiion]), {}, :onchange => 'this.options[this.selectedIndex].value;' %>  
-    <%= w.select :position, options_for_select(Position.options, params[:postiion]), {}, :onchange => 'alert(this.options[this.selectedIndex].value);' %>  
-    <%#= w.select :position, options_for_select(Position.options, params[:postiion]), {}, :onchange => "this.value;" %>  
-     <%= w.button :submit %>
+    <%#= w.select :position, options_for_select(Position.options, params[:postiion]), {}, :onchange => @thevalue = 'this.options[this.selectedIndex].value'; %> 
+    <%#= w.select :position, options_for_select(Position.options, params[:postiion]), {}, :onchange => 'alert(this.options[this.selectedIndex].value);' %>  
+
+    <%= w.select :position, options_for_select(Position.options, params[:postiion]) %>  
+     <%#= w.button :submit %>
     <% end %>
     </li>
    
@@ -18,7 +20,7 @@
  
  </div>
  
-<%= params.inspect %> %>
+<%#= params.inspect %>
 
 
 <%#= select_tag 'company_type',

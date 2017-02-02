@@ -16,7 +16,7 @@
 
     <div class="field">
       <%= f.label :player_ids, "Add Event Staff", class: "lead" %><br />
-      <%= f.collection_select :player_ids, Player.order(:first_name), :id, :full_name, {class: 'chosen-select', style: 'width: 100%'}, {multiple: true} %>
+      <%= f.collection_select :player_ids, @players.order(:first_name), :id, :full_name, {class: 'chosen-select', style: 'width: 100%'}, {multiple: true} %>
       <%#= f.association :jobs, collection: @contract.users, priority: @contract.jobs %>
         <%#= f.input :jobs,:collection_select => @contract.users, :label_method => :userfullname, :value_method => :id,:label => "Staff" ,:include_blank => false %>
     </div>
