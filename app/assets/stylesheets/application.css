@@ -16,9 +16,35 @@
  *= require fullcalendar
  *= require select2
  *= stub "active_admin"
+ *= require jquery-ui
  */
 
 .bg {
   background-color: #1565c1 !important; 
   color: white !important ;
+}
+
+.Booked {
+ background-color: #a4d5a6;
+}
+
+.ContractReceived {
+  background-color: #006b5f;
+}
+
+.HoldMoneyRecd  {
+  background-color: #008a7c;
+}
+
+.Holdnodep {
+  
+  background-color: #e53734;
+}
+
+.ContractSent {
+  background-color: #b51c1c;
+}
+
+.ContractRecdWaitingforDep {
+  background-color: #4ccfe1;
 }

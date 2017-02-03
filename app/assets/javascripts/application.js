@@ -18,6 +18,7 @@
 //= require fullcalendar
 //= require select2
 //= require highcharts
+//= require jquery-ui
 
 //= require_tree .
 
@@ -51,20 +52,14 @@
 timeFormat: 'H(:mm)' // uppercase H for 24-hour clock
 
 
-
-$(function () {
-  new Highcharts.Chart({
-    chart: { renderTo: 'orders_chart' },
-    title: { text: 'Orders by Day' },
-    xAxis: { type: 'datetime' },
-    yAxis: {
-      title: { text: 'Dollars'}
-    },
-    series: [{
-      data: [1, 2, 5, 7, 3]
-    }]
-  });
+ $(function() {
+  $('input#search').datepicker(
+    {
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'yy-mm-dd',
+      showButtonPanel: true
+    }
+    
+    );
 });
-//}
-//);
-

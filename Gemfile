@@ -62,6 +62,7 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'fusioncharts-rails'
 gem "highcharts-rails"
+gem 'jquery-ui-rails'
 
 
 # Use Capistrano for deployment

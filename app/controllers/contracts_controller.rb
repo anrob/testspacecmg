@@ -45,7 +45,7 @@ class ContractsController < ApplicationController
     if params[:search]
      # @contracts = Contract.tenday
     @contract = Contract.nextfouryears.search(params[:search])#.group(:id, :type_of_act) #.order("type_of_act DESC")
-    @actcode = Actcode.mainacts.where.not(actcode: @contract.pluck(:act_code)).order("description ASC")
+    @actcode = Actcode.mainacts.where.not(actcode: @contract.pluck(:act_code)).order("description ASC").active
   # else
   #   @contracts = Contract.all.order('created_at DESC')
    end

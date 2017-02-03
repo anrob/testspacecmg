@@ -41,8 +41,9 @@
 <div class="small"></div>
 </div>
                  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 pt10">
-                    <p class="lead"><%= contract.act_booked %></p>
-                   <p><%=  contract.contract_provisions.gsub('"', ' ') unless contract.contract_provisions.blank? %></p>
+                    <p class="lead mb0"><%= contract.act_booked %></p>
+                    <span class="label <%= "#{contract.contract_status.gsub!(/[^0-9A-Za-z]/, '')}" %>"><%= contract.contract_status %></span>
+                   <p class="mt20"><%=  contract.contract_provisions.gsub('"', ' ') unless contract.contract_provisions.blank? %></p>
                  
                  </div>
                  
