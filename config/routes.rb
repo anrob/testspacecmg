@@ -23,6 +23,7 @@ Rails.application.routes.draw do
    get :emailjobwithnetonly, on: :member
    get :emailjobwithallmoney, on: :member
    get :emailjobnomoney, on: :member
+  # get :search, on:  :member
    
    end
    get 'users/show'
@@ -33,10 +34,11 @@ Rails.application.routes.draw do
 
   get 'home/dashboard'
   get 'home/listusers'
-  get 'calendar',  to: 'contracts#calendar' 
-  get 'report',  to: 'contracts#report' 
+  get 'calendar', to: 'contracts#calendar' 
+  get 'report',   to: 'contracts#report' 
   get 'alljobs',  to: 'contracts#alljobs' 
-  get 'payroll',  to: 'contracts#payroll' 
+  get 'payroll',  to: 'contracts#payroll'
+  get 'search',   to: 'contracts#search'
   
   
    #get '/confirmjob', to: "contracts#confirmjob"
