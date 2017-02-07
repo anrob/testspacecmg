@@ -18,6 +18,8 @@
 //= require fullcalendar
 //= require select2
 //= require highcharts
+//= require Chart.bundle
+//= require chartkick
 //= require jquery-ui
 
 //= require_tree .
@@ -63,3 +65,5 @@ timeFormat: 'H(:mm)' // uppercase H for 24-hour clock
     
     );
 });
+
+//Smooch.init({ appToken: '3l6o6rjo3tt4dwntnv144o4an' });

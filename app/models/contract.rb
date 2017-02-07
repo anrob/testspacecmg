@@ -13,6 +13,8 @@ class Contract < ApplicationRecord
    default_scope   { where(contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- Money Rec'd","Hold- no dep.","Contract Rec'd- Waiting for Dep.","Send Contract "])}
    
    my_date = Date.today
+   fundate = "2017/01/01"
+   funenddate = "2020/12/31"
    #datewithouttime = Date.today.strftime("%m/%d/%y")
    datewithouttime = Date.today.strftime("%m/%d/%y")
    datetoday = Chronic.parse(datewithouttime)
@@ -26,10 +28,13 @@ class Contract < ApplicationRecord
       #scope :todaysevents, where(:date_of_event, my_date )
       scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days))}
       scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('date_of_event ASC', 'act_booked ASC')}
-      scope :threesixfive, -> {where(date_of_event:  (my_date - 2.years)..(my_date + 5.years))}
+      scope :threesixfive, ->  {where(date_of_event:  (my_date - 2.years)..(my_date + 5.years))}
       scope :nextfouryears, -> {where(date_of_event:  (my_date)..(my_date + 4.years))}
-      scope :thismonth, -> {where(created_at: (Chronic.parse("first of this month"))..(Chronic.parse("end of this month"))).order('date_of_event ASC', 'act_booked ASC')}
+     # scope :thismonth, ->     {where(created_at: (Chronic.parse("first of this month"))..(Chronic.parse("end of this month"))).order('date_of_event ASC', 'act_booked ASC')}
+      scope :thismonth, ->  {where(date_of_event:  (my_date)..(my_date + 1.years))}
       scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
+      scope :funstuff, -> {where(date_of_event:  (fundate)..(funenddate))}
+
       
       scope :type_of_act, lambda { |tp| where("type_of_act = ?", tp) }
       # scope :staff, ->(staffi) { where("contract_id = ?", staffi.contract_id)}

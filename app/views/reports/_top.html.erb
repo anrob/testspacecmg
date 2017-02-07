@@ -1,19 +1,24 @@
 <%#= yield :charts_js %>
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick", "fusionchart" %>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <div class="sheet-inner">
    <div>
-         
-   REPORT FILE
+   
+   <%= @contract.count %>
+   
+   <%= line_chart @contract.group_by_day(:date_of_event).sum(:contract_price) %>
+   <%= column_chart @contract.group_by_day_of_week(:created_at, format: "%a").sum(:contract_price) %>
    </div>
-
+<%# line_chart({ 20.day.ago => 5, 10.day.ago => 10, "2016-010-07 00:00:00 UTC" => 7 }) %>
 <%#= line_chart User.group_by_day(:created_at).count %>
 <%#=  line_chart @contracts.where(&:confirmation_date).group_by_day(&:confirmation_date)%>
 <%# @reports =  Contract.where(confirmation_date: (Chronic.parse("first of this month"))..(Chronic.parse("end of this month"))).order('date_of_event ASC', 'act_booked ASC') %>
-<%#= line_chart @reports.group_by_month(:confirmation_date).sum(:contract_price) %>
+<%#= line_chart @contracts.group_by_day(:created_at).count %>
 
 <%# @reports = User.group_by_day(:created_at).count %>
-
+<%#= line_chart @contracts.where(:contract_price).count, discrete: true %>
  <%#= @reports.group_by_month %>
+ <%#= line_chart @contracts, colors: ["pink", "#999"] %>
+
  <div id="chartContainer"><%#= @chart.render() %></div>
 
 </div>
