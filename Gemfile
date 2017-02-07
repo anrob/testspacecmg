@@ -60,7 +60,7 @@ gem 'safe_attributes'
 gem 'postageapp'
 gem 'chartkick'
 gem 'groupdate'
-gem 'fusioncharts-rails'
+#gem 'fusioncharts-rails'
 gem "highcharts-rails"
 gem 'jquery-ui-rails'
 
