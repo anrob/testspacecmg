@@ -63,6 +63,8 @@ gem 'groupdate'
 #gem 'fusioncharts-rails'
 gem "highcharts-rails"
 gem 'jquery-ui-rails'
+gem 'premailer', '~> 1.9', '>= 1.9.2'
+gem 'rails_email_preview', '~> 2.0.1'
 
 
 # Use Capistrano for deployment

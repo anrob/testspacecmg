@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  mount RailsEmailPreview::Engine, at: 'emails'
   get 'home/index'
 
   resources :jobs do 

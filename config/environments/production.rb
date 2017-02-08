@@ -77,8 +77,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { host: 'confirmmygig.com' }
-  config.action_mailer.asset_host = 'http://confirmmygig.com'
+  config.action_mailer.default_url_options = { host: 'cmgv3.com' }
+  config.action_mailer.asset_host = 'http://cmgv3.com'
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   #
