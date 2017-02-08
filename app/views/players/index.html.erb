@@ -19,9 +19,12 @@
 <% end %>
 
 <div class="container">
+ <% if current_user.try(:type) == "ManagerUser" %> <%= link_to new_player_path, class: 'btn btn-primary btn-large pull-right' do %>
+<%= fa_icon_tag "plus" %> Add player
+<% end %><% end %>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="sheet sheet-condensed">
+      <div class="sheet sheet-condensed mt20">
         <div class="sheet-inner">
           <table class="table">
             <thead>
@@ -41,8 +44,8 @@
                                 <td><%= player.home_phone %></td>
                                
                                 <td class="actions">
-                  <%= link_to fa_icon_tag("eye"), player, rel: 'tooltip', title: 'Show' %>
-                  <%= link_to fa_icon_tag("pencil"), edit_player_path(player), rel: 'tooltip', title: 'Edit' %>
+                  <%#= link_to fa_icon_tag("eye"), player, rel: 'tooltip', title: 'Show' %>
+         <% if current_user.try(:type) == "ManagerUser" %>          <%= link_to fa_icon_tag("pencil"), edit_player_path(player), rel: 'tooltip', title: 'Edit' %><% end %>
                   <%#= link_to fa_icon_tag("trash-o"), player, rel: 'tooltip', title: 'Delete',
                   data: { confirm: 'Are you sure?' }, method: :delete %>
                 </td>

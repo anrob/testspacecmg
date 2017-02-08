@@ -1,16 +1,23 @@
 <%#= link_to user.login, "/switch_user?scope_identifier=user_#{user.id}" %>
 
 <% if current_user.try(:manager?) %>
-<br>
-<div class="panel panel">
-   <div class="panel-heading">
-          <p class="lead">All JOBS QUICK MENU</p>
-        </div>
-<% contract.each do |contract| %>
+ <div class="navbar navbar-default navbar-shadow">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#second-content-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <h4 class="text-center text-grey-50">Quick Jobs</h4>
+      </div>
 
-<table>
-<td class="p5"><%= link_to "#{contract.date_of_event.strftime("%m/%d/%y")} - #{contract.last_name}  - #{contract.act_code}", contract %></td>
-</table>
+<div class="collapse navbar-collapse bg-grey-50" id="second-content-nav">
+
+
+<ul class="nav navbar-nav">
+   <% contract.each do |contract| %>
+<li class=""><%= link_to "#{contract.date_of_event.strftime("%m/%d/%y")} - #{contract.last_name}  - #{contract.act_code}", contract %></li>
+</ui>
 
 <% end %>
 </div>

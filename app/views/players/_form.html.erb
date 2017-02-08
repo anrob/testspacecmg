@@ -4,20 +4,20 @@
 
   <div class="form-inputs">
     <%= f.form_group :player do |f| %>
-      <%= f.label :player, class: 'control-label col-md-2' %>
+      <%= f.label :full_name, class: 'control-label col-md-2' %>
       <div class='col-md-8'>
         <%= f.text_field :first_name, class: 'form-control' %>
         <%= f.error_messages %>
       </div>
     <% end %>
 
-    <%= f.form_group :management_id do |f| %>
-      <%= f.label :management_id, class: 'control-label col-md-2' %>
-      <div class='col-md-8'>
-        <%= f.number_field :management_id, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
+    <%#= f.form_group :management_id do |f| %>
+      <%#= f.label :management_id, class: 'control-label col-md-2' %>
+      <!--<div class='col-md-8'>-->
+        <%#= f.number_field :management_id, class: 'form-control' %>
+        <%#= f.error_messages %>
+      <!--</div>-->
+    <!--<%# end %>-->
 
     <%= f.form_group :home_phone do |f| %>
       <%= f.label :home_phone, class: 'control-label col-md-2' %>
@@ -37,7 +37,7 @@
     
     
      <%= f.form_group :regular_rate do |f| %>
-      <%= f.label :regular_rate, class: 'control-label col-md-2' %>
+      <%= f.label :regular_pay_rate, class: 'control-label col-md-2' %>
       <div class='col-md-8'>
         <%= f.text_field :regular_rate, class: 'form-control' %>
         <%= f.error_messages %>
