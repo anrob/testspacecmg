@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  mount RailsEmailPreview::Engine, at: 'emails'
-  get 'home/index'
+ # mount RailsEmailPreview::Engine, at: 'emails'
+ # get 'home/index'
 
   resources :jobs do 
    get :payroll, on: :member
