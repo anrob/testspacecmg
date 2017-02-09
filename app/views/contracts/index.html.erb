@@ -11,9 +11,13 @@
 
 <%= render 'admin', contract: @contracts %>
 
-<%#= render 'dancerjobs', contract: @contracts %>
+<% elsif current_user.try(:type) == "Sales" %>
+
+<%= render 'search', contract: @contracts %>
  <% else %>
  <%= render 'dancer', contract: @contracts %>
+ 
+  <% else %>
  
  <% end %>
 <br>
