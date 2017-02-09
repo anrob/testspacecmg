@@ -1,4 +1,4 @@
-class ManagementUser < User
+class Sales < User
    
    
 end
