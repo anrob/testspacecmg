@@ -17,7 +17,7 @@
 //= require moment 
 //= require fullcalendar
 //= require select2
-//= require highcharts
+// require highcharts
 //= require Chart.bundle
 //= require chartkick
 //= require jquery-ui

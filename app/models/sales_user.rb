@@ -1,4 +1,0 @@
-class ManagementUser < User
-   
-   
-end
