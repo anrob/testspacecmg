@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
    before_action :authenticate_user!
    before_action :configure_permitted_parameters, if: :devise_controller?
-   before_action :everypage, unless: :devise_controller?
+   before_action :everypage #, unless: :devise_controller?
    # , :except => [:new, :create]
    layout 'sidenav'
    private
@@ -27,11 +27,12 @@ class ApplicationController < ActionController::Base
      def everypage
     # if user_signed_in?
     # @mana = Actcode.find_by_actcode(current_user.actcode_name, :include => :management)
-     # if current_user.is? :manager
+      if user_signed_in?
      @manger = Actcode.getallbycompany(current_user).map {|m| m.actcode} 
     # end
      @contractfour = Contract.order(params[:sort]).tenday.all
      @getallbycompnay = Actcode.getallbycompany(current_user).order("actcode").delete(current_user.actcode_name)
+     end
      end
      
      

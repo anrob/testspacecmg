@@ -2,8 +2,6 @@ class ContractsController < ApplicationController
   before_action :create_enricher
   before_action :set_contract, only: [:show, :edit, :confirmjob, :paypeople]
   before_action :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
-  
-
   respond_to :html, :xml, :json, :xlsx
     require 'json_builder'
  
