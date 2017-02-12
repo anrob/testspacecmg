@@ -47,4 +47,4 @@ test:
 
 production:
   <<: *default
-  database: app_production
+ # database: app_production

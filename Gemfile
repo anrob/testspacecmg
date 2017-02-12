@@ -60,8 +60,11 @@ gem 'safe_attributes'
 gem 'postageapp'
 gem 'chartkick'
 gem 'groupdate'
-gem 'fusioncharts-rails'
+#gem 'fusioncharts-rails'
 gem "highcharts-rails"
+gem 'jquery-ui-rails'
+gem 'premailer', '~> 1.9', '>= 1.9.2'
+#gem 'rails_email_preview', '~> 2.0.1'
 
 
 # Use Capistrano for deployment
@@ -80,7 +83,7 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+ # gem 'spring'
   ##gem 'sunspot_solr'
 end
 

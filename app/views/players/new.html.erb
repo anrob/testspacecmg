@@ -1,0 +1,12 @@
+<% @title = "New Staff Member" %>
+
+<div class="container sheet-inner">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <% if current_user.try(:type) == "ManagerUser" %>
+     <h4 class="pb30">Add New Staff Member</h4>
+     <% end %>
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ class Player < ApplicationRecord
     has_many :jobs
     has_many :contracts, through: :jobs
     
-   
+   scope :teamplayer, lambda { |user| where("management_id = ?", user.management_id) }
     
    
    def full_name

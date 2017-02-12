@@ -1,5 +1,66 @@
-<% @players.each do |p| %>
+<%# @players.each do |p| %>
 
-<li><%= p.first_name %> -  <%= p.regular_rate %></li>
+<!--<li>-->
+  <%#= p.first_name %> -  <%#= p.regular_rate %>
+  <!--</li>-->
 
+<%# end %>
+
+<% @title = "Listing players" %>
+
+<% content_for :description do %>
+<p>Edit this template in <code>app/views/players/index.html.erb</code>.</p>
 <% end %>
+
+<% content_for :actions do %>
+<%= link_to new_player_path, class: 'btn btn-primary btn-large pull-right' do %>
+<%= fa_icon_tag "plus" %> Add player
+<% end %>
+<% end %>
+
+<div class="container">
+ <% if current_user.try(:type) == "ManagerUser" %> <%= link_to new_player_path, class: 'btn btn-primary btn-large pull-right' do %>
+<%= fa_icon_tag "plus" %> Add player
+<% end %><% end %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="sheet sheet-condensed mt20">
+        <div class="sheet-inner">
+          <table class="table">
+            <thead>
+              <tr>
+                                <th>Player</th>
+                                <th>Email</th>
+                                <th>Home Phone</th>
+                                
+                                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @players.each do |player| %>
+              <tr>
+                                <td><%= player.first_name %></td>
+                                <td><%= player.email %></td>
+                                <td><%= player.home_phone %></td>
+                               
+                                <td class="actions">
+                  <%#= link_to fa_icon_tag("eye"), player, rel: 'tooltip', title: 'Show' %>
+         <% if current_user.try(:type) == "ManagerUser" %>          <%= link_to fa_icon_tag("pencil"), edit_player_path(player), rel: 'tooltip', title: 'Edit' %><% end %>
+                  <%#= link_to fa_icon_tag("trash-o"), player, rel: 'tooltip', title: 'Delete',
+                  data: { confirm: 'Are you sure?' }, method: :delete %>
+                </td>
+              </tr>
+              <% end %>
+              <% if @players.length == 0 %>
+              <tr><td colspan=42 class='text-center'>No players.</td></tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div><!-- /.sheet-inner -->
+      </div><!-- /.sheet -->
+
+                  <%# Remove the trailing if condition if you're using pagination. %>
+      <%= paginate @players if @players.respond_to?(:current_page) %>
+          </div>
+  </div>
+</div>

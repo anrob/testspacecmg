@@ -2,13 +2,14 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   inherit_resources
-   layout 'sidenav'
+ 
  
   protect_from_forgery with: :exception
    before_action :authenticate_user!
    before_action :configure_permitted_parameters, if: :devise_controller?
-   before_action :everypage, :except => [:new, :create]
- 
+   before_action :everypage #, unless: :devise_controller?
+   # , :except => [:new, :create]
+   layout 'sidenav'
    private
    
    def after_sign_out_path_for(resource_or_scope)
@@ -26,11 +27,14 @@ class ApplicationController < ActionController::Base
      def everypage
     # if user_signed_in?
     # @mana = Actcode.find_by_actcode(current_user.actcode_name, :include => :management)
-     # if current_user.is? :manager
+      if user_signed_in?
      @manger = Actcode.getallbycompany(current_user).map {|m| m.actcode} 
     # end
      @contractfour = Contract.order(params[:sort]).tenday.all
      @getallbycompnay = Actcode.getallbycompany(current_user).order("actcode").delete(current_user.actcode_name)
      end
+     end
+     
+     
 
 end

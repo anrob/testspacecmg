@@ -1,8 +1,7 @@
 class ContractsController < ApplicationController
- before_action :create_enricher
+  before_action :create_enricher
   before_action :set_contract, only: [:show, :edit, :confirmjob, :paypeople]
   before_action :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
-
   respond_to :html, :xml, :json, :xlsx
     require 'json_builder'
  
@@ -30,6 +29,7 @@ class ContractsController < ApplicationController
     #user_id: @users.select(:id)
     @additional = Contract.additional(@contract)
     # @job = Contract.staff(@contract)
+    @players = Player.teamplayer(current_user)
  
     
     feed = StreamRails.feed_manager.get_user_feed(current_user.id)
@@ -37,6 +37,23 @@ class ContractsController < ApplicationController
     @activities = @enricher.enrich_activities(results)
 
   end
+  
+  
+  def search
+    
+    if params[:search]
+     # @contracts = Contract.tenday
+    @contract = Contract.nextfouryears.search(params[:search])#.group(:id, :type_of_act) #.order("type_of_act DESC")
+    @actcode = Actcode.mainacts.where.not(actcode: @contract.pluck(:act_code)).order("description ASC").active
+  # else
+  #   @contracts = Contract.all.order('created_at DESC')
+    end
+  end
+  
+   def report
+    @contract = Contract.funstuff
+    
+   end
   
   
   def create_enricher
@@ -90,56 +107,15 @@ class ContractsController < ApplicationController
     
   end
   
-  def report
-    
-      @chart = Fusioncharts::Chart.new({
-        :height => 400,
-        :width => 600,
-        :type => 'mscolumn2d',
-        :renderAt => 'chart-container',
-        :dataSource => {
-          :chart => {
-            :caption => 'Comparison of Quarterly Revenue',
-            :subCaption => 'Harry\'s SuperMart',
-            :xAxisname => 'Quarter',
-            :yAxisName => 'Amount ($)',
-            :numberPrefix => '$',
-            :theme => 'ocean',
-          },
-          :categories => [{
-            :category => [
-              { :label => 'Q1' },
-              { :label => 'Q2' },
-              { :label => 'Q3' },
-              { :label => 'Q4' }
-            ]
-          }],
-          :dataset =>  [{
-            :seriesname => 'Previous Year',
-            :data =>  [
-              { :value => '10000' },
-              { :value => '11500' },
-              { :value => '12500' },
-              { :value => '15000' }
-            ]},{
-            :seriesname => 'Current Year',
-            :data =>  [
-              { :value => '25400' },
-              { :value => '29800' },
-              { :value => '21800' },
-              { :value => '26800' }
-            ]}
-          ]
-        }
-      })
-  end
+ 
   
   
   
   
   
  def confirmjob
-    @contract.update_attributes(confirmation: 1)
+    #@contract.update_attributes(confirmation: 1)
+    @contract.confirmed!
     redirect_to @contract, notice: "Job Confirmed"
  end
 

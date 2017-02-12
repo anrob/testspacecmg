@@ -13,12 +13,19 @@ module ContractsHelper
    end
    
     def managerprice
-   # @takeoutfee = "@contract.referral_fee_amount + @contract.giveaways_charge + @contract.credit_card_fee + @contract.non_commissionable_charges"
     @takeoutfee = @contract.referral_fee_amount + @contract.giveaways_charge + @contract.credit_card_fee + @contract.non_commissionable_charges
-    # contractprice = @contract.contract_price
     @results = @contract.contract_price - @takeoutfee
-     #results
     end
+    
+    def mcrate 
+       if @contract.contract_price > 3000 
+          @mcrate = managerprice * 0.15
+          else 
+          @mcrate = 300 
+       end
+    end
+    
+   
     
     
     def typeofclient
