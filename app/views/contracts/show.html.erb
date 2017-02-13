@@ -45,8 +45,14 @@
 <div class="container-fluid">
    <div class="row sheet-inner mt20">
        <%#= @activities %>
+       <% if current_user.try(:type) == "ManagerUser" %>
        <%= render "show/numberofthings", contract: @contract %>
        <%= render  "show/moneysection", contract: @contract %>
+       <% elsif current_user.try(:type) == "Leader" %>
+        
+       <%= render "show/numberofthings", contract: @contract %>
+       <%= render  "show/moneysection", contract: @contract %>
+       <% end %>
        <div class="clearfix"></div>
       <%= render "show/provision", contract: @contract %>
       <%= render  "show/actnotes", contract: @contract %>
@@ -57,7 +63,9 @@
       
       <p><%#= link_to "Add Staff", new_user_path %></p>
 
-      <%= render "staffing/assigned", contract: @contract %> 
+      <% if current_user.try(:type) == "Super" %>  
+      <% render "staffing/assigned", contract: @contract %> 
+      <% end %>
        <%#= debug(params) %>
    </div>
 </div>

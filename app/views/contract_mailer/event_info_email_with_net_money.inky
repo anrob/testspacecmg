@@ -1,32 +1,27 @@
-<%= email_message_section do %>
-  <%= email_message_spacer 2 %>
-  <%= email_message_body_text do %>
-    Hello <%= @resource.email %>! Someone has requested a link to change your password. You can do this through the link below.
-  <% end %>
+<container>
 
-  <%= email_message_button do %>
-    <%= link_to 'Change my password', edit_password_url(@resource, reset_password_token: @token),  style: 'color: #fff;' %></span>
-  <% end %>
+  <row class="header">
+    <columns>
 
-  <%= email_message_spacer 2 %>
+      <spacer size="32"></spacer>
+      
+      <h2 class="text-center">Act Name: <%= @contract.act_booked %></h2>
+         Type of Event: <%= @contract.type_of_event %><br>
+               Operating as: <%= @contract.type_of_act %><br>
+               Form of: <%= @contract.act_form %><br>
+    </columns>
+  </row>
+  <row>
+    <columns>
 
-  <%= email_message_small_text do %>
-    If you didn't request this, please ignore this email. Your password won't change until you access the link above and create a new one.
-  <% end %>
+      <spacer size="32"></spacer>
 
-  <%= email_message_spacer 2 %>
-<% end %>
-<div class="contain">
-Act Name: <%= @contract.act_booked %><br>
-Type of Event: <%= @contract.type_of_event %><br>
-Operating as: <%= @contract.type_of_act %><br>
-Form of: <%= @contract.act_form %><br>
-<hr>
-<span>Event Location</span>
-<%= @contract.location_name %><br><br>
-<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-Phone:<%= @contract.location_phone %><br>
-<hr>
+      <center>
+        <span>Event Location</span>
+<h3><%= @contract.location_name %></h3>
+<address><%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
+Phone:<%= @contract.location_phone %><br></address>
+      </center>
 Contract Status:<%= @contract.contract_status %><br>
 <b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %><br>
 <b>Event Time: </b><%= @contract.eventtime %><br>
@@ -83,7 +78,7 @@ Includes DJ Tech:          <%=  @contract.tech unless @contract.tech == "F" %><b
     Ceremony Start Time:    <%= @contract.ceremony_start_time %><br>
     Ceremony Instrumentation:   <%= @contract.ceremony_instrumenttation %><br>
 
-
+<section>
     Player Section<br>
     <dt>Player 1: </dt> <%= @contract.videographer_1 %><br>
     <dt>Player 2: </dt> <%= @contract.videographer_2 %><br>
@@ -93,23 +88,49 @@ Includes DJ Tech:          <%=  @contract.tech unless @contract.tech == "F" %><b
     <dt>Player 6: </dt> <%= @contract.player6 %><br>
     <dt>Player 7: </dt> <%= @contract.player7 %><br>
     <dt>Player 8: </dt> <%= @contract.player8 %><br>
+</section>
+<span>Contract Provisions</span>
+<% unless @contract.contract_provisions == "nil" %>
+<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
+<% end %>
 <hr>
-
-        <span>Contract Provisions</span>
- <% unless @contract.contract_provisions == "nil" %>
-                                <%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
-                            <% end %>
-<hr>
-                    <span>Act Notes</span>
-                            <% unless  @contract.act_notes == "nil" %>
-                                <%= @contract.act_notes %>
-                            <% end %>
-        <span>All Services Provided</span>
-    <ul>
-            <% @additional.each do |addi| %>
+<span>Act Notes</span>
+<% unless  @contract.act_notes == "nil" %>
+<%= @contract.act_notes %>
+<% end %>
+<span>All Services Provided</span>
+<ul>
+<% @additional.each do |addi| %>
 <li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
 
-            <% end %></ul>
+<% end %></ul>
 <% content_for :money do %>
-    <% end %>
+<% end %>
+      <spacer size="16"></spacer>
+
+     
+      
+      <spacer size="16"></spacer>
+
+  
+
+      <hr/>
+
+     
+    </columns>
+  </row>
+
+  <spacer size="16"></spacer>
+<row>
+
+</row>
+
+<spacer size="32"></spacer>
+
+</div>
+</container>
+</body>
+</html>
+
+
 </div>
