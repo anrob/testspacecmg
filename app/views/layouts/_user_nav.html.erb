@@ -33,7 +33,7 @@
    <div class="bg-white">
   <% if user_signed_in? %>
     <% if current_user.try(:type) == "ManagerUser" %>
-   <%= render  'shared/quickjobs', contract: Contract.where(act_code: @manger.split(",")).order(params[:sort] || :date_of_event).tenday.all  %>
+   <%#= render  'shared/quickjobs', contract: Contract.where(act_code: @manger.split(",")).order(params[:sort] || :date_of_event).tenday.all  %>
    <% else %>
    <%##########;lp= render "layouts/usernav" %> 
    <% end %>
