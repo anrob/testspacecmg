@@ -9,7 +9,7 @@
 <% contract.each do |contract| %>
 
 <table>
-<td class="p5"><%= link_to "#{contract.date_of_event.strftime("%m/%d/%y")} - #{contract.last_name}  - #{contract.act_code}", contract %></td>
+<button class="p5 btn bg-primary"><%= link_to "#{contract.date_of_event.strftime("%m/%d/%y")} - #{contract.last_name}  - #{contract.act_code}", contract %></button>
 </table>
 
 <% end %>

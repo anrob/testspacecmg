@@ -1,4 +1,6 @@
 class ContractsController < ApplicationController
+    layout '_minimal'
+    # layout  "layouts/_navbar"
   before_action :create_enricher
   before_action :set_contract, only: [:show, :edit, :confirmjob, :paypeople]
   before_action :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]

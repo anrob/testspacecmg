@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
    before_action :configure_permitted_parameters, if: :devise_controller?
    before_action :everypage #, unless: :devise_controller?
    # , :except => [:new, :create]
-   layout 'sidenav'
+     layout '_minimal'
+     # layout '_navbar'
+   
    private
    
    def after_sign_out_path_for(resource_or_scope)

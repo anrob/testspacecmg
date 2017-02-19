@@ -1,27 +1,13 @@
-<container>
-
-  <row class="header">
-    <columns>
-
-      <spacer size="32"></spacer>
-      
-      <h2 class="text-center">Act Name: <%= @contract.act_booked %></h2>
-         Type of Event: <%= @contract.type_of_event %><br>
-               Operating as: <%= @contract.type_of_act %><br>
-               Form of: <%= @contract.act_form %><br>
-    </columns>
-  </row>
-  <row>
-    <columns>
-
-      <spacer size="32"></spacer>
-
-      <center>
-        <span>Event Location</span>
-<h3><%= @contract.location_name %></h3>
-<address><%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
-Phone:<%= @contract.location_phone %><br></address>
-      </center>
+Act Name: <%= @contract.act_booked %><br>
+Type of Event: <%= @contract.type_of_event %><br>
+Operating as: <%= @contract.type_of_act %><br>
+Form of: <%= @contract.act_form %><br>
+<hr>
+<span>Event Location</span>
+<%= @contract.location_name %><br><br>
+<%= "#{@contract.location_address_line_1}" %> <br> <%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %><br>
+Phone:<%= @contract.location_phone %><br>
+<hr>
 Contract Status:<%= @contract.contract_status %><br>
 <b>Date of event: </b><%= @contract.date_of_event.to_formatted_s(:eventdate) %><br>
 <b>Event Time: </b><%= @contract.eventtime %><br>
@@ -78,7 +64,7 @@ Includes DJ Tech:          <%=  @contract.tech unless @contract.tech == "F" %><b
     Ceremony Start Time:    <%= @contract.ceremony_start_time %><br>
     Ceremony Instrumentation:   <%= @contract.ceremony_instrumenttation %><br>
 
-<section>
+
     Player Section<br>
     <dt>Player 1: </dt> <%= @contract.videographer_1 %><br>
     <dt>Player 2: </dt> <%= @contract.videographer_2 %><br>
@@ -88,49 +74,22 @@ Includes DJ Tech:          <%=  @contract.tech unless @contract.tech == "F" %><b
     <dt>Player 6: </dt> <%= @contract.player6 %><br>
     <dt>Player 7: </dt> <%= @contract.player7 %><br>
     <dt>Player 8: </dt> <%= @contract.player8 %><br>
-</section>
-<span>Contract Provisions</span>
-<% unless @contract.contract_provisions == "nil" %>
-<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
-<% end %>
 <hr>
-<span>Act Notes</span>
-<% unless  @contract.act_notes == "nil" %>
-<%= @contract.act_notes %>
-<% end %>
-<span>All Services Provided</span>
-<ul>
-<% @additional.each do |addi| %>
+
+        <span>Contract Provisions</span>
+ <% unless @contract.contract_provisions == "nil" %>
+                                <%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
+                            <% end %>
+<hr>
+                    <span>Act Notes</span>
+                            <% unless  @contract.act_notes == "nil" %>
+                                <%= @contract.act_notes %>
+                            <% end %>
+        <span>All Services Provided</span>
+    <ul>
+            <% @additional.each do |addi| %>
 <li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
 
-<% end %></ul>
+            <% end %></ul>
 <% content_for :money do %>
-<% end %>
-      <spacer size="16"></spacer>
-
-     
-      
-      <spacer size="16"></spacer>
-
-  
-
-      <hr/>
-
-     
-    </columns>
-  </row>
-
-  <spacer size="16"></spacer>
-<row>
-
-</row>
-
-<spacer size="32"></spacer>
-
-</div>
-</container>
-</body>
-</html>
-
-
-</div>
+    <% end %>

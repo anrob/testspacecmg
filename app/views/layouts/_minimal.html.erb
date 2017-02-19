@@ -27,7 +27,9 @@
     <%= yield :head %>
   </head>
   <body class="<%= yield (:body_class) %>">
-    <%#= render "layouts/navbar" %>
+ <% if user_signed_in? %>
+    <%= render "layouts/user_nav" %>
+  <%  end %>
 
     <div id="main" class="container-fluid">
       <div class="row">

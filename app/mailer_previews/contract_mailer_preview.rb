@@ -24,13 +24,16 @@ class ContractMailerPreview
   end
 
 
-  def send_reminder
-    ContractMailer.send_reminder user
+  def send_reminder user
+     user =  User.first
+   ContractMailer.send_reminder(user)
+  
+    #ExampleMailer.sample_email(User.first)
   end
 
 
   def send_user_reminder
-    ContractMailer.send_user_reminder user
+    ContractMailer.send_user_reminder(User.first)
   end
 
 

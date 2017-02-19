@@ -7,7 +7,7 @@ class ContractMailer < PostageApp::Mailer
       @contract = contract
       @additional = additional
       postageapp_template 'eventinfo_template'
-     mail( to: user.email,
+      mail( to: user.email,
            subject: "Event info -" "#{contract.act_booked} - #{contract.contract_number} - #{contract.eventtime} - #{contract.date_of_event.to_formatted_s(:eventdate)}")
    end
 
@@ -16,7 +16,7 @@ class ContractMailer < PostageApp::Mailer
        @contract = contract
        @additional = additional
        postageapp_template 'eventinfo_template'
-      mail( to: user.email,
+       mail( to: user.email,
             subject: "Event info -" "#{contract.act_booked} - #{contract.contract_number} - #{contract.eventtime} - #{contract.date_of_event.to_formatted_s(:eventdate)}")
     end
 
@@ -40,19 +40,20 @@ class ContractMailer < PostageApp::Mailer
       end
       
       
-   def send_reminder(user)
+   def send_reminder(user, contract)
     # @user = user
+    @contract = contract
     postageapp_template 'eventinfo_template'
-     mail(  from: "support@confirmmygig.com",
-            to: user,
-          #to: "iamjustfresh@gmail.com",
-            subject: "Please Confirm Jobs")
+    mail(  from: "support@confirmmygig.com",
+            #to: user,
+            to: "iamjustfresh@gmail.com",
+            subject: "Please Confirm Jobs" )
    end
 
    def send_user_reminder(user)
     # @user = user
     postageapp_template 'eventinfo_template'
-     mail(  from: "support@confirmmygig.com",
+    mail(  from: "support@confirmmygig.com",
             to:user,
             subject: "Please Confirm Jobs")
             #body: "You have unconfirmed Events"

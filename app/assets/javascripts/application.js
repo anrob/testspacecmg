@@ -25,7 +25,7 @@
 //= require_tree .
 
   // $(document).ready(function() {
-
+ $('.calendar').remove();
  $('#calendar').fullCalendar({
   editable: false,
   selectable: true,
@@ -33,6 +33,7 @@
   height: 700,
   //eventBackgroundColor: '#378006',
   textColor: '#FFFFFF',
+  contentHeight: '9999',
     header: {
               left: 'prev,next today',
               center: 'title',
