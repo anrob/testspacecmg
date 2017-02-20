@@ -96,7 +96,7 @@ class Contract < ApplicationRecord
       @contractss = Contract.unconfirmedevent.tenday.all
       @con = @contractss.pluck(:act_code)
       @users = User.where(actcode_name: @con)
-     @userss = @users.collect {|m| m.email}.uniq
+      @userss = @users.collect {|m| m.email}.uniq
      ContractMailer.send_reminder(@userss).deliver
       #######3 @contracts = Contract.unconfirmedevent.tenday.all
       # @users = User.find_by(@contracts.map {|m|m.act_code})

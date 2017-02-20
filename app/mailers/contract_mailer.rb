@@ -40,8 +40,8 @@ class ContractMailer < PostageApp::Mailer
       end
       
       
-   def send_reminder(user, contract)
-    @user = user
+   def send_reminder(contract)
+   # @user = user
     @contract = contract
     postageapp_template 'eventinfo_template'
     mail(  from: "support@confirmmygig.com",
