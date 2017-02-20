@@ -1,9 +1,11 @@
-<p>
+<p class="section">
     Act Name: <%= @contract.act_booked %><br>
     Type of Event: <%= @contract.type_of_event %><br>
     Operating as: <%= @contract.type_of_act %><br>
     Form of: <%= @contract.act_form %><br>
     <b>Date of event:</b> <%= @contract.date_of_event.to_formatted_s(:eventdate) %><br><br>
+</p>
+    <p>
 
   Client Section<br>
     Client Info: <%= @contract.first_name %> <%= @contract.last_name %><br>
