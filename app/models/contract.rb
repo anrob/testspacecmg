@@ -93,19 +93,22 @@ class Contract < ApplicationRecord
   end
   
    def self.send_reminder
-      @contracts = Contract.unconfirmedevent.tenday.all
+      @con = @contractss.pluck(:act_code)
+      @users = User.where(actcode_name: @con)
+     @userss = @users.collect {|m| m.email}.uniq
+     ContractMailer.send_reminder(@userss).deliver
+      #######3 @contracts = Contract.unconfirmedevent.tenday.all
       # @users = User.find_by(@contracts.map {|m|m.act_code})
       # # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
       # #@users = User.where()
       
       # @userss = @users.collect {|m| m.email}.uniq
-        @users = User.where(["actcode_name = :u", {u:@contracts.map {|m|m.act_code} }])
+      ########  @users = User.where(["actcode_name = :u", {u:@contracts.map {|m|m.act_code} }])
       #@users = User.find_by(:actcode_name).pluck(@contracts.map {|m|m.act_code})
       # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
       #@users = User.where()
+      ######### @userss = @users.collect {|m| m.email}.uniq
       
-      @userss = @users.collect {|m| m.email}.uniq
-      ContractMailer.send_reminder(@userss).deliver
   end
    
   

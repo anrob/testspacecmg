@@ -24,8 +24,17 @@ class ContractsController < ApplicationController
    
     # @contractsss = @search.results
     
-    
-  
+    @contractss = Contract.unconfirmedevent.tenday.all
+   # @users = User.where(["actcode_name = ?", (@contractss.map {|m|m.act_code })])
+ # @users = User.find_by "actcode_name = ?", @contractss.pluck(:act_code)
+      @con = @contractss.pluck(:act_code)
+     #@users = User.find_by "actcode_name = ?", @con #.pluck(@contracts.map {|m|m.act_code})
+      @users = User.where(actcode_name: @con)
+      # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+      #@users = User.where()
+      
+     @userss = @users.collect {|m| m.email}.uniq
+    # @userss = @users.pluck(:email)
  
  
   end
