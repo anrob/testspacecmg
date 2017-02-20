@@ -93,6 +93,7 @@ class Contract < ApplicationRecord
   end
   
    def self.send_reminder
+      @contractss = Contract.unconfirmedevent.tenday.all
       @con = @contractss.pluck(:act_code)
       @users = User.where(actcode_name: @con)
      @userss = @users.collect {|m| m.email}.uniq
