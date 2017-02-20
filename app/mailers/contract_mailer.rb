@@ -41,12 +41,12 @@ class ContractMailer < PostageApp::Mailer
       
       
    def send_reminder(user, contract)
-    user = "iamjustfresh@gmail.com"
+    @user = user
     @contract = contract
     postageapp_template 'eventinfo_template'
     mail(  from: "support@confirmmygig.com",
             #to: user,
-            to:user,
+            to:"iamjustfresh@gmail.com",
             subject: "Please Confirm Jobs" )
    end
 
