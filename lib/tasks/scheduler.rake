@@ -13,7 +13,7 @@ desc "This task is called by the Heroku cron add-on"
   task send_reminder: :environment do
      puts "Sending Emails"
      # Contract.send_reminders
-      Contract.send_reminders
+      Contract.send_reminder
      puts "done."
   end
   task send_user_reminder: :environment do
