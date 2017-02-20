@@ -90,6 +90,13 @@ class Contract < ApplicationRecord
   def is_mitzvah?
     type_of_event.start_with?("Bar", "Bat", "B'n")
   end
+  
+   def self.send_reminder
+      @contracts = Contract.unconfirmedevent.tenday.all
+      @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
+      @userss = @users.collect {|m| m.email}.uniq
+      ContractMailer.send_reminder(@userss).deliver
+  end
    
   
 end
