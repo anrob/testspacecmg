@@ -4,6 +4,7 @@
 <%#= admin_types.include?(current_user.try(:type)) %>
 <%# if admin_types.include?(current_user.try(:type?)) %>
 <%#= link_to "emails", rails_email_preview.rep_root_url %>
+<%#= @userss.inspect %>
 <% if current_user.try(:type) == "ManagerUser" %>
 
 <%= render 'manager', contract: @contracts %>

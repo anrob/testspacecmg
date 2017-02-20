@@ -23,6 +23,10 @@ class ContractsController < ApplicationController
   # end
    
     # @contractsss = @search.results
+    
+    
+  
+ 
  
   end
   
@@ -48,7 +52,6 @@ class ContractsController < ApplicationController
     @contract = Contract.nextfouryears.search(params[:search])#.group(:id, :type_of_act) #.order("type_of_act DESC")
     @actcode = Actcode.mainacts.where.not(actcode: @contract.pluck(:act_code)).order("description ASC").active
     
- 
   # else
   #   @contracts = Contract.all.order('created_at DESC')
     end
