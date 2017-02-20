@@ -77,6 +77,7 @@ group :development, :test do
   gem 'byebug'
   gem "better_errors"
   gem "rails_best_practices"
+    gem "bugsnag"
 end
 
 group :development do
