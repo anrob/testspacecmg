@@ -34,6 +34,7 @@ class Contract < ApplicationRecord
       scope :thismonth, ->  {where(date_of_event:  (my_date)..(my_date + 1.years))}
       scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
       scope :funstuff, -> {where(date_of_event:  (fundate)..(funenddate))}
+       scope :unconfirmedevent, -> {where(confirmation: "0")}
 
       
       scope :type_of_act, lambda { |tp| where("type_of_act = ?", tp) }
