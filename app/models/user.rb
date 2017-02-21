@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
          
         
    def active_for_authentication? 
-    super && approved? 
+    super #&& approved? 
    end 
 
    def inactive_message 

@@ -1,131 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>Jumbotron Template for Bootstrap</title>
-        <!-- Bootstrap core CSS -->
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-            <%= stylesheet_link_tag "application", :media => "all" %>
-            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-            <%= yield :styles %>
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    </head>
-    <body>
-        
-<div class="light-blue-800 text-blue-grey-50 p30 mb0">
-<div class="container-fluid">
-<div class="row">
-<div class="col-lg-12 col-xs-12">
-<div class="text">
-<h1 class="mb0"><%#= clientname %></h1>
-<%= content_tag(:p, "#{@contract.email_address}", class: "mb0") unless @contract.email_address.blank? %>
-<%= content_tag(:p, "Home Phone:              #{@contract.home_phone}", class: "mb0") unless @contract.home_phone.blank? %>
-<%= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
-<br><%= render  "show/agent", contract: @contract %>
-</div>
-</div>
-</div>
-</div>
-</div>
 
-<%#= render  "show/buttonsacross", contract: @contract %>
+<dl class="section">
+Act Name: <%= @contract.act_booked %><br>
+Type of Event: <%= @contract.type_of_event %><br>
+Operating as: <%= @contract.type_of_act %><br>
+Form of: <%= @contract.act_form %><br>
+<b>Date of event:</b> <%= @contract.date_of_event.to_formatted_s(:eventdate) %><br>
+<b>Event Time:</b> 
+<%= @contract.eventtime %><br>
+</dl>
 
-<!-- Container Start -->
-<div class="container-fluid">
-<!-- Section Start -->
-   <div class="col-lg-7 col-md-6 col-sm-12 animate-drop-fade">
+<table class="pretty padding">    
+<tr>
+<td>    
 
-         <p class="lead pt20 10">Client Info</p>
-      <div class="sheet sheet-inner">
-         <div class="p0">
-            <%#= render  "show/clientinfo", contract: @contract %>
-         </div>
-      </div>
-   </div>
-<!-- Section End -->
+Client Info: <%= @contract.first_name %> <%= @contract.last_name %><br>
+Company: <%= @contract.company %><br>
+Email Address: <%= @contract.email_address %><br>
+<%= content_tag(:span, "Bride / Bat Mitzvah Name: #{@contract.brides_names}") unless @contract.brides_names.blank? %><br>
+Grooms / Bar Mitzvah Name: <%= @contract.grooms_name %><br>
+Home Phone: <%= @contract.home_phone %><br>
+Work Phone: <%= @contract.work_phone %><br>
+Cell Phone: <%= @contract.cell_phone %><br>
+Contract Status:<%= @contract.contract_status %><br> 
+Contract number: <%= @contract.contract_number %> 
 
+</td>
+<td>
+Ceremony/Service Section<br>
+Ceremony Date: <%= @contract.date_of_ceremony %><br>
+Ceremony Location: <%= @contract.ceremonoy_location_name %><br>
+Ceremony Address: <%= @contract.ceremonoy_address_line_1 %><br>
+<%= @contract.ceremony_address_line_2 %><br>
+Ceremony City: <%= @contract.ceremony_location_city %><br>
+Ceremony State: <%= @contract.seremonly_location_state %><br>
+Ceremony Zip: <%= @contract.ceremony_location_zip %><br>
+Ceremony Start Time: <%= @contract.ceremony_start_time %><br>
+Ceremony Instrumentation: <%= @contract.ceremony_instrumenttation %><br>
+</td>
+</tr>
+</table>
 
-<div class="col-lg-5 col-md-6 col-sm-12 animate-drop-fade">
-   <p class="lead pt20 10">Location</p>
-   <div class="sheet sheet-inner">
-       <div class="p0"><%= render  "show/address", contract: @contract %></div>
-   </div>
-</div>
+<dl class="white">
 
-<div class="clearfix"></div>
+<table class="pretty padding">    
+<tr>
+<td>    
+Event Location:<br>
+<%= @contract.location_name.gsub('"', ' ') %><br>
+<%= "#{@contract.location_address_line_1}" %><br>
+<%= "#{@contract.location_city} #{@contract.location_state} #{@contract.location_zip}" %> <br>
 
-<div class="container-fluid">
-   <div class="row sheet-inner mt20">
-       <%#= @activities %>
-       <%#= render "show/numberofthings", contract: @contract %>
-       <%#= render  "show/moneysection", contract: @contract %>
-       <div class="clearfix"></div>
-      <%= render "show/provision", contract: @contract %>
-      <%= render  "show/actnotes", contract: @contract %>
-      <%#= render  "show/addservices", contract: @contract %>
-      <%#= render "show/numberofthings", contract: @contract %><hr>
-      <%#= render  "show/moneysection", contract: @contract %>
-      <%#= render  "show/clientextra", contract: @contract %>   <!-- DO LATER -->
-      
-      <p><%#= link_to "Add Staff", new_user_path %></p>
+Phone:<%= @contract.location_phone %><br>
+</td>
 
-      <#= render "staffing/assigned", contract: @contract %> 
-       <%#= debug(params) %>
-   </div>
-</div>
- <%# for activity in @activities %>
-	            <%#= render_activity activity %>
-	        <%# end %>
-</div>
-<!-- Container End -->
+<td>
+Pickup Amount: <%= number_to_currency(@contract.pick_up_amount) %><br>
+
+</td>
+</tr>
+</table>
 
 
+<table>    
+<tr>
+<td> 
+
+</td>
+<td>
+
+</td>
+</tr>
+</table>
 
 
+<table>    
+<tr>
+<td>
+<%= content_tag (:div), :class => "dl-horizontal" do %>
+<%= content_tag(:div, "Early setup Time            #{@contract.early_setup_time}") unless @contract.early_setup_time.blank? %>
+<%= content_tag(:div, "Giveaways:                  #{@contract.giveaways}")  unless @contract.giveaways.blank? %>
+<%= content_tag(:div, "Type of Light Show:         #{@contract.type_of_light_show}") unless @contract.type_of_light_show.blank? %>
+<%= content_tag(:div, "Includes DJ Tech:           #{@contract.tech}") unless @contract.tech == "F" %>
+<%= content_tag(:div, "Number of Horns:            #{@contract.number_of_horns}") unless @contract.number_of_horns.blank? || 0 %>
+<%= content_tag(:div, "Number of Dancers:          #{@contract.number_of_dancers}") unless @contract.number_of_dancers.blank? || 0 %>
+<%= content_tag(:div, "Pick up Reason              #{@contract.explanation_opf_pickup_adjustment}") unless @contract.explanation_opf_pickup_adjustment.blank? %>
+<%= content_tag(:div, "Cap Music:                  #{@contract.capital_music_player}") unless @contract.capital_music_player.blank? %>
+<%= content_tag(:div, "Quest. Received:            #{@contract.questionnaire_received_date}") unless @contract.questionnaire_received_date.blank? %>
+<%= content_tag(:div, "Referral Fee to :           #{@contract.referral_fee_to}") unless @contract.referral_fee_to.blank? %>
+<%= content_tag(:div, "Song Requests:              #{@contract.song_requests}") unless @contract.song_requests.blank? %>
+<%= content_tag(:div, "Cocktail Instrumentation:   #{@contract.cocktail_instrumentation}") unless @contract.cocktail_instrumentation.blank? %>
+<%= content_tag(:div, "Cocktail Time:              #{@contract.cocktail_time}") unless @contract.cocktail_time.blank? %>
+<%= content_tag(:div, "Company:                    #{@contract.company}") unless @contract.company.blank? %>
+<% end %>
+</td>
+<td>
+    <%= content_tag (:div), :class => "dl-horizontal" do %>
+    <%= content_tag(:div, "Player:                    #{@contract.videographer_1}") unless @contract.videographer_1.blank? %>
+    <%= content_tag(:div, "Player:                    #{@contract.videographer_2}") unless @contract.videographer_2.blank? %>
+    <%= content_tag(:div, "Player:                    #{@contract.videgrapher_3}") unless @contract.videgrapher_3.blank? %>
+    <%= content_tag(:div, "Player:                    #{@contract.player4}") unless @contract.player4.blank? %>
+    <%= content_tag(:div, "Player:                    #{@contract.player5}") unless @contract.player5.blank? %>
+    <%= content_tag(:div, "Player:                    #{@contract.player6}") unless @contract.player6.blank? %>
+    <%= content_tag(:div, "Player:                    #{@contract.player7}") unless @contract.player7.blank? %>
+    <%= content_tag(:div, "Player:                    #{@contract.player8}") unless @contract.player8.blank? %>
+    <% end %>
+</td>
+</tr>
+</table>
 
+<table class="gray padding">    
+<tr>
+<td> 
+<span>Contract Provisions</span>
+<% unless @contract.contract_provisions == "nil" %>
+<%=  @contract.contract_provisions.gsub('"', ' ') unless @contract.contract_provisions.blank? %>
+<% end %>
+<hr>
+<span>Act Notes</span>
+<% unless  @contract.act_notes == "nil" %>
+<%= @contract.act_notes %>
+<% end %>
+<span>All Services Provided</span>
+<ul>
+<% @additional.each do |addi| %>
+<li><%= "#{addi.act_booked} - #{addi.type_of_act} - #{addi.act_form} - #{addi.eventtime}" %></li>
 
-<!--<h3>Staff</h3>-->
-   <!--<div class="sheet">-->
-    <!--<div class="sheet sheet-inner">-->
-<!--<ul>-->
-  <!--<%# for job in @contract.jobs %>-->
-  <!--  <li>-->
-  <!--    <%#=h job.user.username %>-->
-  <!--    (<%#= link_to "remove", friendship, :method => :delete %>)-->
-  <!--  </li>-->
-  <!--<%# end %>-->
-<!--</ul>-->
-
-<!--<%#= @jobs %> -->
-
-<!--<p><%#= link_to "Add Staff", new_user_path %></p>
-            
- <%#= render "staffing/assigned", contract: @contract %> 
-         <!--</div>-->
-
- 
-
-<!--</div>-->
-<!--</div>-->
-
- <%# end %>
-
-
-
-<!--</div>-->
-
-<!--</div>-->
-       <div class="container">
-           <div ="lead"></div><%= @contract.act_booked %> </div>
-    </div>
-    </body>
-</html>
+<% end %></ul>
+<% content_for :money do %>
+<% end %>
+</dl>
+</td>
+</tr>
+</table>
