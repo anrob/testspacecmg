@@ -9,14 +9,19 @@ class User < ActiveRecord::Base
       
         #has_many :jobs, :through => :jobs
         include StreamRails::Activity
+        
          as_activity
         
-  devise :database_authenticatable, :registerable,
+         default_scope   { where.not("email LIKE (?)", "%dummy%")}
+
+        
+         devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          #attr_accessor :management_id
         # belongs_to :management
 
          #attr_accessible :management_id
+         
          
     def activity_object
     self.contract

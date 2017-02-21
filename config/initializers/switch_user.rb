@@ -18,7 +18,7 @@ SwitchUser.setup do |config|
   # available_users_names is a hash,
   # keys in this hash should match a key in the available_users hash
   # value is the column name which will be displayed in select box
-  config.available_users_names = { :user => :first_name}
+  #config.available_users_names = { :user =>  :first_name  }
 
   # controller_guard is a block,
   # if it returns true, the request will continue,
@@ -46,5 +46,5 @@ SwitchUser.setup do |config|
 
   # switch_back allows you to switch back to a previously selected user. See
   # README for more details.
-  config.switch_back = false
+  config.switch_back = true
 end
