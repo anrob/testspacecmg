@@ -2,7 +2,7 @@
 json.array!(@contracts) do |user|
 
 user
-json.title user.eventtime + " " + user.first_name + " " + user.last_name + " " + user.act_code
+json.title user.caldes
 json.start user.date_of_event.iso8601
 json.end user.date_of_event.iso8601
 json.color "#5173DA"

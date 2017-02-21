@@ -8,6 +8,10 @@ module ContractsHelper
       "#{@contract.first_name} #{@contract.last_name}"
    end
    
+#   def caldes 
+#       "#{@contract.eventtime}" + " " + "#{@contract.first_name}" + " " + "#{@contract.last_name}" + " " + "#{@contract.act_code}"
+#   end
+   
    def confirmed
       :confirmation == 0 
    end

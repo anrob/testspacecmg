@@ -110,7 +110,11 @@ class Contract < ApplicationRecord
       #@users = User.where()
       ######### @userss = @users.collect {|m| m.email}.uniq
       
-  end
+   end
+   
+    def caldes 
+       "#{eventtime}" + " " + "#{first_name}" + " " + "#{last_name}" + " " + "#{act_code}"
+    end
    
   
 end
