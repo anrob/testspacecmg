@@ -13,7 +13,7 @@
 <div class="small"></div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-    <%   if contract.confirmation == 0 && contract.date_of_event < Date.today + 11.days %>
+    <% if contract.unconfirmed? && contract.date_of_event < Date.today + 11.days  %>
 <h4 class="text-indigo-50"> <%=   link_to ' CONFIRM THIS EVENT ', confirmjob_contract_path(contract.id), class: 'btn btn-flat btn-danger' %></h4>
 <% end %>
 <span class="metric-value">
@@ -21,6 +21,9 @@
 </span>
 <div class="small"></div>
 </div>
+
+
+ <% unless contract.unconfirmed? %>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 <h4><% if current_user.try(:type) == "ManagerUser" %><%= link_to 'Email All Money', emailjobwithallmoney_path(id: contract.id), class: 'btn btn-flat btn-sm btn-danger' %><% end %> </h4>
 <span class="metric-value">
@@ -42,6 +45,7 @@
 </span>
 <div class="small"></div>
 </div>
+<% end %>
 </div>
 
 <!--<button type="button" class="btn btn-default" data-toggle="popover" data-placement="top" data-content="<%# @contract.users.each do |c|  %><%#= "#{c.userfullname} " %><%# end %>" data-original-title="" title="Staff" id="popoverTwo" aria-describedby="popover644951">-->
