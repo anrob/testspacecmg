@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
         
          as_activity
         
-         default_scope   { where.not("email LIKE (?)", "%dummy%")}
+         default_scope   { where.not("email LIKE (?)", "%dummy%").order(:email => :asc)}
 
         
          devise :database_authenticatable, :registerable,
