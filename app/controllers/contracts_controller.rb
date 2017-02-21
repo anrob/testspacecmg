@@ -68,7 +68,6 @@ class ContractsController < ApplicationController
   
    def report
     @contract = Contract.funstuff
-    
    end
   
   

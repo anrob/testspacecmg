@@ -1,0 +1,31 @@
+<%#= yield :charts_js %>
+<%#= javascript_include_tag "fusioncharts" %>
+<%#= javascript_include_tag "fusioncharts/fusioncharts"%>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+
+<div class="sheet-inner">
+   <div>
+         
+ <%= @contract.count %>
+   
+   <%= line_chart @contract.group_by_month(:date_of_event).sum(:contract_price) %>
+   <%#= column_chart @contract.group_by_month(:created_at, format: "%a").sum(:contract_price) %>
+   <%#= column_chart @contract.group_by_month(:created_at, format: "%b").sum(:contract_price) %>
+   <%= pie_chart @contract.group(:act_booked).sum(:contract_price), width: "2800px", height: "2500px", stacked: true, min: 250000, download: true %>
+   </div>
+   </div>
+
+<%#= line_chart User.group_by_day(:created_at).count %>
+<%#=  line_chart @contracts.where(&:confirmation_date).group_by_day(&:confirmation_date)%>
+<%# @reports =  Contract.where(confirmation_date: (Chronic.parse("first of this month"))..(Chronic.parse("end of this month"))).order('date_of_event ASC', 'act_booked ASC') %>
+<%#= line_chart @reports.group_by_month(:confirmation_date).sum(:contract_price) %>
+
+<%# @reports = User.group_by_day(:created_at).count %>
+
+ <%#= @reports.group_by_month %>
+<div id="orders_chart" style="width: 560px; height: 300px;"></div>
+
+<table class="pretty">
+  <!-- Orders table code here -->
+</table>

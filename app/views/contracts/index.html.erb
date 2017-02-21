@@ -8,15 +8,10 @@
 <%#= @users.count %>
 <%#= @userss.inspect %>
 <% if current_user.try(:type) == "ManagerUser" %>
-
 <%= render 'manager', contract: @contracts %>
-
-<% elsif current_user.try(:type) == "ManagementUser" %>
-
+<% elsif current_user.try(:type) == "Super" %>
 <%= render 'admin', contract: @contracts %>
-
 <% elsif current_user.try(:type) == "Sales" %>
-
 <%= render 'search', contract: @contracts %>
  <% else %>
  <%= render 'dancer', contract: @contracts %>
