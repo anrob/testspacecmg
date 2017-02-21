@@ -9,6 +9,7 @@
 <%= content_tag(:p, "Home Phone:              #{@contract.home_phone}", class: "mb0") unless @contract.home_phone.blank? %>
 <%= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
 <%= content_tag(:p, "Event Times:              #{@contract.eventtime}", class: "mb0")  %>
+
 <br><%= render  "show/agent", contract: @contract %>
 </div>
 </div>
@@ -57,7 +58,7 @@
       <%= render "show/provision", contract: @contract %>
       <%= render  "show/actnotes", contract: @contract %>
       <%= render  "show/addservices", contract: @contract %>
-      <%#= render "show/numberofthings", contract: @contract %><hr>
+      <%= render "show/weddingstuff", contract: @contract %><hr>
       <%#= render  "show/moneysection", contract: @contract %>
       <%#= render  "show/clientextra", contract: @contract %>   <!-- DO LATER -->
       

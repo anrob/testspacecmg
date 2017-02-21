@@ -6,5 +6,11 @@
    <%#= content_tag(:p, "Home Phone:              #{@contract.home_phone}", class: "mb0") unless @contract.home_phone.blank? %>
    <%#= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
    <hr>
+   <%= content_tag(:span, "Event Type:              #{@contract.type_of_event}", class: "label label-default")  %>
+   <%= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %><br>
+   
+   <%= content_tag(:span, "#{@contract.goh}              #{@contract.brides_names}", class: "mb0 pt30") unless @contract.brides_names.blank? %><br>
+   <%= content_tag(:b, "#{@contract.goh}              #{@contract.grooms_name}", class: "mb0") unless @contract.grooms_name.blank? %>
+<hr>
    
    <%= content_tag(:div, "Company:                    #{@contract.company}") unless @contract.company.blank? %>

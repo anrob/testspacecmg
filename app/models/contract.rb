@@ -77,6 +77,10 @@ class Contract < ApplicationRecord
      "#{event_start_time}-#{event_end_time}"
   end
   
+  def contractprice
+   contract_price - giveaways_charge
+  end
+  
 
   
    define_easy_dates do
@@ -91,6 +95,16 @@ class Contract < ApplicationRecord
   def is_mitzvah?
     type_of_event.start_with?("Bar", "Bat", "B'n")
   end
+  
+     def goh
+      if type_of_event.start_with?("Bar", "Bat", "B'n") 
+         goh = "Guest of Honor: "
+      elsif 
+      type_of_event.start_with?("Wedding", " Wedding")
+         goh = "Brides Name: "
+      end
+         
+   end
   
    def self.send_reminder
       @contract = Contract.unconfirmedevent.tenday.all
@@ -113,7 +127,7 @@ class Contract < ApplicationRecord
    end
    
     def caldes 
-       "#{eventtime}" + " " + "#{first_name}" + " " + "#{last_name}" + " " + "#{act_code}"
+       "#{act_code} - " + " " + "#{eventtime}" + " " + "#{last_name}"
     end
    
   

@@ -1,5 +1,5 @@
 
    
    <% @contract.each do |c| %>
-   <li class="mb10"><%= link_to "#{c.first_name} #{c.last_name} - #{c.act_booked}" , c %>  <span class="label ml30 <%= "#{c.contract_status.gsub!(/[^0-9A-Za-z]/, '')}" %>"><%= c.contract_status %></span></li>
+   <li class="mb10"><b class="text-amber-900"><%= link_to "#{c.act_booked}" , c, :class => "text-blue-grey-800" %></b> <%= link_to " - #{c.first_name} #{c.last_name}" , c %> <span class="label ml30 <%= "#{c.contract_status.gsub!(/[^0-9A-Za-z]/, '')}" %>"><%= c.contract_status %></span></li>
 <% end %>
