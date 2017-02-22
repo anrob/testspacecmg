@@ -1,6 +1,7 @@
 <%#= @user.inspect %>
-
-<h3>Number of jobs in the next 10 Days: <%= (@contractfour).count %> </h3>
+<div class="sheet-inner">
+<!--<h3>Number of jobs in the next 10 Days: </h3>-->
+<%#= (@contractfour).count %> 
 
 
 <h4>Event in the Next 10 Days</h4>
@@ -35,10 +36,10 @@
   <td><%= m.eventtime %></td>
 
   <td class="conf">
-      <% if m.confirmation == 1  %>
+      <% if m.confirmed? %>
   <span class="label label-success">Confirmed</span>
       <% else %>
-  <span class="label label-important">Un-Confirmed</span>
+  <span class="label label-warning">Un-Confirmed</span>
       <% end %>
       </td>
   <td><%= distance_of_time_in_words(Time.now, "#{m.created_at}") %> ago</td>
@@ -48,4 +49,5 @@
     </tbody>
   </table>
   </div></div>
+  </div>
 

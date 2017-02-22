@@ -87,7 +87,8 @@ class ContractsController < ApplicationController
     if current_user.try(:manager)
       @contractfour = Contract.order(contract_sort).tenday.all
     else
-      redirect_to root_path
+      @contractfour = Contract.order(contract_sort).tenday.all
+    #  redirect_to root_path
     end
 
   end
@@ -96,13 +97,12 @@ class ContractsController < ApplicationController
   def calendar
     #@search = Contract.search(params[:search])
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    if current_user.try(:type) == "User"
-      @contracts = Contract.mystuff(@current_user.actcode_name).threesixfive.all
+    unless current_user.try(:type) == "ManagerUser"
+     @contracts = Contract.mystuff(@current_user.actcode_name).threesixfive.all
       @event = @contracts.group_by(&:date_of_event)
-    else
+    else 
       @contracts = Contract.where(act_code: @manger.split(",")).threesixfive.all
       @event = @contracts.group_by(&:date_of_event)
-
     end
     respond_with @contracts
   end
