@@ -40,7 +40,7 @@ class ContractMailer < PostageApp::Mailer
       end
       
       
-   def send_reminder(contract)
+   def send_reminder(user, contract)
    # @user = user
     @contract = contract
     postageapp_template 'eventinfo_template'
