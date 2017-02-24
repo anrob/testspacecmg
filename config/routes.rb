@@ -48,6 +48,10 @@ Rails.application.routes.draw do
    get '/emailjobnomoney', to: "contracts#emailjobnomoney"
 
 
+   #incoming mail
+   resources :incoming_mails
+    post 'incoming', to: "incoming_mails#create"
+
 # devise_for :users, :skip => [:sessions, :passwords, :registrations]
 #,  path_names: {
  #     sign_in: 'login', sign_out: 'logout',
