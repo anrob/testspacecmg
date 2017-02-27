@@ -13,20 +13,19 @@
 //= require jquery
 //= require jquery_ujs
 //= require dresssed
-//= require jquery-ui
+//= require turbolinks
 //= require moment 
 //= require fullcalendar
 //= require select2
 // require highcharts
 //= require Chart.bundle
 //= require chartkick
-
-//= require turbolinks
+//= require jquery-ui
 
 //= require_tree .
 
   // $(document).ready(function() {
- $('#calendar').remove();
+ $('.calendar').remove();
  $('#calendar').fullCalendar({
   editable: false,
   selectable: true,
