@@ -10,7 +10,7 @@ class Contract < ApplicationRecord
   has_many :players, through: :jobs
   #, through: :jobs 
    
-   default_scope   { where(contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Hold- Money Rec'd","Hold- no dep.","Contract Rec'd- Waiting for Dep.","Send Contract "])}
+   default_scope   { where(contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Contract Rec'd- Waiting for Dep.","Send Contract "])}
    
    my_date = Date.today
    fundate = "2017/01/01"
