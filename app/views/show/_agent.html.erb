@@ -1,7 +1,7 @@
 <div class="ui fluid form segment">
            <div class="ui top attached black label">Contract Information
            </div><br>
-           <div class="ui top attached black label"><%= contract.contract_status %>
+           <div class="label"><%= contract.contract_status %>
            </div>
            
 <%= content_tag(:dt,"Contract number:     #{contract.contract_number}")  unless contract.contract_number.blank? %>
