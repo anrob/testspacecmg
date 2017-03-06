@@ -78,7 +78,7 @@ group :development, :test do
   #gem 'byebug'
   #gem "better_errors"
   gem "rails_best_practices"
-    gem "bugsnag"
+    #gem "bugsnag"
 end
 
 group :development do
@@ -95,7 +95,6 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
   gem "bugsnag"
-
 end
 
 source "https://dresssed.com/gems/a37bde1693c95367a2f5/" do
