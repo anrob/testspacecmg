@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class managementsControllerTest < ActionDispatch::IntegrationTest
+class ManagementsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @company = managements(:one)
   end
