@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  
+
  # mount RailsEmailPreview::Engine, at: 'emails'
  # get 'home/index'
 
-  resources :jobs do 
+  resources :jobs do
    get :payroll, on: :member
   end
   resources :staffings
@@ -16,16 +16,16 @@ Rails.application.routes.draw do
 
   #mount ForestLiana::Engine => '/forest'
   resources :managements
-  
+
   resources :contracts do
-   get :confirmjob, on: :member 
+   get :confirmjob, on: :member
    #get :report, on: :member
-   get :paypeople, on: :member 
+   get :paypeople, on: :member
    get :emailjobwithnetonly, on: :member
    get :emailjobwithallmoney, on: :member
    get :emailjobnomoney, on: :member
   # get :search, on:  :member
-   
+
    end
    get 'users/show'
 
@@ -35,13 +35,13 @@ Rails.application.routes.draw do
 
   get 'home/dashboard'
   get 'home/listusers'
-  get 'calendar', to: 'contracts#calendar' 
-  get 'report',   to: 'contracts#report' 
-  get 'alljobs',  to: 'contracts#alljobs' 
+  get 'calendar', to: 'contracts#calendar'
+  get 'report',   to: 'contracts#report'
+  get 'alljobs',  to: 'contracts#alljobs'
   get 'payroll',  to: 'contracts#payroll'
   get 'search',   to: 'contracts#search'
-  
-  
+
+
    #get '/confirmjob', to: "contracts#confirmjob"
    get '/emailjobwithnetonly', to: "contracts#emailjobwithnetonly"
    get '/emailjobwithallmoney', to: "contracts#emailjobwithallmoney"
@@ -60,6 +60,7 @@ Rails.application.routes.draw do
 #    }
 
   resources :users
+  get 'user_path' => 'contracts#index'
 
  root :to => "contracts#index"
    #root :to => "contracts#dashboard"

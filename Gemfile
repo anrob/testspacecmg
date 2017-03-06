@@ -66,6 +66,7 @@ gem 'jquery-ui-rails'
 gem 'premailer', '~> 1.9', '>= 1.9.2'
 #gem 'rails_email_preview', '~> 2.0.1'
 gem 'inky-rb', require: 'inky'
+
 #gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 
 # Use Capistrano for deployment
@@ -94,7 +95,7 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
   gem "bugsnag"
-  
+
 end
 
 source "https://dresssed.com/gems/a37bde1693c95367a2f5/" do

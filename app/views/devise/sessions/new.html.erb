@@ -36,7 +36,7 @@ Thank you for your patience. There are a lot of new helpful features on the way!
           <% flash.each do |name, msg| %>
         <%= content_tag(:div, msg, class: "alert alert-info") %>
 
-          <% end %>
+<% end %>
             <%= f.form_group :email do |f| %>
               <%= f.label :email, class: "form-label" %>
               <%= f.email_field :email, autofocus: true, class: "" %>
