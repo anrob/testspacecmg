@@ -75,8 +75,8 @@ gem 'inky-rb', require: 'inky'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem "better_errors"
+  #gem 'byebug'
+  #gem "better_errors"
   gem "rails_best_practices"
     gem "bugsnag"
 end
