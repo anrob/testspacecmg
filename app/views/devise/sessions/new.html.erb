@@ -23,7 +23,7 @@
         <% end -%>
 
         <div class="sheet form-sheet">
-         
+
           <div class="sheet-inner">
              <p class="p10"><center>
                We are currently testing a New Version of CMG. <br>
@@ -31,8 +31,12 @@
 If you run into any issues please email iamjustfresh@gmail.com with the problem.<br>
 Thank you for your patience. There are a lot of new helpful features on the way!<br>
 <b>YOUR NEW LOGIN IS THE EMAIL ADDRESS ATTACHED TO confirmmygig and the YOUR CURRENT PASSWORD.</b><br>
-             </center> 
+             </center>
           </p>
+          <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: "alert alert-info") %>
+
+          <% end %>
             <%= f.form_group :email do |f| %>
               <%= f.label :email, class: "form-label" %>
               <%= f.email_field :email, autofocus: true, class: "" %>
