@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
          default_scope   { where.not("email LIKE (?)", "%dummy%").order(:email => :asc)}
 
 
-         devise :invitable, :database_authenticatable, :registerable,
+         devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          #attr_accessor :management_id
         # belongs_to :management
