@@ -14,7 +14,7 @@
           <li class=""><%= link_to "Home", root_path %></li>
           <li class=""><%= link_to "Profile", edit_user_registration_path %></li>
           <li class=""><%= link_to "Calendar", calendar_path %></li>
-          <li class=""><%#= link_to "Users", users_path %></li>
+          <% if current_user.try(:type) == "Super" %><li class=""><%= link_to "All jobs", alljobs_path %></li><% end %>
           <% if current_user.try(:type) == "ManagerUser" %> <li class=""><%= link_to "Staff", players_path %></li> <% end %>
           <li class=""><%#= link_to "Payroll", payroll_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %> </li>
@@ -35,7 +35,7 @@
     <% if current_user.try(:type) == "ManagerUser" %>
    <%#= render  'shared/quickjobs', contract: Contract.where(act_code: @manger.split(",")).order(params[:sort] || :date_of_event).tenday.all  %>
    <% else %>
-   <%##########;lp= render "layouts/usernav" %> 
+   <%##########;lp= render "layouts/usernav" %>
    <% end %>
    <% end %>
 </div>
