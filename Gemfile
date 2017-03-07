@@ -66,6 +66,7 @@ gem 'jquery-ui-rails'
 gem 'premailer', '~> 1.9', '>= 1.9.2'
 #gem 'rails_email_preview', '~> 2.0.1'
 gem 'inky-rb', require: 'inky'
+gem 'airbrake', '~> 5.4'
 
 #gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 

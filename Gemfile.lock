@@ -41,6 +41,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
+    airbrake (5.8.1)
+      airbrake-ruby (~> 1.8)
+    airbrake-ruby (1.8.0)
     arel (7.1.4)
     axlsx (2.0.1)
       htmlentities (~> 4.3.1)
@@ -275,6 +278,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake (~> 5.4)
   axlsx_rails
   bugsnag
   chartkick
