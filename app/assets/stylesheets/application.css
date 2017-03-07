@@ -15,12 +15,11 @@
  *= require_self
  *= require fullcalendar
  *= require select2
- *= stub "active_admin"
  *= require jquery-ui
  */
 
 .bg {
-  background-color: #1565c1 !important; 
+  background-color: #1565c1 !important;
   color: white !important ;
 }
 
@@ -37,7 +36,7 @@
 }
 
 .Holdnodep {
-  
+
   background-color: #e53734;
 }
 

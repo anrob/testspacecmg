@@ -53,9 +53,9 @@ gem 'axlsx_rails'
 
 gem 'easy_dates'
 #gem 'filterrific'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-gem 'activeadmin', github: 'activeadmin'
-gem "active_material", github: "vigetlabs/active_material"
+#gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+#gem 'activeadmin', github: 'activeadmin'
+#gem "active_material", github: "vigetlabs/active_material"
 gem 'safe_attributes'
 gem 'postageapp'
 gem 'chartkick'
@@ -85,7 +85,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   #gem 'pg'
-
+  gem "bugsnag"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
  # gem 'spring'
   ##gem 'sunspot_solr'

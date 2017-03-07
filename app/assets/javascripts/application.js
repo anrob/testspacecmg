@@ -63,7 +63,7 @@ timeFormat: 'H(:mm)' // uppercase H for 24-hour clock
       dateFormat: 'yy-mm-dd',
       showButtonPanel: true
     }
-    
+
     );
 });
 
