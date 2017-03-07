@@ -21,7 +21,7 @@
                                 <th>Player</th>
                                 <th>Job</th>
                                 <th>Contract ID</th>
-                                
+
                                 <th></th>
               </tr>
             </thead>
@@ -31,10 +31,10 @@
                                 <td><%= job.player_id %></td>
                                 <td><%#= job.job_id %></td>
                                 <td><%= job.contract_id %></td>
-                               
+
                                 <td class="actions">
                   <%= link_to fa_icon_tag("eye"), job, rel: 'tooltip', title: 'Show' %>
-               <% if current_user.try(:type) == "ManagerUser" %>   <%= link_to fa_icon_tag("pencil"), edit_job_path(job), rel: 'tooltip', title: 'Edit' %> <% end %>
+               <% if current_user.try(:type) == "ManagerUser" || "Super" %>   <%= link_to fa_icon_tag("pencil"), edit_job_path(job), rel: 'tooltip', title: 'Edit' %> <% end %>
                   <%#= link_to fa_icon_tag("trash-o"), job, rel: 'tooltip', title: 'Delete',
                   data: { confirm: 'Are you sure?' }, method: :delete %>
                 </td>

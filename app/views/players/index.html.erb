@@ -32,7 +32,7 @@
                                 <th>Player</th>
                                 <th>Email</th>
                                 <th>Home Phone</th>
-                                
+
                                 <th></th>
               </tr>
             </thead>
@@ -42,7 +42,7 @@
                                 <td><%= player.first_name %></td>
                                 <td><%= player.email %></td>
                                 <td><%= player.home_phone %></td>
-                               
+
                                 <td class="actions">
                   <%#= link_to fa_icon_tag("eye"), player, rel: 'tooltip', title: 'Show' %>
          <% if current_user.try(:type) == "ManagerUser" %>          <%= link_to fa_icon_tag("pencil"), edit_player_path(player), rel: 'tooltip', title: 'Edit' %><% end %>
