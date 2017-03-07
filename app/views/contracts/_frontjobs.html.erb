@@ -13,8 +13,8 @@
       <div class="blue-a200 text-gray-50">
         <%= link_to "#{contract.date_of_event.strftime("%m/%d/%y")}", contract %>
       </div>
-    
-  
+
+
 
 
 
@@ -27,7 +27,7 @@
 <%= contract.eventtime %>
 
 
-    <% if contract.confirmed %>fhfhfhf
+    <% if contract.confirmed %>
     <%= button_to 'Get Info', contract, class: 'btn btn-flat btn-sm btn-success',method: :get %>
     <% else %>
     <%#= button_to 'CONFIRM', m, class: 'btn-danger',method: :get %>

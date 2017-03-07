@@ -5,20 +5,20 @@ class Contract < ApplicationRecord
    # tracked
    include StreamRails::Activity
    as_activity
-   
+
   has_many :jobs
   has_many :players, through: :jobs
-  #, through: :jobs 
-   
+  #, through: :jobs
+
    default_scope   { where(contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Contract Rec'd- Waiting for Dep.","Send Contract "])}
-   
+
    my_date = Date.today
    fundate = "2017/01/01"
    funenddate = "2020/12/31"
    #datewithouttime = Date.today.strftime("%m/%d/%y")
    datewithouttime = Date.today.strftime("%m/%d/%y")
    #datetoday = Chronic.parse(datewithouttime)
-   
+
       #event_starts = event_start_time.gsub('pm', 'PM')
       scope :mystuff, lambda { |user| where("act_code = ?", user) }
       scope :tenday, -> {where(date_of_event: (Chronic.parse("today"))..(Chronic.parse("10 days from now at 12:01 AM"))).order('confirmation ASC', 'act_booked ASC', 'date_of_event ASC')}
@@ -36,15 +36,15 @@ class Contract < ApplicationRecord
       scope :funstuff, -> {where(date_of_event:  (fundate)..(funenddate))}
        scope :unconfirmedevent, -> {where(confirmation: "0")}
 
-      
+
       scope :type_of_act, lambda { |tp| where("type_of_act = ?", tp) }
       # scope :staff, ->(staffi) { where("contract_id = ?", staffi.contract_id)}
-      
-      
-  
+
+
+
 
       #scope :tenday, -> { where(date_of_event: Chronic.parse('next 10 days'))}
-    
+
     def self.to_csv
      CSV.generate do |csv|
       csv << column_names
@@ -52,42 +52,42 @@ class Contract < ApplicationRecord
        csv << contract.attributes
       end
      end
-     
-     
+
+
     end
-    
-    
+
+
     def self.search(search)
       where("date_of_event = ?", "#{search}")
-      #where("act_form LIKE ?", "#{search}" )
+      where("act_code LIKE ?", "#{search}" )
     end
-    
-    
+
+
     def actform
      self.act_form
     end
-    
-   
-      
+
+
+
     def activity_object
     self.contract
     end
- 
+
   def eventtime
      "#{event_start_time}-#{event_end_time}"
   end
-  
+
   def contractprice
    contract_price - giveaways_charge
   end
-  
 
-  
+
+
    define_easy_dates do
     format_for :event_start_time, format: "%I:%M", :as => "updated_time"
     #format_for [:date_of_event, :created_at], format: "%m/%d/%y"c
    end
-   
+
     def is_wedding?
     type_of_event.start_with?("Wedding", " Wedding")
     end
@@ -95,28 +95,28 @@ class Contract < ApplicationRecord
   def is_mitzvah?
     type_of_event.start_with?("Bar", "Bat", "B'n")
   end
-  
+
      def goh
-      if type_of_event.start_with?("Bar", "Bat", "B'n") 
+      if type_of_event.start_with?("Bar", "Bat", "B'n")
          goh = "Guest of Honor: "
-      elsif 
+      elsif
       type_of_event.start_with?("Wedding", " Wedding")
          goh = "Brides Name: "
       end
-         
+
      end
-     
-     
+
+
      def goh2
-      if type_of_event.start_with?("Bar", "Bat", "B'n") 
+      if type_of_event.start_with?("Bar", "Bat", "B'n")
          goh = "Guest of Honor: "
-      elsif 
+      elsif
       type_of_event.start_with?("Wedding", " Wedding")
          goh = "Grooms Name: "
       end
-         
+
      end
-  
+
    def self.send_reminder
       @contract = Contract.unconfirmedevent.tenday.all
       @con = @contract.pluck(:act_code)
@@ -127,19 +127,19 @@ class Contract < ApplicationRecord
       # @users = User.find_by(@contracts.map {|m|m.act_code})
       # # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
       # #@users = User.where()
-      
+
       # @userss = @users.collect {|m| m.email}.uniq
       ########  @users = User.where(["actcode_name = :u", {u:@contracts.map {|m|m.act_code} }])
       #@users = User.find_by(:actcode_name).pluck(@contracts.map {|m|m.act_code})
       # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
       #@users = User.where()
       ######### @userss = @users.collect {|m| m.email}.uniq
-      
+
    end
-   
-    def caldes 
+
+    def caldes
        "#{act_code} - " + " " + "#{eventtime}" + " " + "#{last_name}"
     end
-   
-  
+
+
 end

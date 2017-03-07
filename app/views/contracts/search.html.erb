@@ -11,7 +11,8 @@
     <div class="col-lg-6 col-md-6 col-sm-12 animate-drop-fade">
        <div class="form">
          <%= form_tag(search_path, :method => "get", id: "search-form") do %>
-         <%= text_field_tag :search, params[:search], placeholder: "Search Contracts" %>
+         <%= text_field_tag :search, params[:search], placeholder: "Search by Date" %>
+         <%= text_field_tag :search, params[:search], placeholder: "Search ACTCODE", id: 'byact' %>
          <%= submit_tag "Search" %>
          <% end %>
        </div>
@@ -22,13 +23,13 @@
        <%= render 'contracts' %>
          <% end %>
        </div>
-       
-   
-   
+
+
+
    </div>
    </div>
        <div class="col-lg-6 col-md-6 col-sm-12 animate-drop-fade">
-       
+
     <div>
        <div class="results pt20">
           <h3>Available</h3>
@@ -36,13 +37,10 @@
      <%= render 'contractsava' %>
      <% end %>
        </div>
-       
-   
-   
+
+
+
    </div>
    </div>
    <div class="clearfix"></div>
 </div>
-
-
- 
