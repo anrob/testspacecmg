@@ -106,9 +106,9 @@ class IncomingMailsController < ApplicationController
                                         player6: row[85],
                                         player7: row[86],
                                         player8: row[87]}
-                                        # @contracts.confirmation = 0 if @contracts.changed?
-                                         @contracts.unconfirmed!  #confirmation = 0 if @contracts.changed?
-                                         #@contracts.save
+                                        @contracts.confirmation = 0 unless @contracts.confirmed?
+                                         #@contracts.unconfirmed! #if @@contracts.  #confirmation = 0 if @contracts.changed?
+                                         @contracts.save
                              end
 
      render layout: false
