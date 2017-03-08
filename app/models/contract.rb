@@ -59,7 +59,7 @@ class Contract < ApplicationRecord
 
     def self.search(search)
       where("date_of_event = ?", "#{search}")
-      where("act_code LIKE ?", "#{search}" )
+      #where("act_code LIKE ?", "#{search}" )
     end
 
 

@@ -10,7 +10,7 @@
        <div class="form">fhfhfh
          <%= form_tag(search_path, :method => "get", id: "search-form") do %>
          <%= text_field_tag :search, params[:search], placeholder: "Search By Date" %>
-         <%= text_field_tag :search, params[:search], placeholder: "Search ACTCODE", id: 'byact' %>
+         <%#= text_field_tag :search, params[:search], placeholder: "Search ACTCODE", id: 'byact' %>
          <%= submit_tag "Search" %>
          <% end %>
        </div>
