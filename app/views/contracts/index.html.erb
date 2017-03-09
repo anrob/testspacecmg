@@ -7,7 +7,7 @@
 <%#= @con.inspect %>
 <%#= @users.count %>
 <%#= @userss.inspect %>
-<% if current_user.try(:type) == "ManagerUser" %>
+<% if current_user.try(:type) == "ManagerUser" || current_user.try(:type) == "Super" %>
 <%= render 'manager', contract: @contracts %>
 <% elsif current_user.try(:type) == "Super" %>
 <%= render 'admin', contract: @contracts %>
@@ -15,7 +15,7 @@
 <%= render 'search', contract: @contracts %>
  <% else %>
  <%= render 'dancer', contract: @contracts %>
- 
+
  <% end %>
 <br>
 <%#=  @manger.delete(current_user.actcode_name) %>

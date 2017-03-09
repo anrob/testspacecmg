@@ -46,7 +46,7 @@
 <div class="container-fluid">
    <div class="row sheet-inner mt20">
        <%#= @activities %>
-       <% if current_user.try(:type) == "ManagerUser" || "Super" %>
+       <% if current_user.try(:type) == "ManagerUser" || current_user.try(:type) == "Super" %>
        <%= render "show/numberofthings", contract: @contract %>
        <%= render  "show/moneysection", contract: @contract %>
        <% elsif current_user.try(:type) == "Leader" %>
@@ -79,8 +79,8 @@
 
 
 
-<%= @contract.previous_changes %>
-<%= @contract.changed_attributes %>
+<%#= @contract.previous_changes %>
+<%#= @contract.changed_attributes %>
 
 <!--<h3>Staff</h3>-->
    <!--<div class="sheet">-->

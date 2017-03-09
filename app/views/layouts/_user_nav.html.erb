@@ -10,7 +10,7 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-           <% unless current_user.try(:type) == "User" %>
+           <%# if current_user.try(:type) == "User" %>
           <li class=""><%= link_to "Home", root_path %></li>
           <li class=""><%= link_to "Profile", edit_user_registration_path %></li>
           <li class=""><%= link_to "Calendar", calendar_path %></li>
@@ -26,7 +26,7 @@
           <!--    <li class=""><a href="#">Cluster 4</a></li>-->
           <!--  </ul>-->
           <!--</li>-->
-          <% end %>
+          <%# end %>
        </ul>
      </div>
    </div>
