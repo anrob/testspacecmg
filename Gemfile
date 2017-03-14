@@ -43,7 +43,7 @@ group :development, :production do
 end
 group :development do
   gem 'web-console', '~> 2.0'
-  gem 'rubocop', require: false
+  #gem 'rubocop', require: false
 end
 group :production do
   gem 'thin'
