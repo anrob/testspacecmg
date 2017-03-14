@@ -10,7 +10,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'ransack'
-gem 'rubocop', require: false
 gem 'faker'
 gem 'datagrid', '~> 1.5', '>= 1.5.1'
 gem 'chronic'
@@ -40,10 +39,11 @@ gem 'airbrake', '~> 5.4'
 group :development, :production do
   gem 'rails_best_practices'
   gem 'pg'
-    gem 'bugsnag'
+  gem 'bugsnag'
 end
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'rubocop', require: false
 end
 group :production do
   gem 'thin'
