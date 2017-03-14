@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
         has_many :contracts, through: :jobs
 
         #has_many :jobs, :through => :jobs
-        include StreamRails::Activity
+      #  include StreamRails::Activity
 
-         as_activity
+        # as_activity
 
          default_scope   { where.not("email LIKE (?)", "%dummy%").order(:email => :asc)}
 
