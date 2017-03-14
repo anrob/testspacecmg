@@ -1,7 +1,23 @@
 <%#= @user.inspect %>
 <div class="sheet-inner">
 <!--<h3>Number of jobs in the next 10 Days: </h3>-->
-<%= (@contractfour).count %> 
+<div class="panel panel-success">
+<div class="panel-heading">
+<p class="lead"><i class="fa fa-users"></i> Ten Day Count</b></p>
+</div>
+<div class="panel-body text-green-400">
+<h2 class="m0"><%= (@contractfour).count %></h2>
+</div>
+<div class="panel-footer">
+<div class="row">
+<div class="col-sm-12">
+<!-- <i class="fa fa-caret-up"></i> <b>1%</b> increase in active customers. -->
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+<%#= (@contractfour).count %>
 
 
 <h4>Event in the Next 10 Days</h4>
@@ -12,11 +28,10 @@
       <tr>
         <th><%= link_to "Act Booked", sort: "act_booked" %> </th>
         <th><%= link_to "Client Name", sort: "last_name" %></th>
-        <!--<th><%#= link_to "Contract Status", sort: "contract_status" %></th>-->
         <th><%= link_to "Date of Event", sort: "Date_of_event" %></th>
-        <th>Event Time</th>
-
-          <th><%= link_to "Confirmed", sort: "confirmation" %></th>
+        <th><%= link_to "Unique 3", sort: "unique3" %></th>
+        <th><%= link_to "Confirmed", sort: "confirmation" %></th>
+        <!-- <th><%= link_to "Created At", sort: "created_at" %></th> -->
   <th>Created At</th>
 <!--<th>Reminder</th>-->
       </tr>
@@ -24,30 +39,20 @@
     <tbody>
 <% @contractfour.each do |m| %>
       <tr>
-      <td>
-       <%= link_to  truncate("#{m.act_booked}",:length => 25, :omission => '...') ,  m, class: "green" %>
-   <%#= link_to  "#{m.act_booked}" ,  m, class: "green" %>
-  </td>
-  <td><%= link_to "#{m.first_name} #{m.last_name}", m %></td>
-  <!--<td><%#= m.contract_status %></td>-->
+      <td><%= link_to  truncate("#{m.act_booked}",:length => 25, :omission => '...') ,  m, class: "green" %></td>
+      <td><%= link_to "#{m.last_name}", m %></td>
+      <td><%= m.date_of_event %></td>
+      <td><%= m.unique3 %></td>
 
-  <td><%= m.date_of_event %></td>
 
-  <td><%= m.eventtime %></td>
+      <!-- <td><%#= @users.m.email %></td> -->
 
-  <td class="conf">
-      <% if m.confirmed? %>
-  <span class="label label-success">Confirmed</span>
-      <% else %>
-  <span class="label label-warning">Un-Confirmed</span>
-      <% end %>
-      </td>
-  <td><%= distance_of_time_in_words(Time.now, "#{m.created_at}") %> ago</td>
-<td><%#= m.unique3 %></td>
+      <td class="conf"><% if m.confirmed? %><span class="label label-success">Confirmed</span><% else %><span class="label label-warning">Un-Confirmed</span><% end %></td>
+      <td><%= distance_of_time_in_words(Time.now, "#{m.created_at}") %> ago</td>
+      <!-- <td><%#= m.unique3 %></td> -->
     </tr>
   <% end %>
     </tbody>
   </table>
   </div></div>
   </div>
-

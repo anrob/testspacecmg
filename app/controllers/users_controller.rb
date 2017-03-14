@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
   #layout 'sidenav'
 
+def index
+  @users = current_user
 
-  # def index
-  #   redirect_to root_path
-  #   if params[:approved] == "false"
-  #     @users = User.where(approved: false)
-  #   else
-  #     @users = User.where(approved: true)
-  #   end
-  # end
+end
+  def index
+    redirect_to root_path
+    if params[:approved] == "false"
+      @users = User.where(approved: false)
+    else
+      @users = User.where(approved: true)
+    end
+  end
   #
   #
   # def show

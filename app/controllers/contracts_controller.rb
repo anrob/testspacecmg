@@ -84,12 +84,15 @@ class ContractsController < ApplicationController
   end
 
   def alljobs
-    if current_user.try(:manager)
+    #if current_user.try(:manager)
       @contractfour = Contract.order(contract_sort).tenday.all
-    else
-      @contractfour = Contract.order(contract_sort).tenday.all
+      @con = @contractfour.pluck(:act_code)
+     #@users = User.find_by "actcode_name = ?", @con #.pluck(@contracts.map {|m|m.act_code})
+      @users = User.where(actcode_name: @con)
+    #else
+      #@contractfour = Contract.order(contract_sort).tenday.all
     #  redirect_to root_path
-    end
+  #  end
 
   end
 

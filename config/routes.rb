@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
  # mount RailsEmailPreview::Engine, at: 'emails'
  # get 'home/index'
-
+  #devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :jobs do
    get :payroll, on: :member
   end
@@ -11,9 +12,6 @@ Rails.application.routes.draw do
   resources :actcodes
   resources :contracts
   resources :players
-  #resources :contracts, :only=>[:index]
-
-  #mount ForestLiana::Engine => '/forest'
   resources :managements
 
   resources :contracts do
@@ -27,11 +25,7 @@ Rails.application.routes.draw do
 
    end
    get 'users/show'
-
-  devise_for :users
-   #devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :skip => [:sessions, :passwords, :registrations]
   get 'home/sidenav'
-
   get 'home/dashboard'
   get 'home/listusers'
   get 'calendar', to: 'contracts#calendar'
@@ -39,12 +33,9 @@ Rails.application.routes.draw do
   get 'alljobs',  to: 'contracts#alljobs'
   get 'payroll',  to: 'contracts#payroll'
   get 'search',   to: 'contracts#search'
-
-
-   #get '/confirmjob', to: "contracts#confirmjob"
-   get '/emailjobwithnetonly', to: "contracts#emailjobwithnetonly"
-   get '/emailjobwithallmoney', to: "contracts#emailjobwithallmoney"
-   get '/emailjobnomoney', to: "contracts#emailjobnomoney"
+  get '/emailjobwithnetonly', to: "contracts#emailjobwithnetonly"
+  get '/emailjobwithallmoney', to: "contracts#emailjobwithallmoney"
+  get '/emailjobnomoney', to: "contracts#emailjobnomoney"
 
 
    #incoming mail
@@ -58,8 +49,8 @@ Rails.application.routes.draw do
  #     registration: 'register', edit: 'edit/profile'
 #    }
 
-  resources :users
-  get 'user_path' => 'contracts#index'
+#  resources :users
+  #get 'user_path' => 'contracts#index'
 
  root :to => "contracts#index"
    #root :to => "contracts#dashboard"
