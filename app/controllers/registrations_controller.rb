@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-
+#  before_filter :authorize_admin, only: [:sign_up, :create]
   private
 
     # Modified Devise params for user login
@@ -8,7 +8,13 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def after_sign_up_path_for(resource)
-      "/newuser"
+    root_path
+    end
+
+    def authorize_admin
+      return unless  current_user.try(:type) == "Super"
+      #!current_user.admin?
+      redirect_to root_path, alert: 'Admins only!'
     end
 
 end

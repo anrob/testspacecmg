@@ -1,9 +1,12 @@
 class ContractsController < ApplicationController
     layout '_minimal'
     # layout  "layouts/_navbar"
+
   before_action :create_enricher
+
   before_action :set_contract, only: [:show, :edit, :confirmjob, :paypeople]
   before_action :find_contract, :only => [:confirmjob, :emailjobwithnetonly, :emailjobwithallmoney, :emailjobnomoney]
+    before_action :check_actcode
   respond_to :html, :xml, :json, :xlsx
     require 'json_builder'
 
@@ -161,6 +164,15 @@ class ContractsController < ApplicationController
   @user = current_user
   @contract = Contract.find(params[:id])
   @additional = Contract.additional(@contract)
+  end
+
+  def check_actcode
+      @user = current_user
+      if @user.actcode_name.blank?
+        @systemmessage = " Your Account is wating for admin approval"
+      else
+        @systemmessage = ""
+      end
   end
 
   def contract_sort

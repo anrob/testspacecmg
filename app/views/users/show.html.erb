@@ -3,7 +3,7 @@
     <header style="background: url("<%= image_path("dresssed/header_1.jpg") %>")">
       <div class="avatar">
         <img class="img-rounded" src="http://fillmurray.com/200/200" />
-        <h1><%= @user.email %></h1>
+        <h1><%#= @user.email %></h1>
       </div>
     </header>
   </div>
@@ -48,15 +48,15 @@
             <img class="img-rounded" src="http://<www class="stevensegallery com"></www>/32/32">
             <h4 class="m0 mt15 mb15"> James uploaded a video. </h4>
             <ul>
-  <% for job in @user.jobs %>
+  <!-- <%# for job in @user.jobs %> -->
     <li>
-      <%=h staffing.user.username %>
-      (<%= link_to "remove", staffing, :method => :delete %>)
+<%#=h staffing.user.username %>
+      <%#= link_to "remove", staffing, :method => :delete %>
     </li>
-  <% end %>
+  <%# end %>
 </ul>
 
-<p><%= link_to "Find Friends", users_path %></p>
+<!-- <p><%= link_to "Find Friends", users_path %></p> -->
 
 <h2>Friended by Users</h2>
 <ul>
@@ -64,7 +64,7 @@
     <li><%#=h user.username %></li>
   <%# end %>
 </ul>
-            
+
           </header>
           <p>
             Today I"m working on refactoring the video encoding processor to be slightly more efficient about handling cancellations.
