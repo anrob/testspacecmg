@@ -53,6 +53,10 @@
 
        <%= render "show/numberofthings", contract: @contract %>
        <%= render  "show/moneysection", contract: @contract %>
+       <% elsif current_user.try(:type) == "Independent" %>
+
+       <%= render "show/numberofthingsnet", contract: @contract %>
+       <%= render  "show/moneysection", contract: @contract %>
        <% end %>
        <div class="clearfix"></div>
       <%= render "show/provision", contract: @contract %>
