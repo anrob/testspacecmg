@@ -73,6 +73,10 @@ class ContractsController < ApplicationController
     @contract = Contract.funstuff
    end
 
+   def approval
+     @users = User.where("actcode_name".blank?).order("created_at ASC")
+   end
+
 
   def create_enricher
     @enricher = StreamRails::Enrich.new

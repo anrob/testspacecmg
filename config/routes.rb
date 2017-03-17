@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :contracts do
    get :confirmjob, on: :member
-   #get :report, on: :member
+   get :approval, on: :member
    get :paypeople, on: :member
    get :emailjobwithnetonly, on: :member
    get :emailjobwithallmoney, on: :member
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
    end
    get 'users/show'
+   get 'approval', to: "contracts#approval"
   get 'home/sidenav'
   get 'home/dashboard'
   get 'home/listusers'

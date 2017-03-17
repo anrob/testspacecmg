@@ -1,0 +1,4 @@
+class Independent < User
+
+
+end
