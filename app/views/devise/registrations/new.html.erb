@@ -8,54 +8,23 @@
         <p class="p0 m0">Sign Up</p>
       </header>
     </div>
-    <div class="row mt20">
-      <%= form_for resource, as: resource_name, url: registration_path(resource_name),
-                             html: { class: "form-horizontal col-xs-12 col-md-6 col-md-offset-3", novalidate: true } do |f| %>
-        <%= f.error_notification %>
+    <div class="vertical-center">
 
-        <div class="sheet form-sheet">
-          <div class="sheet-inner">
-            <%= f.form_group :first_name do |f| %>
-              <%= f.label :first_name, class: "form-label" %>
-              <%= f.text_field :first_name, class: "" %>
-              <%= f.error_messages %>
-            <% end %>
 
-              <%= f.form_group :last_name do |f| %>
-                <%= f.label :last_name, class: "form-label" %>
-                <%= f.text_field :last_name, class: "" %>
-                <%= f.error_messages %>
-              <% end %>
+    <div class="col-md-4 mt20">
+      <div class="sheet-inner text-left">
 
-            <%= f.form_group :email do |f| %>
-              <%= f.label :email, class: "form-label" %>
-              <%= f.email_field :email, autofocus: true, class: "" %>
-              <%= f.error_messages %>
-            <% end %>
 
-            <%= f.form_group :password do |f| %>
-              <%= f.label :password, class: "form-label" %>
-              <%= f.password_field :password, class: "" %>
-              <%= f.error_messages %>
-            <% end %>
-
-            <%= f.form_group :password_confirmation do |f| %>
-              <%= f.label :password_confirmation, class: "form-label" %>
-              <%= f.password_field :password_confirmation, class: "" %>
-              <%= f.error_messages %>
-            <% end %>
-
-            <%#= f.form_group :actcode_name do |f| %>
-              <%#= f.label :actcode, class: "form-label" %>
-              <%#= f.text_field :actcode_name, class: "" %>
-              <%#= f.error_messages %>
-            <%# end %>
-          </div>
-        </div>
-
-        <div class="form-actions text-right">
-          <%= f.submit "Sign up", class: 'btn btn-primary' %>
-        </div>
+      <%= simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :email %>
+        <%= f.input :password %>
+        <%= f.input :password_confirmation %>
+        <!-- collection: Project.statuses, label_method: :first, value_method: :first, include_blank: false -->
+        <%= f.association :managements, as: :radio_buttons %>
+        <%= f.input :type, collection: ["Independent", "Manager","Leader", "User" ]%>
+        <%= f.button :submit %>
       <% end %>
     </div>
     <!-- <div class="row mt20">
@@ -67,3 +36,5 @@
     </div> -->
   </div>
 </div>
+  </div>
+  </div>

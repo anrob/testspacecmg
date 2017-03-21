@@ -2,7 +2,7 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
-#
+ #User.where(:roles_mask.blank?).update_all(type: "Independent")
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
@@ -41,20 +41,20 @@
 # "Four Star",
 # "Washington Photo",
 # "Glyde Productions",
-# "So Fresh Entertainment" 
+# "So Fresh Entertainment"
 # ]
 # Company.delete_all
 # country_list.each do |name|
 #  Company.create( name: name )
 # end
-# 
+#
 
 
 
-PPPlayer.delete_all
-open("http://www.kundalinibitbybit.com/blog/wp-content/uploads/2016/06/Playersfull.txt") do |countries|
-  countries.read.each_line do |country|
-    name, position, home, work, cell, email, status, assigned, payrate, taxid, actcode = country.chomp.split("|")
-    Player.create!(:first_name => name, :home_phone => home, :work_phone => work, :cell_phone => cell, :email => email, :status => status, :regular_rate => payrate, :position_type => position )
-  end
-end
+# PPPlayer.delete_all
+# open("http://www.kundalinibitbybit.com/blog/wp-content/uploads/2016/06/Playersfull.txt") do |countries|
+#   countries.read.each_line do |country|
+#     name, position, home, work, cell, email, status, assigned, payrate, taxid, actcode = country.chomp.split("|")
+#     Player.create!(:first_name => name, :home_phone => home, :work_phone => work, :cell_phone => cell, :email => email, :status => status, :regular_rate => payrate, :position_type => position )
+#   end
+# end
