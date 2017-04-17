@@ -107,7 +107,7 @@ class ContractsController < ApplicationController
   def calendar
     #@search = Contract.search(params[:search])
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    unless current_user.try(:type) == "ManagerUser" || current_user.try(:type) == "Super"
+    unless current_user.try(:type) == "ManagerUser" || current_user.try(:type) == "Super" || current_user.try(:type) == "Netmanager"
      @contracts = Contract.mystuff(@current_user.actcode_name).threesixfive.all
       @event = @contracts.group_by(&:date_of_event)
     else

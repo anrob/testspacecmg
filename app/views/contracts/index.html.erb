@@ -8,7 +8,7 @@
 <%#= @users.count %>
 <%#= @userss.inspect %>
 
-<% if current_user.try(:type) == "ManagerUser" || current_user.try(:type) == "Super" %>
+<% if current_user.try(:type) == "ManagerUser" || current_user.try(:type) == "Super" || current_user.try(:type) == "Netmanager" %>
 <%= render 'manager', contract: @contracts %>
 <% elsif current_user.try(:type) == "Super" %>
 <%= render 'admin', contract: @contracts %>

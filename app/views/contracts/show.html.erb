@@ -53,7 +53,7 @@
 
        <%= render "show/numberofthings", contract: @contract %>
        <%= render  "show/moneysection", contract: @contract %>
-       <% elsif current_user.try(:type) == "Independent" %>
+       <% elsif current_user.try(:type) == "Independent" || current_user.try(:type) == "Netmanager" %>
 
        <%= render "show/numberofthingsnet", contract: @contract %>
        <%= render  "show/moneysection", contract: @contract %>
