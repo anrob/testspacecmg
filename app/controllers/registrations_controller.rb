@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     # Modified Devise params for user login
     def sign_up_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :actcode_name, :management_ids,:type )
     end
 
     def after_sign_up_path_for(resource)

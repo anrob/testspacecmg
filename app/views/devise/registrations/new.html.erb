@@ -19,11 +19,12 @@
         <%= f.input :first_name %>
         <%= f.input :last_name %>
         <%= f.input :email %>
+        <%= f.input :actcode_name %>
         <%= f.input :password %>
         <%= f.input :password_confirmation %>
         <!-- collection: Project.statuses, label_method: :first, value_method: :first, include_blank: false -->
-        <%= f.association :managements, as: :radio_buttons %>
-        <%= f.input :type, collection: ["Independent", "Manager","Leader", "User" ]%>
+        <%= f.association :managements, label_method: :name, value_method: :id, include_blank: false %>
+        <%= f.input :type, collection: ["Independent", "Manager","Netmanager","Leader", "User" ]%>
         <%= f.button :submit %>
       <% end %>
     </div>
