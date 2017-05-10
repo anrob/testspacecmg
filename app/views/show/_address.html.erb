@@ -5,9 +5,9 @@
                 <p><%= "#{contract.location_address_line_1}" %> <br> <%= "#{contract.location_city} #{contract.location_state} #{contract.location_zip}" %><br>
                   Phone: <%= contract.location_phone %>
                  <%= content_tag(:p, "Event Times:              #{@contract.eventtime}", class: "mb0")  %>
-                 
+
                    <%#= button_to("Get Directions", "http://maps.google.com/?q=#{themap}", class: 'ui button green success')%></p>
          </div>
    <address>
-                      
+
  <% end %>

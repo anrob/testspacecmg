@@ -1,7 +1,7 @@
    <%= content_tag(:p, clientname, class: "lead mb0") unless clientname.blank? %>
    <%= content_tag(:p, "Home Phone:              #{@contract.home_phone}", class: "mb0") unless @contract.home_phone.blank? %>
    <%= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
-   
+
    <%= content_tag(:p, "#{@contract.email_address}", class: "mb0") unless @contract.email_address.blank? %>
    <%#= content_tag(:p, "Home Phone:              #{@contract.home_phone}", class: "mb0") unless @contract.home_phone.blank? %>
    <%#= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
@@ -11,6 +11,12 @@
   <div class="mt20"> <%= content_tag(:b, "#{@contract.goh}         #{@contract.brides_names}", class: "mb0 pt30") unless @contract.brides_names.blank? %><br>
    <%= content_tag(:b, "#{@contract.goh2}              #{@contract.grooms_name}", class: "mb0") unless @contract.grooms_name.blank? %></div>
    <%= content_tag(:div, "Company:                    #{@contract.company}") unless @contract.company.blank? %>
-   
-   
+   <br>
+  <hr>
+    <%= content_tag(:dt, "Cocktail Instrumentation:                    #{@contract.cocktail_instrumentation}", class: "text-danger mb0") unless @contract.cocktail_instrumentation.blank? %>
+
+     <%= content_tag(:dt, "Cocktail Time:                    #{@contract.cocktail_time}", class: "text-danger mb0") unless @contract.cocktail_time.blank? %>
+  </dt>
+
+
    <%#= @contract.changed? %>
