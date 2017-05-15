@@ -1,12 +1,12 @@
    <div class="clearfix"></div>
  <div class="page-header row row-same-height"><h4 class="col-sm-12 col-xs-height text-uppercase">Upcoming Events</h4> </div>
-  
- <div> 
+
+ <div>
    <% contract.each do |contract| %>
    <div class="sheet-inner m20 pl30 pr30 pt20">
-         <div class="row text-center"> 
+         <div class="row text-center">
                <div class="col-xs-12 col-sm-12 col-md-1  col-lg-1 blue-a400 text-grey-50 mb5 ">
-                  
+
                   <h6 class="text-gray-50 mt10"><%= "#{contract.date_of_event.strftime("%A")}" %></h6>
                      <h1 class="m0"><%= "#{contract.date_of_event.strftime("%d")}" %></h1>
                         <h5 class="mt0 mb10"><%= "#{contract.date_of_event.strftime("%b")}" %></h5>
@@ -18,7 +18,7 @@
                   <h5 class="mt0 mb0 ml5"><%= contract.type_of_event %></h5>
                   <%#= contract.location_city %>
                   <h5 class="mt10 mb0 ml5"><%= contract.eventtime %></h5>
-                  
+
                     <%= content_tag(:h5, "Home Phone:              #{contract.home_phone}", class: "mb0") unless contract.home_phone.blank? %>
                     <%= content_tag(:h5, "Work Phone:              #{contract.work_phone}", class: "mb0") unless contract.work_phone.blank? %>
                </div>
@@ -30,11 +30,11 @@
                <p class="lead pb0 mb0 pt10"><%= contract.location_name.gsub('"', ' ') %></p>
                 <p><%= "#{contract.location_address_line_1}" %> <br> <%= "#{contract.location_city} #{contract.location_state} #{contract.location_zip}" %><br>
                   Phone: <%= contract.location_phone %>
-                 
+
                    <%#= button_to("Get Directions", "http://maps.google.com/?q=#{themap}", class: 'ui button green success')%></p>
          </div>
    <address>
-                      
+
  <% end %>
 <span class="metric-value">
 
@@ -45,10 +45,10 @@
                     <p class="lead mb0"><%= contract.act_booked %></p>
                     <span class="label <%= "#{contract.contract_status.gsub!(/[^0-9A-Za-z]/, '')}" %>"><%= contract.contract_status %></span>
                    <p class="mt20"><%=  contract.contract_provisions.gsub('"', ' ') unless contract.contract_provisions.blank? %></p>
-                 
+
                  </div>
-                 
-      
+
+
                  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
  <% if contract.confirmed?  %>
     <%= link_to 'GET JOB INFO', contract, class: 'btn btn-flat btn-lg btn-success',method: :get %>
@@ -67,5 +67,3 @@
    </div>
    <% end %>
 </div>
- 
-  
