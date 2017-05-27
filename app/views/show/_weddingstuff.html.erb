@@ -1,3 +1,12 @@
+<div class="clearfix"></div>
+<div >
+<hr>
+  <%= content_tag(:dt, "Cocktail Instrumentation: #{@contract.cocktail_instrumentation}", class: "text-danger mb0") unless @contract.cocktail_instrumentation.blank? %>
+
+   <%= content_tag(:dt, "Cocktail Time:                    #{@contract.cocktail_time}", class: "text-danger mb0") unless @contract.cocktail_time.blank? %>
+ </div>
+
+
 <% unless contract.ceremony_start_time.blank? && contract.ceremonoy_location_name.blank? %>
   <div class="ui fluid form segment">
         <div class="ui top attached black label">Wedding Section
@@ -9,8 +18,8 @@
 <%= content_tag(:div,"Ceremony City:           #{contract.ceremony_location_city}") %>
 <%= content_tag(:div,"Ceremony State:          #{contract.seremonly_location_state}") %>
 <%= content_tag(:div,"Ceremony Zip:            #{contract.ceremony_location_zip}") %>
-<%= content_tag(:div,"Ceremony Start Time:     #{contract.ceremony_start_time}") %>
-<%= content_tag(:div,"Ceremony Instrumentation:#{contract.ceremony_instrumenttation}") %>
+<%= content_tag(:dt,"Ceremony Start Time:     #{contract.ceremony_start_time}", class: "text-danger mb0") %>
+<%= content_tag(:dt,"Ceremony Instrumentation:#{contract.ceremony_instrumenttation}", class: "text-danger mb0") %>
 </div>
 
 <% end %>

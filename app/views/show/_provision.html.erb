@@ -1,14 +1,11 @@
-<% unless contract.contract_provisions == "nil" %>
+<% unless contract.contract_provisions == "" %>
  <div class="col-lg-6 col-md-6 col-sm-12 animate-drop-fade">
          <p class="lead p0 mt40 mb0 text-amber-900">Client Provisions</p>
 
          <div class="">
             <%=  contract.contract_provisions.gsub('"', ' ') unless contract.contract_provisions.blank? %>
          </div>
-         <hr>
-           <%= content_tag(:dt, "Cocktail Instrumentation:                    #{@contract.cocktail_instrumentation}", class: "text-danger mb0") unless @contract.cocktail_instrumentation.blank? %>
 
-            <%= content_tag(:dt, "Cocktail Time:                    #{@contract.cocktail_time}", class: "text-danger mb0") unless @contract.cocktail_time.blank? %>
 
    </div>
 
