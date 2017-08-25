@@ -1,6 +1,6 @@
 module Api
    module V1
-      class ContractsController < ApplicationController
+      class ContractsController < ActionController::Base
          
          respond_to :json
          
