@@ -31,6 +31,7 @@ gem 'groupdate'
 gem 'highcharts-rails'
 gem 'jquery-ui-rails'
 gem 'premailer', '~> 1.9', '>= 1.9.2'
+gem 'grape'
 
 gem 'inky-rb', require: 'inky'
 gem 'airbrake', '~> 5.4'

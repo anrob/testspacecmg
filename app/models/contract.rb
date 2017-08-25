@@ -18,6 +18,7 @@ class Contract < ApplicationRecord
    #datewithouttime = Date.today.strftime("%m/%d/%y")
    datewithouttime = Date.today.strftime("%m/%d/%y")
    #datetoday = Chronic.parse(datewithouttime)
+      scope :default, -> { where(contract_status: ["Contract Received","Booked","Contract Sent", "Booked- PAY ACT","Complimentary","Promotional","Promo- WTA to pay","Contract Rec'd- Waiting for Dep.","Send Contract "])}
 
       #event_starts = event_start_time.gsub('pm', 'PM')
       scope :mystuff, lambda { |user| where("act_code = ?", user) }

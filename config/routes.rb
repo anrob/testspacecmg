@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+namespace :api, defaults: {format: 'json'} do 
+ namespace :v1 do
+  resources :contracts
+end
+end
+
+
  # mount RailsEmailPreview::Engine, at: 'emails'
  # get 'home/index'
   #devise_for :users
