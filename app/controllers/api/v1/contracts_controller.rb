@@ -6,7 +6,7 @@ module Api
          
          
          def index
-          @c = Contract.thirtyday.default.where(act_code: params[:act_code]).limit(1)
+          @c = Contract.thisweek.default.where(act_code: params[:act_code]).limit(1)
           render json: @c.as_json(root: false)
           # @b = ActiveSupport::JSON.decode(@h)
           #@@h
