@@ -29,6 +29,7 @@ class Contract < ApplicationRecord
       scope :all_except, lambda { |current_user | where("user = ?", current_user ) }
       #scope :todaysevents, where(:date_of_event, my_date )
       scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days))}
+      scope :thisweekplusone, -> {where(date_of_event: (my_date)..(my_date + 8.days))}
       scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('date_of_event ASC', 'act_booked ASC')}
       scope :threesixfive, ->  {where(date_of_event:  (my_date - 2.years)..(my_date + 5.years))}
       scope :nextfouryears, -> {where(date_of_event:  (my_date)..(my_date + 4.years))}
