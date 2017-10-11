@@ -31,7 +31,8 @@ class Contract < ApplicationRecord
       scope :thisweek, -> {where(date_of_event: (my_date)..(my_date + 7.days))}
       scope :thisweekplusone, -> {where(date_of_event: (my_date)..(my_date + 8.days))}
       scope :nextsix, -> {where(date_of_event: (Chronic.parse("5 days from now"))..(Chronic.parse("10 days from now"))).order('date_of_event ASC', 'act_booked ASC')}
-      scope :threesixfive, ->  {where(date_of_event:  (my_date - 2.years)..(my_date + 5.years))}
+      #  the one we have been using   scope :threesixfive, ->  {where(date_of_event:  (my_date - 2.years)..(my_date + 5.years))}
+      scope :threesixfive, ->  {where(date_of_event:  (my_date - 60.days)..(my_date + 3.years))}
       scope :nextfouryears, -> {where(date_of_event:  (my_date)..(my_date + 4.years))}
      # scope :thismonth, ->     {where(created_at: (Chronic.parse("first of this month"))..(Chronic.parse("end of this month"))).order('date_of_event ASC', 'act_booked ASC')}
       scope :thismonth, ->  {where(date_of_event:  (my_date)..(my_date + 1.years))}
