@@ -72,6 +72,6 @@ layout 'sidenav'
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def management_params
-      params.require(:manaagement).permit(:name)
+      params.require(:management).permit(:name)
     end
 end
