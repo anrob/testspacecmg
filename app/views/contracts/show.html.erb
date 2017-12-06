@@ -59,7 +59,7 @@
        <% elsif current_user.try(:type) == "Independent" || current_user.try(:type) == "Netmanager" %>
 
        <%= render "show/numberofthingsnet", contract: @contract %>
-       <%= render  "show/moneysection", contract: @contract %>
+       <%#= render  "show/moneysection", contract: @contract %>
        <% end %>
        <div class="clearfix"></div>
       <%= render "show/provision", contract: @contract %>
