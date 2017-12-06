@@ -10,6 +10,8 @@
 <%= content_tag(:p, "Work Phone:              #{@contract.work_phone}", class: "mb0") unless @contract.work_phone.blank? %>
 <%= content_tag(:p, "Cell Phone:              #{@contract.cell_phone}", class: "mb0") unless @contract.cell_phone.blank? %>
 <%= content_tag(:p, "Event Times:              #{@contract.eventtime}", class: "mb0")  %>
+<b><%= content_tag(:p, "#{@contract.date_of_event.strftime("Date of Event: %A - %m/%d/%Y")}", class: "mb0")  %></b>
+
 
 <br><%= render  "show/agent", contract: @contract %>
 </div>

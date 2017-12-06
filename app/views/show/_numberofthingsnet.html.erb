@@ -10,16 +10,23 @@
 </span>
 </div>
 
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<!--<dt>Act Net:</dt>-->
+<span class="metric-value">
+<%#= content_tag(:strong,"#{number_to_currency(contract.act_net)}") unless  self.blank? || contract.act_net == 0 %>
 
+</span>
+
+</div>
 
 
 
 
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<dt>Referral fee</dt>
+<!--<dt>Referral fee</dt>-->
 <span class="metric-value">
-<%= content_tag(:strong,"#{number_to_currency(contract.referral_fee_amount)}") unless self.blank? || contract.referral_fee_amount == 0   %>
-<%= contract.referral_fee_to %>
+<!--<%#= content_tag(:strong,"#{number_to_currency(contract.referral_fee_amount)}") unless self.blank? || contract.referral_fee_amount == 0   %>-->
+<br><%#= contract.referral_fee_to %>
 </span>
 
 </div>

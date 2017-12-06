@@ -30,7 +30,7 @@
 <dt>Referral fee</dt>
 <span class="metric-value">
 <%= content_tag(:strong,"#{number_to_currency(contract.referral_fee_amount)}") unless self.blank? || contract.referral_fee_amount == 0   %>
-<%= contract.referral_fee_to %>
+<%#= contract.referral_fee_amount %> - <br><%= contract.referral_fee_to %>
 </span>
 
 </div>
