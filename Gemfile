@@ -41,7 +41,7 @@ gem 'airbrake', '~> 5.4'
 
 group :development, :production do
   gem 'rails_best_practices'
-  gem 'pg'
+  #gem 'pg'
   gem 'bugsnag'
 end
 group :development do
