@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
-gem 'rails', '5.0.0'
+ruby "2.4.1"
+gem 'rails', '5.0.3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -41,7 +41,7 @@ gem 'airbrake', '~> 5.4'
 
 group :development, :production do
   gem 'rails_best_practices'
-  #gem 'pg'
+  gem 'pg', '~> 0.20.0'
   gem 'bugsnag'
 end
 group :development do
@@ -49,9 +49,8 @@ group :development do
   #gem 'rubocop', require: false
 end
 group :production do
-   gem 'pg', '~> 0.20'
   gem 'thin'
-  gem 'rails_12factor'
+ # gem 'rails_12factor'
 end
 
 source 'https://dresssed.com/gems/a37bde1693c95367a2f5/' do
