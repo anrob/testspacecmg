@@ -97,10 +97,10 @@ class ContractsController < ApplicationController
      #@users = User.find_by "actcode_name = ?", @con #.pluck(@contracts.map {|m|m.act_code})
       @users = User.where(actcode_name: @con)
     #else
+    @contractdidconfirm = Contract.order(contract_sort).tenday.didconfirmevent.all
       #@contractfour = Contract.order(contract_sort).tenday.all
     #  redirect_to root_path
   #  end
-
   end
 
 
@@ -140,7 +140,10 @@ class ContractsController < ApplicationController
 
  def confirmjob
     #@contract.update_attributes(confirmation: 1)
-    @contract.confirmed!
+   #
+   @contract.didconfirm = "yes"  # this confirms the job
+   @contract.confirmed!
+    
     redirect_to @contract, notice: "Job Confirmed"
  end
 
@@ -193,6 +196,7 @@ class ContractsController < ApplicationController
 
   def confirmed
     Contract.confirmation == 1
+    Contract.didconfirmevent
   end
 
   def unconfirmed

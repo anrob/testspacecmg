@@ -39,6 +39,8 @@ class Contract < ApplicationRecord
       scope :additional, ->(addi) { where("prntkey23 = ?", addi.prntkey23)}
       scope :funstuff, -> {where(date_of_event:  (fundate)..(funenddate))}
        scope :unconfirmedevent, -> {where(confirmation: "0")}
+       #scope :didconfirmevent, -> {where("didconfirm == null")}
+       scope :didconfirmevent, ->{ where(didconfirm: nil)}
 
 
       scope :type_of_act, lambda { |tp| where("type_of_act = ?", tp) }
