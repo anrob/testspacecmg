@@ -196,7 +196,7 @@ class ContractsController < ApplicationController
 
   def confirmed
     Contract.confirmation == 1
-    Contract.didconfirmevent
+    #Contract.didconfirmevent
   end
 
   def unconfirmed
