@@ -183,7 +183,7 @@ class ContractsController < ApplicationController
   end
 
   def contract_sort
-  params[:sort] || :unique3
+  params[:sort] || :date_of_event
   end
 
   def set_contract
