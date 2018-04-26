@@ -15,7 +15,7 @@ end
    get :payroll, on: :member
   end
   resources :staffings
-  #devise_for :admin_users, ActiveAdmin::Devise.config
+ 
   resources :actcodes
   resources :contracts
   resources :players
