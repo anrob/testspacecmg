@@ -53,7 +53,12 @@ group :production do
  # gem 'rails_12factor'
 end
 
-source 'https://dresssed.com/gems/a37bde1693c95367a2f5/' do
-  gem 'dresssed-ives', '~> 1.0.45'
+#source 'https://dresssed.com/gems/a37bde1693c95367a2f5/' do
+# source 'https://gems.rapidrailsthemes.com/gems' do
+#   gem 'dresssed-ives', '~> 1.0.45'
+# end
+
+source "https://gems.rapidrailsthemes.com/gems" do
+  gem "dresssed-ives", "~> 1.0.66"
 end
 gem 'kaminari'
