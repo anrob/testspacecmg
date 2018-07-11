@@ -70,7 +70,21 @@ class ContractsController < ApplicationController
   end
 
    def report
-    @contract = Contract.funstuff
+    # @contract = Contract.funstuff
+     @contract = Contract.unconfirmedevent.tenday.all
+    # @contract_manager = Contract.pluck(:managements)
+      @con = @contract.pluck(:act_code)
+                  @user = User.where(actcode_name: @con)
+                  
+                  
+      @contract_manager = User.pluck(:management_id) #gather managment ids
+       @mang_user = User.where(management_id: @con)
+      
+       @collect_managers = @user.collect {|e| e.email}.uniq  # get email of acts with managers
+      
+      @userss = @user.collect {|m| m.email}.uniq
+      
+      
    end
 
    def approval

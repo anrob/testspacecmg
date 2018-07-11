@@ -8,11 +8,13 @@
    <div>
          
  <%= @contract.count %>
-   
-   <%= line_chart @contract.group_by_month(:date_of_event).sum(:contract_price) %>
+ <%= @mang_user.count %>
+    <%= @contract_manager %>
+ <%= @collect_managers %>
+   <%#= line_chart @contract.group_by_month(:date_of_event).sum(:contract_price) %>
    <%#= column_chart @contract.group_by_month(:created_at, format: "%a").sum(:contract_price) %>
    <%#= column_chart @contract.group_by_month(:created_at, format: "%b").sum(:contract_price) %>
-   <%= pie_chart @contract.group(:act_booked).sum(:contract_price), width: "2800px", height: "2500px", stacked: true, min: 250000, download: true %>
+   <%#= pie_chart @contract.group(:act_booked).sum(:contract_price), width: "2800px", height: "2500px", stacked: true, min: 250000, download: true %>
    </div>
    </div>
 
