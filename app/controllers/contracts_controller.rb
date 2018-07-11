@@ -80,7 +80,7 @@ class ContractsController < ApplicationController
       @contract_manager = User.pluck(:management_id) #gather managment ids
        @mang_user = User.where(management_id: @con)
       
-       @collect_managers = @user.collect {|e| e.email}.uniq  # get email of acts with managers
+       @collect_managers = @user.collect {|e| e.email}.uniq  # get email of acts with managers 222
       
       @userss = @user.collect {|m| m.email}.uniq
       
