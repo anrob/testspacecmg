@@ -156,6 +156,8 @@ class ContractsController < ApplicationController
     #@contract.update_attributes(confirmation: 1)
    #
    @contract.didconfirm = "yes"  # this confirms the job
+   @contract.whoconfirmed = current_user.email
+   @contract.whenconfirmed = Time.now
    @contract.confirmed!
     
     redirect_to @contract, notice: "Job Confirmed"
