@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203183324) do
+ActiveRecord::Schema.define(version: 20181004143650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,9 @@ ActiveRecord::Schema.define(version: 20170203183324) do
     t.string   "player6",                           limit: 255
     t.string   "player7",                           limit: 255
     t.string   "player8",                           limit: 255
+    t.string   "didconfirm"
+    t.string   "whoconfirmed"
+    t.datetime "whenconfirmed"
     t.index ["unique3"], name: "index_contracts_on_unique3", unique: true, using: :btree
   end
 
@@ -270,6 +273,16 @@ ActiveRecord::Schema.define(version: 20170203183324) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["received_messageable_id", "sender_id"], name: "inbox_idx", using: :btree
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "contract_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["contract_id"], name: "index_notes_on_contract_id", using: :btree
+    t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
 
   create_table "players", force: :cascade do |t|
@@ -434,4 +447,6 @@ ActiveRecord::Schema.define(version: 20170203183324) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
 
+  add_foreign_key "notes", "contracts"
+  add_foreign_key "notes", "users"
 end
