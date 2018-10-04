@@ -33,6 +33,8 @@
         <th><%= link_to "Unique 3", sort: "unique3" %></th>
         <th><%= link_to "Confirmed", sort: "confirmation" %></th>
         <th><%= link_to "Did Confirm Job", sort: "confirmation" %></th>
+        <th><%= link_to "Date Confirmed", sort: "confirmation" %></th>
+        <th><%= link_to "Who Confirmed", sort: "confirmation" %></th>
   
 <!--<th>Reminder</th>-->
       </tr>
@@ -51,6 +53,8 @@
       <td class="conf"><% if m.confirmed? %><span class="label label-success">Confirmed</span><% else %><span class="label label-warning">Un-Confirmed</span><% end %></td>
      <!-- <td><%#= distance_of_time_in_words(Time.now, "#{m.created_at}") %><%#= m.didconfirm %> ago</td>-->
       <td class="conf"><span class="label label-success"><%= m.didconfirm %></span></td>
+      <td class="conf"><span class="label label-success"><%= m.whenconfirmed.strftime("%m/%d/%Y at %I:%M%p") unless m.whenconfirmed.blank? %></span></td>
+      <td class="conf"><span class="label label-success"><%= m.whoconfirmed %></span></td>
       <!-- <td><%#= m.unique3 %></td> -->
     </tr>
   <% end %>
