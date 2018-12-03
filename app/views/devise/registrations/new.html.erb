@@ -8,7 +8,7 @@
         <p class="p0 m0">Sign Up</p>
       </header>
     </div>
-    <% if current_user.try(:spuer?) %>
+    <% if current_user.try(:type) == "Super" %>
     <div class="vertical-center">
 
 

@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     # end
      @contractfour = Contract.order(params[:sort]).tenday.all
      @getallbycompnay = Actcode.getallbycompany(current_user).order("actcode").delete(current_user.actcode_name)
-     end
+      end
      end
 
 

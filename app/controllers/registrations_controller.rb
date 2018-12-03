@@ -1,5 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
-#  before_filter :authorize_admin, only: [:sign_up, :create]
+  # prepend_before_action :authorize_admin, only: [:sign_up, :create]
+   
+
+  prepend_before_action :require_no_authentication, only: :sign_up
   private
 
     # Modified Devise params for user login
@@ -8,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def after_sign_up_path_for(resource)
-    root_path
+      root_path
     end
 
     def authorize_admin
