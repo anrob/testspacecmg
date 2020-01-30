@@ -14,13 +14,14 @@
 //= require jquery_ujs
 //= require dresssed
 //= require turbolinks
-//= require moment 
+//= require moment
 //= require fullcalendar
 //= require select2
 // require highcharts
 //= require Chart.bundle
 //= require chartkick
 //= require jquery-ui
+
 
 //= require_tree .
 
