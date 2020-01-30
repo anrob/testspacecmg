@@ -50,8 +50,6 @@ GEM
     bcrypt (3.1.13)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    bugsnag (6.12.2)
-      concurrent-ruby (~> 1.0)
     builder (3.2.4)
     case_transform (0.2)
       activesupport
@@ -292,7 +290,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.2)
-  bugsnag
   caxlsx_rails
   chartkick
   chronic
