@@ -44,7 +44,7 @@ gem 'inky-rb', require: 'inky'
 group :development, :production do
   gem 'rails_best_practices'
   gem 'pg', '~> 0.20.0'
-  gem 'bugsnag'
+  #gem 'bugsnag'
 end
 group :development do
   gem 'web-console', '~> 2.0'
