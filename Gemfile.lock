@@ -1,6 +1,6 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://gems.rapidrailsthemes.com/gems/
+  remote: https://gems.kiso.io/
   specs:
     actioncable (5.0.3)
       actionpack (= 5.0.3)
@@ -90,9 +90,10 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    dresssed-ives (1.0.66)
+    dresssed-ives (1.0.67)
       jquery-rails
       rails (>= 3.1)
+      sass-rails
     easy_dates (0.1.1)
     erubis (2.7.0)
     eventmachine (1.2.5)
@@ -310,7 +311,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   datagrid (~> 1.5, >= 1.5.1)
   devise
-  dresssed-ives (~> 1.0.66)!
+  dresssed-ives (~> 1.0.67)!
   easy_dates
   faker
   fullcalendar-rails
@@ -344,7 +345,7 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 RUBY VERSION
-   ruby 2.4.1p111
+   ruby 2.7.0p0
 
 BUNDLED WITH
    1.16.1

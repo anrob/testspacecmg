@@ -84,7 +84,7 @@ class Contract < ApplicationRecord
   end
 
   def contractprice
-   contract_price - giveaways_charge
+   contract_price - giveaways_charge - referral_fee_amount
   end
 
 
