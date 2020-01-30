@@ -51,7 +51,7 @@ group :development do
   #gem 'rubocop', require: false
 end
 group :production do
-#  gem 'thin'
+  gem 'thin'
  # gem 'rails_12factor'
 end
 
