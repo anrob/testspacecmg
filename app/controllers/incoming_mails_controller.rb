@@ -105,8 +105,7 @@ class IncomingMailsController < ApplicationController
                                         player5: row[84],
                                         player6: row[85],
                                         player7: row[86],
-                                        player8: row[87],
-                                        agency: row[88]}
+                                        player8: row[87]}
                                           #@contracts.confirmation = 0 unless @ontracts.player8.changed? OR @ontracts.player7.changed? OR @ontracts.player6.changed?  OR @ontracts.player5.changed?  OR  @ontracts.player4.changed?
                                          #@contracts.confirmation = 0 #|| @contracts.confirmed?
                                          @contracts.unconfirmed! #if @@contracts.  #confirmation = 0 if @contracts.changed?
