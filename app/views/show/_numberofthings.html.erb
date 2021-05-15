@@ -7,9 +7,10 @@
 <span class="metric-value">
   <% if current_user.try(:type) == "Independent"  %>
 <%= content_tag(:strong,"#{number_to_currency(contract.contractprice)}")  unless self.blank? || contract.contract_price == 0  %><br>
-<% end %>
+
 <% else %>
   <%= content_tag(:strong,"#{number_to_currency(contract.contractprice)}")  unless self.blank? || contract.contract_price == 0  %><br>
+  <% end %>
 </span>
 </div>
 
@@ -26,14 +27,14 @@
 
 
 
-<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-<dt>-</dt>
+ <!-- <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<dt>Referral fee</dt>
 <span class="metric-value">
-<%#= content_tag(:strong,"#{number_to_currency(contract.referral_fee_amount)}") unless self.blank? || contract.referral_fee_amount == 0   %>
-<%#= contract.referral_fee_amount %> - <br><%#= contract.referral_fee_to %>
+<!%# <!%= content_tag(:strong,"#{number_to_currency(contract.referral_fee_amount)}") unless self.blank? || contract.referral_fee_amount == 0   %> %>
+<!%#= contract.referral_fee_amount %> - <br><!%#= contract.referral_fee_to %>
 </span>
 
-</div>
+</div> -->
 
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 <dt>Number of Dancers</dt>
@@ -61,7 +62,7 @@
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-   <hr>
+  
 <dt>DJ Tech</dt>
 <span class="metric-value">
 <%= content_tag(:strong,"#{contract.tech}") %>

@@ -1,0 +1,116 @@
+#!/usr/bin/env ruby
+
+# This script can be used to engage a particular Gemfile for the purposes of
+# continuous integration testing.
+#
+# Usage: script/with <variant> <env|bootstrap|bundle|rake>
+#
+# Here <variant> refers to a pre-defined Gemfile located in test/gemfiles
+# and the commands include:
+#
+#  * env - Display the current BUNDLE_GEMFILE environment
+#  * bootstrap - Install the necessary hard dependencies (rubygems, bundler)
+#  * bundle - Execute arbitrary Bundler command
+#  * rake - Execute arbitrary rake command via `bundle exec`
+#
+# Examples:
+#  * script/with rails-3.0.x bootstrap
+#  * script/with rails-3.0.x bundle install
+#  * script/with rails-3.0.x rake test
+
+# == Constants ==============================================================
+
+GEMFILE_DIR = File.expand_path('../test/gemfiles', File.dirname(__FILE__))
+GEMFILE_ROOT = File.expand_path('../Gemfile', File.dirname(__FILE__))
+
+# == Support Methods ========================================================
+
+def dependencies(gemfile)
+  dependencies = { }
+
+  File.open(gemfile) do |f|
+    f.each do |line|
+      if (line.match(/\Agem\s+['"]bundler['"]\s*,\s*['"]([^'"]+)['"]/))
+        dependencies[:bundler] = $1
+      elsif (line.match(/\A\#\s*rubygems\s+(\S+)/))
+        dependencies[:rubygems] = $1
+      end
+    end
+  end
+
+  dependencies
+end
+
+def gemfile_list
+  Dir.entries(GEMFILE_DIR).reject do |name|
+    name[/\A\./] or name[/\.lock\z/]
+  end.collect do |name|
+    name.sub(/\AGemfile\./, '')
+  end
+end
+
+def with_variant(variant, &block)
+  case (variant)
+  when 'current'
+    if (ENV['BUNDLE_GEMFILE'])
+      yield(dependencies(ENV['BUNDLE_GEMFILE']))
+    else
+      yield(dependencies(GEMFILE_ROOT))
+    end
+  when 'each', 'all'
+    gemfile_list.each do |_variant|
+      with_variant(_variant, &block)
+    end
+  else
+    ENV['BUNDLE_GEMFILE'] = File.expand_path('Gemfile.%s' % variant, GEMFILE_DIR)
+
+    yield(dependencies(ENV['BUNDLE_GEMFILE']))
+  end
+end
+
+def shell(*args)
+  if (ENV['WITH_VERBOSE'])
+    puts args.join(' ')
+  end
+
+  unless (system(*args))
+    exit($?.to_i)
+  end
+end
+
+# == Main ===================================================================
+
+variant = ARGV[0]
+
+unless (variant)
+  puts "Usage: with <gemspec variant> <env|bootstrap|bundle|rake> ..."
+
+
+  puts
+  puts "Available variants:"
+  gemfile_list.each do |name|
+    puts name
+  end
+
+  exit(-1)
+end
+
+with_variant(variant) do |dependencies|
+  bundle_version_args = dependencies[:bundler] ? [ '_%s_' % dependencies[:bundler] ] : [ ]
+
+  case (ARGV[1])
+  when 'env'
+    puts 'BUNDLE_GEMFILE=%s' % ENV['BUNDLE_GEMFILE']
+  when 'bootstrap'
+    if (dependencies[:rubygems])
+      shell('gem', 'update', '--system', dependencies[:rubygems])
+    end
+    if (dependencies[:bundler])
+      shell('gem', 'install', 'bundler', '-v', dependencies[:bundler])
+    end
+  when 'bundle'
+    shell("bundle", *bundle_version_args, *ARGV.to_a[2, ARGV.length])
+  when 'rake'
+    shell("bundle", *bundle_version_args, "exec", "rake", *ARGV.to_a[2, ARGV.length])
+  end
+end

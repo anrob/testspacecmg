@@ -1,0 +1,13 @@
+current directory: /tmp/build_884dbf05db8d039dad2eb7cd51619799/vendor/bundle/ruby/2.7.0/gems/json-1.8.6/ext/json
+/tmp/build_884dbf05db8d039dad2eb7cd51619799/vendor/ruby-2.7.0/bin/ruby -I /tmp/build_884dbf05db8d039dad2eb7cd51619799/vendor/ruby-2.7.0/lib/ruby/2.7.0 -r ./siteconf20200130-295-8nq3m4.rb extconf.rb
+creating Makefile
+
+current directory: /tmp/build_884dbf05db8d039dad2eb7cd51619799/vendor/bundle/ruby/2.7.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" clean
+
+current directory: /tmp/build_884dbf05db8d039dad2eb7cd51619799/vendor/bundle/ruby/2.7.0/gems/json-1.8.6/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /tmp/build_884dbf05db8d039dad2eb7cd51619799/vendor/bundle/ruby/2.7.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" install

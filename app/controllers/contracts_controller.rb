@@ -28,9 +28,11 @@ class ContractsController < ApplicationController
     # @contractsss = @search.results
 
     @contractss = Contract.unconfirmedevent.tenday.all
+    @contract_new_leads = Contract.newthirtyday.all
    # @users = User.where(["actcode_name = ?", (@contractss.map {|m|m.act_code })])
  # @users = User.find_by "actcode_name = ?", @contractss.pluck(:act_code)
       @con = @contractss.pluck(:act_code)
+      @connew = @contract_new_leads.pluck(:act_code)
      #@users = User.find_by "actcode_name = ?", @con #.pluck(@contracts.map {|m|m.act_code})
       @users = User.where(actcode_name: @con)
       # @users = User.find_all_by_actcode_name(@contracts.map {|m|m.act_code})
@@ -71,20 +73,20 @@ class ContractsController < ApplicationController
 
    def report
     # @contract = Contract.funstuff
-     @contract = Contract.unconfirmedevent.tenday.all
+     @contract = Contract.newthirtyday
     # @contract_manager = Contract.pluck(:managements)
       @con = @contract.pluck(:act_code)
                   @user = User.where(actcode_name: @con)
-                  
-                  
+
+
       @contract_manager = User.pluck(:management_id) #gather managment ids
        @mang_user = User.where(management_id: @con)
-      
+
        @collect_managers = @user.collect {|e| e.email}.uniq  # get email of acts with managers 222
-      
+
       @userss = @user.collect {|m| m.email}.uniq
-      
-      
+
+
    end
 
    def approval
@@ -159,7 +161,7 @@ class ContractsController < ApplicationController
    @contract.whoconfirmed = current_user.email
    @contract.whenconfirmed = Time.now
    @contract.confirmed!
-    
+
     redirect_to @contract, notice: "Job Confirmed"
  end
 

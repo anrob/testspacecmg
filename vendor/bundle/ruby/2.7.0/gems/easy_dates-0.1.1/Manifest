@@ -1,0 +1,7 @@
+Manifest
+README.rdoc
+Rakefile
+easy_dates.gemspec
+init.rb
+lib/easy_dates.rb
+lib/easy_dates/base.rb

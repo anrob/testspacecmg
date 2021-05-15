@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby "2.4.1"
+#ruby "2.4.1"
+ruby "2.7.0"
 gem 'rails', '5.0.3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -22,7 +23,8 @@ gem 'json_builder'
 gem 'simple_form'
 gem 'select2-rails'
 gem 'stream_rails'
-gem 'axlsx_rails'
+#gem 'axlsx_rails'
+gem 'caxlsx_rails'
 gem 'easy_dates'
 gem 'safe_attributes'
 gem 'postageapp'
@@ -36,13 +38,13 @@ gem 'active_model_serializers', '~> 0.10.2'
 #gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'inky-rb', require: 'inky'
-gem 'airbrake', '~> 5.4'
+#gem 'airbrake', '~> 5.4'
 
 
 group :development, :production do
   gem 'rails_best_practices'
   gem 'pg', '~> 0.20.0'
-  gem 'bugsnag'
+  #gem 'bugsnag'
 end
 group :development do
   gem 'web-console', '~> 2.0'
@@ -57,8 +59,9 @@ end
 # source 'https://gems.rapidrailsthemes.com/gems' do
 #   gem 'dresssed-ives', '~> 1.0.45'
 # end
+gem 'dresssed-ives', '~>1.0.67', source: 'https://gems.kiso.io/'
 
-source "https://gems.rapidrailsthemes.com/gems" do
-  gem "dresssed-ives", "~> 1.0.66"
-end
+#source "https://gems.rapidrailsthemes.com/gems" do
+#  gem "dresssed-ives", "~> 1.0.66"
+#end
 gem 'kaminari'
