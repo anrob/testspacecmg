@@ -32,10 +32,10 @@ default: &default
       adapter: postgresql
       encoding: unicode
       pool: 5
-      username: jqabvmpkrnfyex
-      password: ca5f46d08c85191795838c9a0cd222dc5d2d13fc6a2ece57f0031878d50f8c2f
-      host:     ec2-50-19-251-149.compute-1.amazonaws.com
-      database: defrmkoscvi0v
+      username: dnbmgdgfrunjjl
+      password: 5f82650ad83a05960b31383d72cf1b55c924d7801a18630ee4768f71b3fb8e8c
+      host:     ec2-44-198-236-169.compute-1.amazonaws.com
+      database: d7vr5qmodl79pf
 
 development:
   <<: *default
