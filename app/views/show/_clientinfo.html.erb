@@ -12,10 +12,11 @@
   <div class="mt20"> <%= content_tag(:b, "#{@contract.goh}         #{@contract.brides_names}", class: "mb0 pt30") unless @contract.brides_names.blank? %><br>
    <%= content_tag(:b, "#{@contract.goh2}              #{@contract.grooms_name}", class: "mb0") unless @contract.grooms_name.blank? %></div>
    <%= content_tag(:div, "Company:                    #{@contract.company}") unless @contract.company.blank? %>
-   
- 
+    <%= content_tag(:div, "Planner:                    #{@contract.party_planner}") unless @contract.party_planner.blank? %>
+
    <br>
   
+
   </dt>
 
 
